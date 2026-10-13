@@ -1,0 +1,677 @@
+[
+    {
+        "source": "KAP",
+        "disclosure_id": "1680014",
+        "stock_code": "ALKIM",
+        "title": "ALKİM KAĞIT SANAYİ VE TİCARET A.Ş.Sermaye Artırımı - Azaltımı İşlemlerine İlişkin Bildirim/ ALKIM",
+        "disclosure_type": "Sermaye Artırımı - Azaltımı İşlemlerine İlişkin Bildirim",
+        "summary": "Esas Sözleşmenin Sermaye Maddesinin Tadiline İlişkin SPK Onayının Bildirilmesi",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1680014"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1680008",
+        "stock_code": "KLRHO",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ KLRHO",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "KLRHO.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1680008"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679976",
+        "stock_code": "PAMEL",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ PAMEL",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "PAMEL.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679976"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679975",
+        "stock_code": "UFUK",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ UFUK",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "UFUK.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679975"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679974",
+        "stock_code": "MANAS",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ MANAS",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "MANAS.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679974"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679972",
+        "stock_code": "KTLEV",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ KTLEV",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "KTLEV.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679972"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679971",
+        "stock_code": "-",
+        "title": "İŞ FİNANSAL KİRALAMA A.Ş.Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz İçeren)",
+        "disclosure_type": "Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz İçeren)",
+        "summary": "TRFISFNE2714 ISIN Kodlu Finansman Bonosu İhracı",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679971"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679970",
+        "stock_code": "RUZYE",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ RUZYE",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "RUZYE.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679970"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679969",
+        "stock_code": "LYDHO",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ LYDHO",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "LYDHO.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679969"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679968",
+        "stock_code": "USHOL",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ USHOL",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "USHOL.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679968"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679967",
+        "stock_code": "CITAS",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ CITAS",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "CITAS.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679967"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679966",
+        "stock_code": "LYDYE",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ LYDYE",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "LYDYE.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679966"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679957",
+        "stock_code": "PASEU",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ PASEU",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "PASEU.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679957"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679956",
+        "stock_code": "PKENT",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ PKENT",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "PKENT.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679956"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679955",
+        "stock_code": "-",
+        "title": "GARANTİ YATIRIM ORTAKLIĞI A.Ş.Özel Durum Açıklaması (Genel)",
+        "disclosure_type": "Özel Durum Açıklaması (Genel)",
+        "summary": "Paylarının BİAŞ'ta oluşan ağırlıklı ortalama fiyatının, pay başına net aktif değerinin 2 katını aşması hakkında.",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679955"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679953",
+        "stock_code": "-",
+        "title": "AK YATIRIM MENKUL DEĞERLER A.Ş.Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz İçeren)",
+        "disclosure_type": "Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz İçeren)",
+        "summary": "TRFAKYM12724 Isın Kodlu Bono İhracı hakkında",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679953"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679952",
+        "stock_code": "KTLEV",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ KTLEV",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "KTLEV.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679952"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679951",
+        "stock_code": "AKSUE",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ AKSUE",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "AKSUE.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679951"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679950",
+        "stock_code": "-",
+        "title": "TAV HAVALİMANLARI HOLDİNG A.Ş.Özel Durum Açıklaması (Genel)",
+        "disclosure_type": "Özel Durum Açıklaması (Genel)",
+        "summary": "Yatırımcı Bülteni (Eylül 2026)",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679950"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679949",
+        "stock_code": "BIGTK",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ BIGTK",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "BIGTK.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679949"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679948",
+        "stock_code": "EMKEL",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ EMKEL",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "EMKEL.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679948"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679947",
+        "stock_code": "PASEU",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ PASEU",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "PASEU.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679947"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679946",
+        "stock_code": "INFO",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ INFO",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "INFO.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679946"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679945",
+        "stock_code": "-",
+        "title": "HUZUR FAKTORİNG A.Ş.Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz İçeren)",
+        "disclosure_type": "Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz İçeren)",
+        "summary": "TRFHZRFE2613 ISIN KODLU FİNANSMAN BONOSU 4.KUPON ÖDEMESİ VE İTFASI",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679945"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679944",
+        "stock_code": "-",
+        "title": "İNFO YATIRIM MENKUL DEĞERLER A.Ş.Sermaye Artırımı - Azaltımı İşlemlerine İlişkin Bildirim",
+        "disclosure_type": "Sermaye Artırımı - Azaltımı İşlemlerine İlişkin Bildirim",
+        "summary": "Bedelsiz Sermaye Artırımının Tescil tarihi düzeltme",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679944"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679943",
+        "stock_code": "MHRGY",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ MHRGY",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "MHRGY.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679943"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679942",
+        "stock_code": "DZGYO",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ DZGYO",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "DZGYO.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679942"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679941",
+        "stock_code": "-",
+        "title": "TAM FİNANS FAKTORİNG A.Ş.Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz İçeren)",
+        "disclosure_type": "Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz İçeren)",
+        "summary": "TRFTAMF12716 ISIN Kodlu Finansman Bonosunun 1. Kupon Ödemesinin Yapılması Hakkında",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679941"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679940",
+        "stock_code": "ANELE",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ ANELE",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "ANELE.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679940"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679939",
+        "stock_code": "DUNYH",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ DUNYH",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "DUNYH.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679939"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679938",
+        "stock_code": "KTLEV",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ KTLEV",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "KTLEV.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679938"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679937",
+        "stock_code": "-",
+        "title": "TEB FAKTORİNG A.Ş.Genel Kurul Bildirimi",
+        "disclosure_type": "Genel Kurul Bildirimi",
+        "summary": "TEB Faktoring A.Ş.Olağanüstü Genel Kurul Toplantısı hakkında",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679937"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679931",
+        "stock_code": "EMKEL",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ EMKEL",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "EMKEL.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679931"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679930",
+        "stock_code": "KLRHO",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ KLRHO",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "KLRHO.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679930"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679929",
+        "stock_code": "PEKGY",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ PEKGY",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "PEKGY.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679929"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679928",
+        "stock_code": "TGSAS",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ TGSAS",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "TGSAS.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679928"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679927",
+        "stock_code": "HATEK",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ HATEK",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "HATEK.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679927"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679926",
+        "stock_code": "-",
+        "title": "İNFO YATIRIM MENKUL DEĞERLER A.Ş.Sermaye Artırımı - Azaltımı İşlemlerine İlişkin Bildirim",
+        "disclosure_type": "Sermaye Artırımı - Azaltımı İşlemlerine İlişkin Bildirim",
+        "summary": "Bedelsiz Sermaye Artırımının Tescili",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679926"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679925",
+        "stock_code": "GZNMI",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ GZNMI",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "GZNMI.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679925"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679924",
+        "stock_code": "BINHO",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ BINHO",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "BINHO.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679924"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679923",
+        "stock_code": "KZGYO",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ KZGYO",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "KZGYO.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679923"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679922",
+        "stock_code": "MHRGY",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ MHRGY",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "MHRGY.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679922"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679921",
+        "stock_code": "QUAGR",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ QUAGR",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "QUAGR.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679921"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679920",
+        "stock_code": "KARCL",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ KARCL",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "KARCL.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679920"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679919",
+        "stock_code": "CRDFA",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ CRDFA",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "CRDFA.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679919"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679918",
+        "stock_code": "PAMEL",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ PAMEL",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "PAMEL.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679918"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679917",
+        "stock_code": "CEMZY",
+        "title": "BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASIPay Bazında Devre Kesici Bildirimi/ CEMZY",
+        "disclosure_type": "Pay Bazında Devre Kesici Bildirimi",
+        "summary": "CEMZY.E işlem sırasında Pay Bazında Devre Kesici Uygulaması devreye girmiştir",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679917"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679916",
+        "stock_code": "-",
+        "title": "BİG MEDYA TEKNOLOJİ A.Ş.Pay Alım Satım Bildirimi",
+        "disclosure_type": "Pay Alım Satım Bildirimi",
+        "summary": "Pay Alım / Satım İşlemlerine İlişkin Özel Durum Açıklaması Hk.",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679916"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679909",
+        "stock_code": "-",
+        "title": "NUROL VARLIK KİRALAMA A.Ş.Tertip İhraç Belgesi",
+        "disclosure_type": "Tertip İhraç Belgesi",
+        "summary": "Tertip İhraç Belgesi",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679909"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679908",
+        "stock_code": "-",
+        "title": "MERCEDES BENZ KAMYON FİNANSMAN A.Ş.Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz İçeren)",
+        "disclosure_type": "Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz İçeren)",
+        "summary": "TRSMBKFE2616 ISIN Kodlu Tahvil Kupon Ödemesi ve İtfası",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679908"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679907",
+        "stock_code": "-",
+        "title": "MERCEDES BENZ KAMYON FİNANSMAN A.Ş.Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz İçeren)",
+        "disclosure_type": "Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz İçeren)",
+        "summary": "TRSMBKF92619 ISIN Kodlu Tahvil Kupon Ödemesi ve İtfası",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679907"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679899",
+        "stock_code": "-",
+        "title": "MİSYON YATIRIM BANKASI A.Ş.Şirket Genel Bilgi Formu",
+        "disclosure_type": "Şirket Genel Bilgi Formu",
+        "summary": "",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679899"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679896",
+        "stock_code": "-",
+        "title": "CVK MADEN İŞLETMELERİ SANAYİ VE TİCARET A.Ş.Özel Durum Açıklaması (Genel)",
+        "disclosure_type": "Özel Durum Açıklaması (Genel)",
+        "summary": "Bağlı Ortaklığımız Hayri Ögelman Madencilik A.Ş. Paylarının Halka Arzına İlişkin SPK Başvurusu Hk.",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679896"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679895",
+        "stock_code": "-",
+        "title": "CVK MADEN İŞLETMELERİ SANAYİ VE TİCARET A.Ş.Payların Geri Alınmasına İlişkin Bildirim",
+        "disclosure_type": "Payların Geri Alınmasına İlişkin Bildirim",
+        "summary": "Pay Geri Alım İşlemleri",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679895"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679894",
+        "stock_code": "BURVA",
+        "title": "KAMUYU AYDINLATMA PLATFORMUPay Alım Satım Bildirimi/ BURVA",
+        "disclosure_type": "Pay Alım Satım Bildirimi",
+        "summary": "Pay Alım Satım Bildirimi",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679894"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679893",
+        "stock_code": "ENTRA",
+        "title": "KAMUYU AYDINLATMA PLATFORMUPay Alım Satım Bildirimi/ ENTRA",
+        "disclosure_type": "Pay Alım Satım Bildirimi",
+        "summary": "Pay Alım Satım Bildirimi",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679893"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679892",
+        "stock_code": "BIGTKDHSHEKTS(+8)",
+        "title": "KAMUYU AYDINLATMA PLATFORMUKamuyu Aydınlatma Platformu Duyurusu/ BIGTK, DHS, HEKTS, KLRHO, KRDMA, KRDMB, KRDMD, LIDER, MGE, PETKM, TGV",
+        "disclosure_type": "Kamuyu Aydınlatma Platformu Duyurusu",
+        "summary": "Özel Durumlar Tebliği'nin 12-(4). maddesi gereğince yapılan açıklama",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679892"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679891",
+        "stock_code": "-",
+        "title": "PASİFİK HOLDİNG A.Ş.Özel Durum Açıklaması (Genel)",
+        "disclosure_type": "Özel Durum Açıklaması (Genel)",
+        "summary": "Pasifik Enerji Edirne Rüzgâr Enerjisi Üretimi ve Depolama Projesi Hakkında",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679891"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679889",
+        "stock_code": "CEMAS",
+        "title": "IŞIKLAR ENERJİ VE YAPI HOLDİNG A.Ş.Özel Durum Açıklaması (Genel)/ CEMAS",
+        "disclosure_type": "Özel Durum Açıklaması (Genel)",
+        "summary": "İştirakimiz in Çemaş Pay Alışı",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679889"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679887",
+        "stock_code": "-",
+        "title": "EKİM TURİZM TİCARET VE SANAYİ A.Ş.Özel Durum Açıklaması (Genel)",
+        "disclosure_type": "Özel Durum Açıklaması (Genel)",
+        "summary": "Fortune 500 Türkiye 2025 Araştırması Sonuçları Hakkında",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679887"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679886",
+        "stock_code": "CEMAS",
+        "title": "KAMUYU AYDINLATMA PLATFORMUPay Alım Satım Bildirimi/ CEMAS",
+        "disclosure_type": "Pay Alım Satım Bildirimi",
+        "summary": "Pay Alım Satım Bildirimi",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679886"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679885",
+        "stock_code": "RUZYE",
+        "title": "KAMUYU AYDINLATMA PLATFORMUPay Alım Satım Bildirimi/ RUZYE",
+        "disclosure_type": "Pay Alım Satım Bildirimi",
+        "summary": "Pay Alım Satım Bildirimi",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679885"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679884",
+        "stock_code": "-",
+        "title": "AZTEK TEKNOLOJİ ÜRÜNLERİ TİCARET A.Ş.Payların Geri Alınmasına İlişkin Bildirim",
+        "disclosure_type": "Payların Geri Alınmasına İlişkin Bildirim",
+        "summary": "Hisse Geri Alımına İlişkin Yönetim Kurulu Kararı",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679884"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679883",
+        "stock_code": "PAHOL",
+        "title": "KAMUYU AYDINLATMA PLATFORMUPay Alım Satım Bildirimi/ PAHOL",
+        "disclosure_type": "Pay Alım Satım Bildirimi",
+        "summary": "Pay Alım Satım Bildirimi",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679883"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679882",
+        "stock_code": "OZKGY",
+        "title": "KAMUYU AYDINLATMA PLATFORMUPay Alım Satım Bildirimi/ OZKGY",
+        "disclosure_type": "Pay Alım Satım Bildirimi",
+        "summary": "Pay Alım Satım Bildirimi",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679882"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679881",
+        "stock_code": "-",
+        "title": "GENTAŞ DEKORATİF YÜZEYLER SANAYİ VE TİCARET A.Ş.Payların Geri Alınmasına İlişkin Bildirim",
+        "disclosure_type": "Payların Geri Alınmasına İlişkin Bildirim",
+        "summary": "12 Ekim 2026 Tarihli Pay Geri Alım İşlemleri",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679881"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679880",
+        "stock_code": "-",
+        "title": "BULLS GİRİŞİM SERMAYESİ YATIRIM ORTAKLIĞI A.Ş.Şirket Genel Bilgi Formu",
+        "disclosure_type": "Şirket Genel Bilgi Formu",
+        "summary": "",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679880"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679879",
+        "stock_code": "FLAP",
+        "title": "KAMUYU AYDINLATMA PLATFORMUPay Alım Satım Bildirimi/ FLAP",
+        "disclosure_type": "Pay Alım Satım Bildirimi",
+        "summary": "Pay Alım Satım Bildirimi",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679879"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679878",
+        "stock_code": "BRMEN",
+        "title": "BULLS GİRİŞİM SERMAYESİ YATIRIM ORTAKLIĞI A.Ş.Finansal Duran Varlık Satışı/ BRMEN",
+        "disclosure_type": "Finansal Duran Varlık Satışı",
+        "summary": "Finansal Duran Varlık Satışı",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679878"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679877",
+        "stock_code": "BNPPITBY",
+        "title": "BORSA İSTANBUL A.Ş.BISTECH Pay Piyasası Alım Satım Sistemi Duyurusu/ BNPPI, TBY",
+        "disclosure_type": "BISTECH Pay Piyasası Alım Satım Sistemi Duyurusu",
+        "summary": "İşleme Açılan Varantlar",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679877"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679876",
+        "stock_code": "BAHKM",
+        "title": "KAMUYU AYDINLATMA PLATFORMUPay Alım Satım Bildirimi/ BAHKM",
+        "disclosure_type": "Pay Alım Satım Bildirimi",
+        "summary": "Pay Alım Satım Bildirimi",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679876"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679875",
+        "stock_code": "-",
+        "title": "MEYSU GIDA SANAYİ VE TİCARET A.Ş.Payların Geri Alınmasına İlişkin Bildirim",
+        "disclosure_type": "Payların Geri Alınmasına İlişkin Bildirim",
+        "summary": "12.10.2026 Tarihli Pay Alım İşlemleri hk.",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679875"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679874",
+        "stock_code": "DMSAS",
+        "title": "SARKUYSAN ELEKTROLİTİK BAKIR SANAYİ VE TİCARET A.Ş.Pay Alım Satım Bildirimi/ DMSAS",
+        "disclosure_type": "Pay Alım Satım Bildirimi",
+        "summary": "DMSAS Payları Alımı Hakkında",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679874"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679872",
+        "stock_code": "-",
+        "title": "KARTONSAN KARTON SANAYİ VE TİCARET A.Ş.Payların Geri Alınmasına İlişkin Bildirim",
+        "disclosure_type": "Payların Geri Alınmasına İlişkin Bildirim",
+        "summary": "12.10.2026 Tarihli Pay Geri Alım İşlemleri",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679872"
+    },
+    {
+        "source": "KAP",
+        "disclosure_id": "1679871",
+        "stock_code": "BNPPI",
+        "title": "TEB YATIRIM MENKUL DEĞERLER A.Ş.Yatırım Kuruluşu Varant - Sertifika - Senetlerine İlişkin Bildirim/ BNPPI",
+        "disclosure_type": "Yatırım Kuruluşu Varant - Sertifika - Senetlerine İlişkin Bildirim",
+        "summary": "GUNLUK VARANT ALIM SATIM",
+        "detail_url": "https://www.kap.org.tr/tr/Bildirim/1679871"
+    }
+]
