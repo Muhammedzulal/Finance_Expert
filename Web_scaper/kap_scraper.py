@@ -7,27 +7,29 @@ from bs4 import BeautifulSoup
 
 def scrape_kap_today():
     with sync_playwright() as p:
-        # headless=True yaparsan arka planda sessizce çalışır
-        browser = p.chromium.launch(headless=False)
-        context = browser.new_context(viewport={"width": 800, "height": 600})
+        # Otomasyon tespitini zorlaştıran argümanlar
+        browser = p.chromium.launch(
+            headless=True, args=["--disable-blink-features=AutomationControlled"]
+        )
+
+        # Gerçek tarayıcı süsü (User-Agent) ekliyoruz
+        context = browser.new_context(
+            viewport={"width": 1280, "height": 800},
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+        )
         page = context.new_page()
 
         print("🌍 KAP sorgu sayfasına gidiliyor...")
-        page.goto(
-            "https://www.kap.org.tr/tr/bildirim-sorgu", wait_until="domcontentloaded"
-        )
+        # domcontentloaded yerine networkidle kullanarak sayfa servislerinin tam yüklenmesini sağlıyoruz
+        page.goto("https://www.kap.org.tr/tr/bildirim-sorgu", wait_until="networkidle")
 
-        # Sayfanın etkileşime hazır olması için kısa bir es
-        page.wait_for_timeout(2000)
-
+        # Sizin yazdığınız esnek ve güçlü buton bulma mantığı
         print("🖱️ 'Ara' butonuna tıklanıyor...")
         try:
-            # 1. Butona resmi Playwright yöntemiyle (Case-insensitive) tıkla
             ara_button = page.get_by_role(
                 "button", name=re.compile("Ara", re.IGNORECASE)
             )
             if not ara_button.is_visible():
-                # Alternatif locator
                 ara_button = page.locator(
                     "button:has-text('Ara'), div:has-text('Ara')"
                 ).last
@@ -45,14 +47,14 @@ def scrape_kap_today():
                 }
             """)
 
-        # 2. Sonuç tablosunun yüklenmesini bekle
+        # Sonuç tablosunun ve isteklerin tamamlanmasını bekle
         print("⏳ Sonuç tablosu bekleniyor...")
         try:
             # Tablodaki bildirim satırlarını bekle
-            page.wait_for_selector("tr[id^='notification']", timeout=15000)
+            page.wait_for_selector("tr[id^='notification']", timeout=20000)
             print("🎉 Bildirimler ekrana geldi!")
 
-            # 3. DOM HTML'ini alıp BeautifulSoup ile ayıkla
+            # DOM HTML'ini alıp BeautifulSoup ile ayıkla
             html_content = page.content()
             soup = BeautifulSoup(html_content, "html.parser")
             rows = soup.find_all("tr", id=lambda x: x and x.startswith("notification"))
@@ -64,7 +66,6 @@ def scrape_kap_today():
 
                 tds = row.find_all("td")
                 if len(tds) > 7:
-                    # Tablodaki sütun metinlerini temizle
                     title = tds[4].get_text(strip=True) if len(tds) > 4 else ""
                     disclosure_type = (
                         tds[6].get_text(strip=True) if len(tds) > 6 else ""
@@ -93,7 +94,6 @@ def scrape_kap_today():
             script_dir = os.path.dirname(os.path.abspath(__file__))
             file_path = os.path.join(script_dir, "kap_today_disclosures.json")
 
-            # JSON dosyasına kaydediyoruz
             with open(file_path, "w", encoding="utf-8") as f:
                 json.dump(disclosures, f, ensure_ascii=False, indent=4)
             print("✅ Veriler 'kap_today_disclosures.json' dosyasına yazıldı.")
