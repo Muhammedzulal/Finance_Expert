@@ -1,9 +1,10 @@
-"""AI worker: haberleri yerel LLM ile analiz edip Analysis v1.1 üretir.
+"""AI worker: haberleri yerel LLM ile analiz edip Analysis nesnesi üretir.
 
 Akış: News -> model (Türkçe cevap) -> çeviri katmanı -> içerik denetimi
       -> şema doğrulaması -> kayıt
 
-Kurallar: docs/analiz-ilkeleri.md (AL/SAT/TUT yok, sabit uyarı zorunlu).
+Sürüm ve uyarı metni contracts/finance-v1.schema.json'dan okunur.
+İçerik kuralları: AL/SAT/TUT, hedef fiyat, kazanç vaadi üretilmez.
 """
 
 import difflib
@@ -21,9 +22,6 @@ from gecici_adaptor import haberleri_oku
 MODEL = "qwen3.5:4b"
 # Berke'nin news-impact-v2 kuralları, Türkçe cevap formatıyla uygulanıyor
 PROMPT_VERSION = "news-impact-v2-tr"
-SCHEMA_VERSION = "1.1"
-DISCLAIMER = ("Yatırım tavsiyesi değildir. Haberlerin olası etkilerine ilişkin bilgilendirme "
-              "amaçlı otomatik analizdir; kişisel yatırım danışmanlığı sunmaz.")
 MAKS_DENEME = 3  # Mimari dokümanı: en fazla 3 deneme
 
 PROJE = Path(__file__).resolve().parent.parent
@@ -98,8 +96,25 @@ def yasak_ifade_bul(metin):
     return None
 
 
-def analiz_dogrulayici():
-    sema = json.loads(SEMA_DOSYASI.read_text(encoding="utf-8"))
+def sema_oku():
+    return json.loads(SEMA_DOSYASI.read_text(encoding="utf-8"))
+
+
+def sema_bilgisi(sema):
+    """Analysis sürümünü ve (varsa) zorunlu uyarı metnini şemadan okur.
+
+    Böylece repodaki sözleşme v1.0 da olsa v1.1 de olsa kod değişmeden uyar.
+    """
+    defs = sema["$defs"]
+    alanlar = defs["Analysis"]["properties"]
+    surum = alanlar["schema_version"]
+    if "$ref" in surum:  # {"$ref": "#/$defs/Version"}
+        surum = defs[surum["$ref"].split("/")[-1]]
+    uyari = alanlar.get("disclaimer", {}).get("const")  # v1.0'da yok -> None
+    return surum["const"], uyari
+
+
+def analiz_dogrulayici(sema):
     return Draft202012Validator(
         {"$schema": sema["$schema"], "$defs": sema["$defs"], "$ref": "#/$defs/Analysis"},
         format_checker=FormatChecker(),
@@ -142,8 +157,8 @@ def kodu_eslestir(yazilan, kalan):
     return yakin[0] if len(yakin) == 1 else None
 
 
-def analysis_olustur(haber, model_cevabi):
-    """Modelin Türkçe cevabını Analysis v1.1 formatına çevirir."""
+def analysis_olustur(haber, model_cevabi, surum, uyari):
+    """Modelin Türkçe cevabını şemadaki Analysis formatına çevirir."""
     kalan = list(haber["symbols"])
     etkiler = [e for e in model_cevabi.get("etkiler", []) if isinstance(e, dict)]
 
@@ -162,8 +177,8 @@ def analysis_olustur(haber, model_cevabi):
         gerekce = str(e.get("gerekce", "")).strip() or "Gerekçe belirtilmedi."
         impacts.append({"symbol": hisse, "direction": yon, "confidence": guven, "reason": gerekce})
 
-    return {
-        "schema_version": SCHEMA_VERSION,
+    analiz = {
+        "schema_version": surum,
         "analysis_id": f"analysis:{haber['news_id']}:{PROMPT_VERSION}",
         "news_id": haber["news_id"],
         "model": MODEL,
@@ -171,8 +186,10 @@ def analysis_olustur(haber, model_cevabi):
         "created_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "summary": str(model_cevabi.get("ozet", "")).strip() or haber["title"],
         "impacts": impacts,
-        "disclaimer": DISCLAIMER,  # Uyarıyı model değil kod ekler
     }
+    if uyari:
+        analiz["disclaimer"] = uyari  # Uyarıyı model değil kod ekler (v1.1)
+    return analiz
 
 
 def kontrol_et(haber, analiz, dogrulayici):
@@ -190,7 +207,7 @@ def kontrol_et(haber, analiz, dogrulayici):
     return None
 
 
-def haberi_isle(haber, dogrulayici):
+def haberi_isle(haber, dogrulayici, surum, uyari):
     """En fazla MAKS_DENEME kez dener. (analiz, deneme, son_hata) döndürür."""
     son_hata = ""
     for deneme in range(1, MAKS_DENEME + 1):
@@ -200,7 +217,7 @@ def haberi_isle(haber, dogrulayici):
         except Exception as hata:
             son_hata = f"model: {hata}"
             continue
-        analiz = analysis_olustur(haber, cevap)
+        analiz = analysis_olustur(haber, cevap, surum, uyari)
         hata = kontrol_et(haber, analiz, dogrulayici)
         if hata is None:
             return analiz, deneme, None
@@ -209,7 +226,10 @@ def haberi_isle(haber, dogrulayici):
 
 
 def main():
-    dogrulayici = analiz_dogrulayici()
+    sema = sema_oku()
+    surum, uyari = sema_bilgisi(sema)
+    dogrulayici = analiz_dogrulayici(sema)
+    print(f"Sözleşme: Analysis v{surum}" + (" (uyarı alanı zorunlu)" if uyari else ""))
     haberler = haberleri_oku()
     hisseli = [h for h in haberler if h["symbols"]]
     print(f"{len(haberler)} haber okundu, {len(hisseli)} tanesi hisseyle eşleşti.")
@@ -218,7 +238,7 @@ def main():
     analizler = []
     for i, haber in enumerate(hisseli, 1):
         basla = time.time()
-        analiz, deneme, son_hata = haberi_isle(haber, dogrulayici)
+        analiz, deneme, son_hata = haberi_isle(haber, dogrulayici, surum, uyari)
         if analiz is None:
             # Sözleşme: bozuk çıktı kaydedilmez, sahte analiz üretilmez
             print(f"[{i}] BAŞARISIZ ({MAKS_DENEME} deneme) {haber['title'][:60]}")
