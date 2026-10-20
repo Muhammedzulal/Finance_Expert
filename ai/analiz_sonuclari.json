@@ -1,0 +1,232 @@
+[
+  {
+    "haber": "SPK, iki şirketin sermaye artırımını onayladı",
+    "link": "https://www.bloomberght.com/spk-iki-sirketin-sermaye-artirimini-onayladi-3791715",
+    "analiz": {
+      "piyasa_ilgisi": "yuksek",
+      "hisseler": [
+        "SKBNK"
+      ],
+      "modelin_buldugu_sirketler": [
+        "Mercan Kimya Sanayi ve Ticaret A.Ş.",
+        "Şekerbank T.A.Ş."
+      ],
+      "etki": "olumlu",
+      "tavsiye": "TUT",
+      "gerekce": "Sermaye artırımının onaylanması şirketlerin finansal güçlenmesine katkı sağlayacaktır."
+    }
+  },
+  {
+    "haber": "Şirketlerin asgari sermaye uyum süresi uzatıldı",
+    "link": "https://www.bloomberght.com/sirketlerin-asgari-sermaye-uyum-suresi-uzatildi-3791716",
+    "analiz": {
+      "piyasa_ilgisi": "dusuk",
+      "hisseler": [],
+      "modelin_buldugu_sirketler": [],
+      "etki": "olumlu",
+      "tavsiye": "YOK",
+      "gerekce": "Sermaye artırımı süresinin uzatılması şirketlerin nakit akışını olumlu yönde etkiler."
+    }
+  },
+  {
+    "haber": "2027'de 31 bin 54 sözleşmeli sağlık personeli istihdam edilecek",
+    "link": "https://www.bloomberght.com/2027-de-31-bin-54-sozlesmeli-saglik-personeli-istihdam-edilecek-3791717",
+    "analiz": {
+      "piyasa_ilgisi": "dusuk",
+      "hisseler": [],
+      "modelin_buldugu_sirketler": [],
+      "etki": "olumsuz",
+      "tavsiye": "YOK",
+      "gerekce": "Devlet sağlık personeli istihdamı artışı, özel sektörde personel kıtlığına neden olabilir."
+    }
+  },
+  {
+    "haber": "7 başlıkla geçen hafta",
+    "link": "https://www.bloomberght.com/7-baslikla-gecen-hafta-3791723",
+    "analiz": {
+      "piyasa_ilgisi": "dusuk",
+      "hisseler": [],
+      "modelin_buldugu_sirketler": [],
+      "etki": "notr",
+      "tavsiye": "YOK",
+      "gerekce": "Haber genel piyasa dinamiklerini özetliyor ve spesifik şirketlere doğrudan etki yaratmıyor."
+    }
+  },
+  {
+    "haber": "Bakan Bayraktar: Gabar'dan yakında yeni petrol müjdesi verebiliriz",
+    "link": "https://www.bloomberght.com/bakan-bayraktar-gabar-dan-yakinda-yeni-petrol-mujdesi-verebiliriz-3791724",
+    "analiz": {
+      "piyasa_ilgisi": "yuksek",
+      "hisseler": [],
+      "modelin_buldugu_sirketler": [
+        "PetroGaz"
+      ],
+      "etki": "olumlu",
+      "tavsiye": "YOK",
+      "gerekce": "Yeni petrol keşfi müjdesi beklentisini artırarak sektöre pozitif etki yapar."
+    }
+  },
+  {
+    "haber": "Piyasalar yoğun veri gündemine odaklandı",
+    "link": "https://www.bloomberght.com/piyasalar-yogun-veri-gundemine-odaklandi-3791725",
+    "analiz": {
+      "piyasa_ilgisi": "yuksek",
+      "hisseler": [],
+      "modelin_buldugu_sirketler": [],
+      "etki": "olumsuz",
+      "tavsiye": "YOK",
+      "gerekce": "Fed'in faiz artırma beklentisinin güçlenmesi ve dolar endeksinin düşüşü ile piyasa risk algısı arttı."
+    }
+  },
+  {
+    "haber": "Hisse geri alımları düşüşlere çare olur mu?",
+    "link": "https://www.bloomberght.com/hisse-geri-alimlari-dususlere-care-olur-mu-3791726",
+    "analiz": {
+      "piyasa_ilgisi": "dusuk",
+      "hisseler": [],
+      "modelin_buldugu_sirketler": [],
+      "etki": "olumsuz",
+      "tavsiye": "YOK",
+      "gerekce": "Hisse geri alımlarının düşüşleri durduramadığı belirtilmesi piyasayı olumsuz etkiliyor."
+    }
+  },
+  {
+    "haber": "ABD'de faiz maliyetleri rekor seviyeye ulaştı",
+    "link": "https://www.bloomberght.com/abd-de-faiz-maliyetleri-rekor-seviyeye-ulasti-3791727",
+    "analiz": {
+      "piyasa_ilgisi": "yuksek",
+      "hisseler": [],
+      "modelin_buldugu_sirketler": [],
+      "etki": "olumsuz",
+      "tavsiye": "YOK",
+      "gerekce": "Yüksek faiz maliyetleri ve daralan borç alanı, küresel ekonomiyi zorlayarak borsayı olumsuz etkiler."
+    }
+  },
+  {
+    "haber": "Cumhurbaşkanı Erdoğan: Gaz üretimi ikiye katlanacak",
+    "link": "https://www.bloomberght.com/cumhurbaskani-erdogan-gaz-uretimi-ikiye-katlanacak-3791729",
+    "analiz": {
+      "piyasa_ilgisi": "dusuk",
+      "hisseler": [],
+      "modelin_buldugu_sirketler": [],
+      "etki": "olumlu",
+      "tavsiye": "YOK",
+      "gerekce": "Doğalgaz üretiminde artış enerji güvenliği ve sanayi maliyetlerini düşürerek uzun vadede olumlu etki yaratabilir."
+    }
+  },
+  {
+    "haber": "\"İnşaat sektöründe dengelenme sinyalleri görülüyor\"",
+    "link": "https://www.bloomberght.com/insaat-sektorunde-dengelenme-sinyalleri-goruluyor-3791730",
+    "analiz": {
+      "piyasa_ilgisi": "dusuk",
+      "hisseler": [],
+      "modelin_buldugu_sirketler": [
+        "Saint-Gobain Yapı Kimyasalları"
+      ],
+      "etki": "olumsuz",
+      "tavsiye": "YOK",
+      "gerekce": "Sektördeki daralmanın dengelenme sürecine dönüşmesi bekleniyor."
+    }
+  },
+  {
+    "haber": "Takasbank'tan finansman iddialarına yanıt",
+    "link": "https://www.bloomberght.com/takasbanktan-finansman-iddialarina-yanit-3791742",
+    "analiz": {
+      "piyasa_ilgisi": "dusuk",
+      "hisseler": [],
+      "modelin_buldugu_sirketler": [
+        "Takasbank"
+      ],
+      "etki": "olumlu",
+      "tavsiye": "YOK",
+      "gerekce": "Takasbank'ın finansal sağlamlığını ve teminat durumunu onaylayan haber piyasa güvenini destekliyor."
+    }
+  },
+  {
+    "haber": "İngiltere'de enflasyon faiz artırımının önünü açabilir",
+    "link": "https://www.bloomberght.com/ingilterede-enflasyon-faiz-artiriminin-onunu-acabilir-3791746",
+    "analiz": {
+      "piyasa_ilgisi": "yuksek",
+      "hisseler": [],
+      "modelin_buldugu_sirketler": [],
+      "etki": "olumlu",
+      "tavsiye": "YOK",
+      "gerekce": "İngiltere'de beklenen yüksek enflasyon verileri faiz artırımı ihtimalini güçlendirerek döviz kurlarını ve hisse senedi piyasalarını olumlu yönde etkiler."
+    }
+  },
+  {
+    "haber": "Bakan Bayraktar'dan doğalgazda zam ve elektrikte limit açılaması",
+    "link": "https://www.bloomberght.com/bakan-bayraktar-dan-dogalgazda-zam-ve-elektrikte-limit-acilamasi-3791747",
+    "analiz": {
+      "piyasa_ilgisi": "yuksek",
+      "hisseler": [],
+      "modelin_buldugu_sirketler": [
+        "Türk Petrol A.Ş.",
+        "Doğuş Enerji"
+      ],
+      "etki": "olumlu",
+      "tavsiye": "YOK",
+      "gerekce": "Üretimde ilki ve yerinde işleme kapasitesinin artırılması enerji sektörü için olumlu bir gelişme."
+    }
+  },
+  {
+    "haber": "Petrol, Rusya'ya yönelik yaptırımların hafifletilmesiyle geriledi",
+    "link": "https://www.bloomberght.com/petrol-rusyaya-yonelik-yaptirimlarin-hafifletilmesiyle-geriledi-3791753",
+    "analiz": {
+      "piyasa_ilgisi": "yuksek",
+      "hisseler": [],
+      "modelin_buldugu_sirketler": [],
+      "etki": "olumsuz",
+      "tavsiye": "YOK",
+      "gerekce": "Yaptırımların hafiflemesi ve ihracat artışı beklentisi petrol fiyatlarını aşağı çekti."
+    }
+  },
+  {
+    "haber": "Ukrayna, tahıl koridoru için Türkiye, Hindistan ve Mısır'la görüşüyor",
+    "link": "https://www.bloomberght.com/ukrayna-tahil-koridoru-icin-turkiye-hindistan-ve-misirla-gorusuyor-3791759",
+    "analiz": {
+      "piyasa_ilgisi": "dusuk",
+      "hisseler": [],
+      "modelin_buldugu_sirketler": [],
+      "etki": "olumlu",
+      "tavsiye": "YOK",
+      "gerekce": "Ukrayna'dan tarım ürünleri ihracatı için yapılan görüşmeler, Türkiye'nin dış ticaret potansiyelini artırarak borsaya hafif bir pozitif etki yapabilir."
+    }
+  },
+  {
+    "haber": "Ünlü yatırımcı Marks: Yapay zeka balonu endişeleri için henüz erken",
+    "link": "https://www.bloomberght.com/unlu-yatirimci-marks-yapay-zeka-balonu-endiseleri-icin-henuz-erken-3791760",
+    "analiz": {
+      "piyasa_ilgisi": "dusuk",
+      "hisseler": [],
+      "modelin_buldugu_sirketler": [],
+      "etki": "notr",
+      "tavsiye": "YOK",
+      "gerekce": "Yatırımcının balon endişelerinin henüz erken olduğunu vurgulaması borsayı doğrudan etkilemez."
+    }
+  },
+  {
+    "haber": "Küresel piyasalarda bilanço gündemi",
+    "link": "https://www.bloomberght.com/kuresel-piyasalarda-bilanco-gundemi-3791761",
+    "analiz": {
+      "piyasa_ilgisi": "yuksek",
+      "hisseler": [],
+      "modelin_buldugu_sirketler": [],
+      "etki": "olumlu",
+      "tavsiye": "YOK",
+      "gerekce": "Yatırımcıların volatiliteye karşı güvenli liman talebi ve yapay zeka hisselerindeki dinamikler borsayı etkiliyor."
+    }
+  },
+  {
+    "haber": "Piyasalarda volatilite endişesi",
+    "link": "https://www.bloomberght.com/piyasalarda-volatilite-endisesi-3791762",
+    "analiz": {
+      "piyasa_ilgisi": "yuksek",
+      "hisseler": [],
+      "modelin_buldugu_sirketler": [],
+      "etki": "olumsuz",
+      "tavsiye": "YOK",
+      "gerekce": "Volatilite endişeleri piyasayı baskılamaya devam ediyor ancak spesifik şirket adı geçmediği için genel pozisyon tutulmalı."
+    }
+  }
+]
