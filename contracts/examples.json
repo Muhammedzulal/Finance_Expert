@@ -14,14 +14,15 @@
     "disclosure_type": "Özel Durum Açıklaması (Genel)"
   },
   "Analysis": {
-    "schema_version": "1.0",
+    "schema_version": "1.1",
     "analysis_id": "analysis:demo-001:v1",
     "news_id": "kap:demo-001",
     "model": "mock-model",
-    "prompt_version": "impact-v1",
+    "prompt_version": "news-impact-v2",
     "created_at": "2026-10-20T09:01:00+03:00",
-    "summary": "Temsili siparişin olası etkisi için örnek analiz.",
-    "impacts": [{"symbol": "DEMO", "direction": "uncertain", "confidence": 0.25, "reason": "Tutar ve önceki dönem karşılaştırması bulunmuyor."}]
+    "summary": "Bu temsili haber DEMO için olumlu bir etki ihtimali taşısa da sipariş tutarı bilinmediğinden etkinin yönü belirsizdir.",
+    "impacts": [{"symbol": "DEMO", "direction": "uncertain", "confidence": 0.25, "reason": "Tutar ve önceki dönem karşılaştırması bulunmuyor; bu bilgi tek başına fiyat hareketini belirlemez."}],
+    "disclaimer": "Yatırım tavsiyesi değildir. Haberlerin olası etkilerine ilişkin bilgilendirme amaçlı otomatik analizdir; kişisel yatırım danışmanlığı sunmaz."
   },
   "Quote": {
     "schema_version": "1.0", "symbol": "DEMO", "price": "100.00", "currency": "TRY",
