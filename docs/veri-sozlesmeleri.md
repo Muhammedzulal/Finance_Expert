@@ -6,7 +6,7 @@ JSON Schema Draft 2020-12 kullanılır; her mesaj kendi `$defs` adıyla doğrula
 
 ## Ortak kurallar
 
-- Alan adları `snake_case`, metinler UTF-8, `schema_version` değeri `1.0`.
+- Alan adları `snake_case`, metinler UTF-8. Analysis sürümü `1.1`, diğer nesneler `1.0`.
 - Tüm listelenen nesne alanları zorunludur. Bilinmeyen alanlar reddedilir.
   Bilinmeyen değer yalnız şemanın izin verdiği yerde `null` veya boş listedir.
 - Zamanlar saat dilimi içeren RFC 3339 biçimindedir. Depolama UTC,
@@ -68,6 +68,11 @@ geçişi tarif eder; adaptör uygulaması Muhammed'in takip işidir.
 
 ## Analysis: Kutay -> backend -> Android
 
+Analysis v1.1, zorunlu `disclaimer` alanını ekler. v1.0 analiz nesneleri yeni
+şemadan geçmez; AI üreticisi, backend ve Android modelleri birlikte güncellenmelidir.
+Haber, fiyat ve sanal işlem sözleşmeleri `1.0` olarak kalır. Mevcut şema dosyasının
+adı korunmuştur; nesne sürümünü `schema_version` belirler.
+
 `analysis_id` kalıcı çıktı kimliği, `news_id` mevcut habere FK'dır. `model`,
 `prompt_version`, `created_at` izlenebilirlik içindir. `summary` kısa açıklamadır.
 `impacts` her sembol için `symbol`, `direction`, `confidence`, `reason` içerir.
@@ -78,6 +83,29 @@ Backend aynı sembolü iki kez kabul etmez, sembolleri News eşleşmeleriyle kon
 eder; yeni eşleşme gerekiyorsa ana listeyle ayrı doğrular. LLM kendi kendine
 geçerli bir hisse kodu belirleyemez. Bozuk JSON kaydedilmez; hata iş durumundadır.
 Analiz başarısızlığında sahte `neutral` analiz üretilmez.
+
+### Analiz dili ve gösterim
+
+Analiz, haberdeki bilginin hisse üzerindeki olası etkisini açıklar. `positive`,
+`negative`, `neutral`, `uncertain` kullanıcıya “Olumlu etki ihtimali”, “Olumsuz etki
+ihtimali”, “Nötr etki”, “Belirsiz etki” olarak gösterilir. Bunlar AL/SAT/TUT sinyali
+olarak sunulmaz. `summary` ve `reason` içinde emir, hedef fiyat, getiri garantisi,
+kişinin portföyüne veya risk profiline göre öneri bulunmaz. Kaynak haberdeki
+üçüncü taraf tavsiyesi uygulamanın önerisi gibi tekrarlanmaz.
+
+Örnek dil: “Bu haber THYAO için olumlu etki ihtimali taşıyor; yakıt maliyetindeki
+azalış giderleri azaltabilir. Diğer piyasa koşulları nedeniyle fiyat etkisi belirsizdir.”
+Bu cümle yalnız dil örneğidir; güncel haber veya THYAO değerlendirmesi değildir.
+
+Her Analysis nesnesinde şemadaki sabit `disclaimer` zorunludur. Uyarıyı LLM
+üretmez; backend doğrulanmış model sonucuna ekler. Android analiz kartında,
+detay ekranında ve bildirim önizlemesinde en az “Yatırım tavsiyesi değildir.”
+ifadesini görünür tutar; tam metin kart ve detayda gösterilir. Uyarı yalnız
+kullanım koşullarına veya gizli bir menüye bırakılmaz.
+
+Backend ve AI modülünün uygulaması için [analiz ilkeleri](analiz-ilkeleri.md)
+esas alınır. Sanal cüzdandaki `buy`/`sell` alanları kullanıcının kendi sanal
+işlemini temsil eder; analiz sinyali değildir ve AI tarafından tetiklenmez.
 
 ## Quote, Wallet, TradeRequest, Trade
 
