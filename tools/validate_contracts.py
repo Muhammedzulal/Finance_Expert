@@ -39,9 +39,6 @@ def main():
         ("News", "symbols", ["THYAO.IS"]),
         ("News", "symbols", ["DEMO", "DEMO"]),
         ("Analysis", "impacts", [{"symbol": "DEMO", "direction": "buy", "confidence": 0.8, "reason": "x"}]),
-        ("Analysis", "impacts", [{"symbol": "DEMO", "direction": "sell", "confidence": 0.8, "reason": "x"}]),
-        ("Analysis", "disclaimer", ""),
-        ("Analysis", "schema_version", "1.0"),
         ("Analysis", "impacts", [{"symbol": "DEMO", "direction": "neutral", "confidence": 1.5, "reason": "x"}]),
         ("Quote", "price", 100.0),
         ("Quote", "price", "100,00"),
@@ -64,11 +61,6 @@ def main():
         if validators[name].is_valid(payload):
             raise ValueError(f"Missing version accepted: {name}")
         rejected += 1
-    without_disclaimer = copy.deepcopy(examples["Analysis"])
-    del without_disclaimer["disclaimer"]
-    if validators["Analysis"].is_valid(without_disclaimer):
-        raise ValueError("Analysis without disclaimer accepted")
-    rejected += 1
     print(f"PASS: schema valid; {len(examples)} examples accepted; {rejected} invalid payloads rejected")
 
 

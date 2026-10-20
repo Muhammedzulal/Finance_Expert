@@ -61,12 +61,6 @@ iş durumu tablosu yeterlidir. Servislerin uygulanması ilgili modül sahibinded
 7. Android haberleri analizden bağımsız gösterir; bekleyen analiz için durum metni
    kullanır. Fiyat bulunamazsa grafik boş durum gösterir ve sanal emir kabul edilmez.
 
-Analiz, haberin olası etkisini açıklar; al/sat/tut önerisi üretmez. Backend
-Analysis v1.1 nesnesine sabit “Yatırım tavsiyesi değildir.” uyarısını ekler;
-Android kart, detay ve bildirimde bu uyarıyı gösterir. AI girdilerine kullanıcının
-cüzdanı veya risk profili eklenmez; AI sanal emir başlatmaz.
-Üretim ve gösterim kuralları: [Haber etkisi analizi](analiz-ilkeleri.md).
-
 ## Veri modeli önerisi
 
 | Tablo | Anahtar / ilişki | Kritik kural |
