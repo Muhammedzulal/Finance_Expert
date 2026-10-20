@@ -1,0 +1,51 @@
+{
+  "News": {
+    "schema_version": "1.0",
+    "news_id": "kap:demo-001",
+    "source": "KAP",
+    "source_id": "demo-001",
+    "title": "Temsili şirket yeni sipariş açıkladı",
+    "summary": "Yalnız geliştirme için hazırlanmış temsili haber; gerçek bildirim değildir.",
+    "url": "https://example.com/disclosures/demo-001",
+    "published_at": null,
+    "fetched_at": "2026-10-20T09:00:00+03:00",
+    "symbols": ["DEMO"],
+    "matched_keywords": ["sipariş"],
+    "disclosure_type": "Özel Durum Açıklaması (Genel)"
+  },
+  "Analysis": {
+    "schema_version": "1.0",
+    "analysis_id": "analysis:demo-001:v1",
+    "news_id": "kap:demo-001",
+    "model": "mock-model",
+    "prompt_version": "impact-v1",
+    "created_at": "2026-10-20T09:01:00+03:00",
+    "summary": "Temsili siparişin olası etkisi için örnek analiz.",
+    "impacts": [{"symbol": "DEMO", "direction": "uncertain", "confidence": 0.25, "reason": "Tutar ve önceki dönem karşılaştırması bulunmuyor."}]
+  },
+  "Quote": {
+    "schema_version": "1.0", "symbol": "DEMO", "price": "100.00", "currency": "TRY",
+    "as_of": "2026-10-20T09:00:00+03:00", "provider": "mock", "is_delayed": false
+  },
+  "Wallet": {
+    "schema_version": "1.0", "wallet_id": "wallet:demo-001", "currency": "TRY",
+    "cash_balance": "99000.00", "realized_pnl": "0.00",
+    "positions": [{"symbol": "DEMO", "quantity": 10, "average_cost": "100.00"}],
+    "updated_at": "2026-10-20T09:00:10+03:00"
+  },
+  "TradeRequest": {
+    "schema_version": "1.0", "symbol": "DEMO", "side": "buy", "quantity": 10,
+    "idempotency_key": "03eedb78-d21d-47d0-b60f-0d001796f653"
+  },
+  "Trade": {
+    "schema_version": "1.0", "trade_id": "trade:demo-001", "wallet_id": "wallet:demo-001",
+    "symbol": "DEMO", "side": "buy", "quantity": 10,
+    "idempotency_key": "03eedb78-d21d-47d0-b60f-0d001796f653",
+    "execution_price": "100.00", "gross_amount": "1000.00", "currency": "TRY",
+    "quote_as_of": "2026-10-20T09:00:00+03:00", "executed_at": "2026-10-20T09:00:10+03:00"
+  },
+  "Error": {
+    "schema_version": "1.0", "request_id": "request:demo-001",
+    "error": {"code": "INSUFFICIENT_FUNDS", "message": "Sanal bakiye yetersiz."}
+  }
+}
