@@ -59,6 +59,27 @@ CREATE TABLE `analysis_impacts` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `analysis_jobs`
+--
+
+DROP TABLE IF EXISTS `analysis_jobs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `analysis_jobs` (
+  `news_id` varchar(191) NOT NULL,
+  `status` enum('pending','processing','completed','failed') NOT NULL DEFAULT 'pending',
+  `attempts` int NOT NULL DEFAULT '0',
+  `locked_until` datetime(6) DEFAULT NULL,
+  `last_error` text,
+  `created_at` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `updated_at` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+  PRIMARY KEY (`news_id`),
+  CONSTRAINT `analysis_jobs_ibfk_1` FOREIGN KEY (`news_id`) REFERENCES `news` (`news_id`),
+  CONSTRAINT `chk_analysis_attempts` CHECK ((`attempts` >= 0))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `news`
 --
 
@@ -108,7 +129,7 @@ CREATE TABLE `positions` (
   `position_id` bigint NOT NULL AUTO_INCREMENT,
   `wallet_id` bigint NOT NULL,
   `symbol` varchar(15) NOT NULL,
-  `quantity` decimal(18,6) NOT NULL DEFAULT '0.000000',
+  `quantity` bigint NOT NULL DEFAULT '0',
   `average_cost` decimal(18,6) NOT NULL DEFAULT '0.000000',
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`position_id`),
@@ -172,13 +193,16 @@ CREATE TABLE `trades` (
   `wallet_id` bigint NOT NULL,
   `symbol` varchar(15) NOT NULL,
   `side` enum('BUY','SELL') NOT NULL,
-  `quantity` decimal(18,6) NOT NULL,
+  `quantity` bigint NOT NULL,
   `price` decimal(18,6) NOT NULL,
   `total_amount` decimal(18,2) NOT NULL,
   `realized_pnl` decimal(18,2) NOT NULL DEFAULT '0.00',
   `executed_at` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `idempotency_key` char(36) DEFAULT NULL,
+  `currency` char(3) NOT NULL DEFAULT 'TRY',
+  `quote_as_of` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`trade_id`),
-  KEY `wallet_id` (`wallet_id`),
+  UNIQUE KEY `uq_wallet_idempotency` (`wallet_id`,`idempotency_key`),
   KEY `symbol` (`symbol`),
   CONSTRAINT `trades_ibfk_1` FOREIGN KEY (`wallet_id`) REFERENCES `wallets` (`wallet_id`),
   CONSTRAINT `trades_ibfk_2` FOREIGN KEY (`symbol`) REFERENCES `stocks` (`symbol`),
@@ -237,4 +261,4 @@ CREATE TABLE `wallets` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-10-24 10:39:41
+-- Dump completed on 2026-10-24 16:53:11
