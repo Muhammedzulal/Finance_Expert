@@ -17,8 +17,6 @@ from pathlib import Path
 import ollama
 from jsonschema import Draft202012Validator, FormatChecker
 
-from gecici_adaptor import haberleri_oku
-
 MODEL = "qwen3.5:4b"
 # Berke'nin news-impact-v2 kuralları, Türkçe cevap formatıyla uygulanıyor
 PROMPT_VERSION = "news-impact-v2-tr"
@@ -61,6 +59,17 @@ Listedeki her kod için "etkiler" içinde tam olarak bir kayıt olmalı.
 
 Değerlendirilecek hisseler:
 {hisseler}
+
+<haber>
+Başlık: {baslik}
+Özet: {ozet}
+</haber>"""
+
+# Hisse eşleşmeyen haberler için: sadece özet, etki yok (sözleşme: impacts [])
+OZET_PROMPT = """Aşağıdaki haberi tek cümleyle, yorum katmadan özetle.
+
+SADECE şu JSON'u döndür:
+{{"ozet": "haberin tek cümlelik özeti", "etkiler": []}}
 
 <haber>
 Başlık: {baslik}
@@ -128,15 +137,16 @@ def hisse_listesi(haber):
 
 
 def modele_sor(haber, sicaklik=0):
+    ozet = haber.get("summary") or "(özet yok)"
+    if haber["symbols"]:
+        icerik = PROMPT.format(hisseler=hisse_listesi(haber), baslik=haber["title"], ozet=ozet)
+    else:
+        icerik = OZET_PROMPT.format(baslik=haber["title"], ozet=ozet)
     cevap = ollama.chat(
         model=MODEL,
         messages=[
             {"role": "system", "content": SISTEM},
-            {"role": "user", "content": PROMPT.format(
-                hisseler=hisse_listesi(haber),
-                baslik=haber["title"],
-                ozet=haber["summary"] or "(özet yok)",
-            )},
+            {"role": "user", "content": icerik},
         ],
         format="json",
         think=False,
@@ -226,6 +236,12 @@ def haberi_isle(haber, dogrulayici, surum, uyari):
 
 
 def main():
+    """Çevrimdışı deneme: haberleri Muhammed'in JSON dosyalarından okur.
+
+    Backend'e bağlı çalışma için: python ai/worker.py
+    """
+    from gecici_adaptor import haberleri_oku
+
     sema = sema_oku()
     surum, uyari = sema_bilgisi(sema)
     dogrulayici = analiz_dogrulayici(sema)
