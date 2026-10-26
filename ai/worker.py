@@ -2,7 +2,7 @@
 
 Döngü (docs/mimari.md, "Haberden ekrana akış"):
   1. POST /api/v1/internal/analysis-jobs/claim      -> bekleyen bir haber al
-  2. Haberi yerel LLM ile analiz et (analiz.py)
+  2. Haberi yerel LLM ile analiz et (analiz.py), varsa fiyat/RSI bağlamıyla (piyasa.py)
   3a. Başarılıysa POST /api/v1/internal/analyses    -> analizi kaydet
   3b. Başarısızsa POST .../analysis-jobs/{id}/fail  -> hatayı bildir
 
@@ -25,6 +25,7 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
+import piyasa
 from analiz import analiz_dogrulayici, haberi_isle, sema_bilgisi, sema_oku
 
 AI_KLASORU = Path(__file__).resolve().parent
@@ -102,6 +103,8 @@ def isi_isle(backend, is_, adlar, dogrulayici, surum, uyari):
     """Tek bir işi işler. Başarılıysa True döner."""
     haber = is_["news"]
     haber["sirket_adlari"] = {s: adlar[s] for s in haber["symbols"] if s in adlar}
+    # Fiyat/RSI bağlamı; alınamazsa boş kalır ve analiz bağlamsız yapılır
+    haber["piyasa_baglami"] = piyasa.baglam_metni(haber["symbols"])
     baslik = haber["title"][:60]
     basla = time.time()
 

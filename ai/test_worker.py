@@ -35,7 +35,13 @@ def sahte_chat(model, messages, options, **kwargs):
 sys.modules["ollama"] = types.SimpleNamespace(chat=sahte_chat)
 
 import analiz  # noqa: E402
+import piyasa  # noqa: E402
+import tutarlilik  # noqa: E402
 import worker  # noqa: E402
+
+# Testler asla internete çıkmasın: sabit, sahte fiyat verisi
+SAHTE_FIYATLAR = {"SKBNK": [10.0 + i * 0.1 for i in range(60)]}
+piyasa.VERI_KAYNAGI = lambda sembol: SAHTE_FIYATLAR.get(sembol)
 
 ANAHTAR = "test-anahtari"
 
@@ -116,6 +122,7 @@ class WorkerTesti(unittest.TestCase):
         cls.sunucu.shutdown()
 
     def setUp(self):
+        piyasa._onbellek.clear()
         SahteBackend.isler = {}
         SahteBackend.kayitlar = {}
         SahteBackend.hatalar = []
@@ -166,16 +173,91 @@ class WorkerTesti(unittest.TestCase):
         self.assertEqual(h.exception.durum, 401)
 
 
+class PiyasaTesti(unittest.TestCase):
+    def setUp(self):
+        piyasa._onbellek.clear()
+
+    def test_rsi(self):
+        self.assertEqual(piyasa.rsi([float(i) for i in range(20)]), 100.0)  # hep yükseliş
+        dalgali = [10.0]
+        for i in range(14):
+            dalgali.append(dalgali[-1] + (1 if i % 2 == 0 else -1))
+        self.assertAlmostEqual(piyasa.rsi(dalgali), 50.0)  # 7 yükseliş, 7 düşüş
+        self.assertIsNone(piyasa.rsi([1.0] * 10))  # veri yetersiz
+
+    def test_yuzde_degisim_ve_ortalama(self):
+        self.assertAlmostEqual(piyasa.yuzde_degisim([100.0, 110.0], 1), 10.0)
+        self.assertIsNone(piyasa.yuzde_degisim([100.0], 5))
+        self.assertIsNone(piyasa.basit_ortalama([1.0] * 49, 50))
+
+    def test_baglam_metni(self):
+        metin = piyasa.baglam_metni(["SKBNK", "BILINMEYEN"])
+        self.assertIn("- SKBNK: son kapanış 15.90 TL", metin)
+        self.assertIn("RSI(14) 100", metin)
+        self.assertNotIn("BILINMEYEN", metin)  # verisi olmayan hisse atlanır
+        self.assertEqual(piyasa.baglam_metni(["BILINMEYEN"]), "")
+
+    def test_veri_kaynagi_hatasi_analizi_durdurmaz(self):
+        self.assertEqual(piyasa.baglam_metni(["X"], veri_kaynagi=lambda s: None), "")
+
+    def test_prompta_sadece_varsa_eklenir(self):
+        h = haber("kap:1", "Başlık", ["SKBNK"])
+        self.assertEqual(analiz.piyasa_bolumu(h), "")
+        h["piyasa_baglami"] = "- SKBNK: son kapanış 15.90 TL"
+        self.assertIn("Piyasa bağlamı", analiz.piyasa_bolumu(h))
+        self.assertIn("- SKBNK: son kapanış", analiz.piyasa_bolumu(h))
+
+
+class TutarlilikTesti(unittest.TestCase):
+    def setUp(self):
+        sema = analiz.sema_oku()
+        self.surum, self.uyari = analiz.sema_bilgisi(sema)
+        self.dogrulayici = analiz.analiz_dogrulayici(sema)
+
+    def test_en_sik_oran(self):
+        self.assertEqual(tutarlilik.en_sik_oran(["a", "a", "b", "a"]), ("a", 0.75))
+        self.assertEqual(tutarlilik.en_sik_oran([]), (None, 0.0))
+
+    def test_tekrar_olcumu(self):
+        sayac = {"n": 0}
+
+        def degisken_model(h, sicaklik=0):
+            sayac["n"] += 1
+            etki = "olumlu" if sayac["n"] % 4 else "olumsuz"  # 4 cevaptan 1'i farklı
+            return {"ozet": "Ö.", "etkiler": [{"hisse": "SKBNK", "etki": etki,
+                                               "guven": "orta", "gerekce": "g"}]}
+
+        h = haber("kap:1", "Başlık", ["SKBNK"])
+        s = tutarlilik.tekrar_olc(h, 4, 0.4, self.dogrulayici, self.surum, self.uyari, sor=degisken_model)
+        self.assertEqual(s["basarili"], 4)
+        self.assertEqual(s["hisseler"]["SKBNK"]["yon"], "positive")
+        self.assertEqual(s["hisseler"]["SKBNK"]["yon_uyumu"], 0.75)
+        self.assertEqual(s["hisseler"]["SKBNK"]["guven_uyumu"], 1.0)
+
+    def test_benzer_haber_tutarsizligi(self):
+        sonuclar = [
+            {"tur": "Pay Alım Satım Bildirimi", "hisseler": {"A": {"yon": "neutral"}}},
+            {"tur": "Pay Alım Satım Bildirimi", "hisseler": {"B": {"yon": "uncertain"}}},
+            {"tur": "Finansal Takvim", "hisseler": {"C": {"yon": "neutral"}}},
+        ]
+        tutarsiz = tutarlilik.benzer_haber_karsilastir(sonuclar)
+        self.assertEqual(list(tutarsiz), ["Pay Alım Satım Bildirimi"])
+
+
 class IcerikDenetimiTesti(unittest.TestCase):
     def test_yasakli_ifadeler(self):
         for metin in ["THYAO al", "Hisseyi satın al.", "Kesin kazanç sağlar.",
-                      "Hedef fiyat 50 TL.", "Uzun vadede tutulmalı.", "Portföyünüze ekleyin."]:
+                      "Hedef fiyat 50 TL.", "Uzun vadede tutulmalı.", "Portföyünüze ekleyin.",
+                      "Piyasa dinamikleri ve teknik göstergeler göz önüne alındığında olumlu.",
+                      "RSI düşük olduğu için yükselebilir.", "Hisse aşırı satım bölgesinde.",
+                      "Tepki yükselişi beklenebilir."]:
             self.assertIsNotNone(analiz.yasak_ifade_bul(metin), metin)
 
     def test_normal_haber_dili(self):
         for metin in ["Şirket rakibini satın aldı.", "Satın alma işlemi tamamlandı.",
                       "Altın fiyatları yükseldi.", "Tutar açıklanmadı.", "Alım satım bildirimi yayımlandı.",
-                      "Sermaye artırımı likiditeyi artırabilir."]:
+                      "Sermaye artırımı likiditeyi artırabilir.", "Şirket teknik servis ağını genişletti.",
+                      "Satış gelirleri arttı."]:
             self.assertIsNone(analiz.yasak_ifade_bul(metin), metin)
 
 
