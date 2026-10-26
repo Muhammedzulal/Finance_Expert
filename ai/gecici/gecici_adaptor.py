@@ -1,4 +1,4 @@
-"""Geçici adaptör: Muhammed'in ham JSON dosyalarını News benzeri kayıtlara çevirir.
+"""Geçici adaptör (SİLİNECEK): Muhammed'in ham JSON dosyalarını News benzeri kayıtlara çevirir.
 
 Gerçek sistemde AI worker haberleri backend'den, hisse kodları eşleşmiş
 News v1 kayıtları olarak alacak. Muhammed'in adaptörü ve Ensar'ın API'si
@@ -12,7 +12,7 @@ from pathlib import Path
 
 from hisseler import hisse_adi, metinde_hisse_bul
 
-PROJE = Path(__file__).resolve().parent.parent
+PROJE = Path(__file__).resolve().parents[2]  # ai/gecici/ -> proje kökü
 BLOOMBERG = PROJE / "Web_scaper" / "bloomberg_trading_news.json"
 KAP = PROJE / "Web_scaper" / "kap_today_disclosures.json"
 
