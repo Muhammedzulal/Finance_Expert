@@ -249,7 +249,8 @@ def main():
     haberler = haberleri_oku()
     hisseli = [h for h in haberler if h["symbols"]]
     print(f"{len(haberler)} haber okundu, {len(hisseli)} tanesi hisseyle eşleşti.")
-    print("Hissesi olmayan haberler şimdilik atlanıyor (ekip kararı bekleniyor).\n")
+        print("Çevrimdışı deneme: sadece hisseli haberler analiz edilir "
+          "(backend'e bağlı worker.py hissesiz haberleri de işler).\n")
 
     analizler = []
     for i, haber in enumerate(hisseli, 1):
