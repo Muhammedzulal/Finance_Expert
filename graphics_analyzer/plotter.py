@@ -18,8 +18,14 @@ class ChartPlotter:
             gridspec_kw={"height_ratios": [3, 1]},
         )
 
-        # Üst Grafik: Fiyat & SMA 50
-        ax1.plot(self.df.index, self.df["Close"], label="Kapanış", color="blue")
+        # Üst Grafik: Fiyat, SMA 50, EMA 20 ve Bollinger Bantları
+        ax1.plot(
+            self.df.index,
+            self.df["Close"],
+            label="Kapanış",
+            color="blue",
+            linewidth=1.5,
+        )
         ax1.plot(
             self.df.index,
             self.df["SMA_50"],
@@ -27,6 +33,30 @@ class ChartPlotter:
             color="orange",
             linestyle="--",
         )
+        ax1.plot(
+            self.df.index,
+            self.df["EMA_20"],
+            label="20 EMA",
+            color="green",
+            linestyle="-.",
+        )
+        ax1.plot(
+            self.df.index,
+            self.df["Bollinger_Upper"],
+            label="Bollinger Üst",
+            color="red",
+            linestyle=":",
+            alpha=0.7,
+        )
+        ax1.plot(
+            self.df.index,
+            self.df["Bollinger_Lower"],
+            label="Bollinger Alt",
+            color="gray",
+            linestyle=":",
+            alpha=0.7,
+        )
+
         ax1.set_title(f"{self.symbol} - Teknik Analiz Grafiği")
         ax1.set_ylabel("Fiyat")
         ax1.legend(loc="upper left")

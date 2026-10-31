@@ -13,9 +13,13 @@ def main():
         print(f"==========================================")
 
         try:
-            # 1. Veriyi Yükle
-            loader = DataLoader(symbol=symbol, period="1mo")
+            # 1. Veriyi Yükle (1 Yıllık periyot ile indiriyoruz)
+            loader = DataLoader(symbol=symbol, period="1y")
             df = loader.get_data()
+
+            # Son günün yüzdesel değişimi
+            son_pct = df["Pct_Change"].iloc[-1]
+            print(f"[i] Son Günlük Değişim: %{son_pct:.2f}")
 
             # 2. Yorumla
             analyzer = TechnicalAnalyzer(df)

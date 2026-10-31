@@ -26,9 +26,22 @@ class DataLoader:
                 f"'{self.symbol}' için veri bulunamadı! Sembolü kontrol edin."
             )
 
-        # İndikatörleri ekle
+        # 1. Mevcut İndikatörler
         df["SMA_50"] = df["Close"].rolling(window=50).mean()
         df["RSI"] = self._calculate_rsi(df, window=14)
+
+        # 2. Yeni Eklenen İndikatörler
+        # EMA 20 (Üstel Hareketli Ortalama)
+        df["EMA_20"] = df["Close"].ewm(span=20, adjust=False).mean()
+
+        # Bollinger Bantları (20 Periyotluk SMA + 2 Standart Sapma)
+        orta_bant = df["Close"].rolling(window=20).mean()
+        std = df["Close"].rolling(window=20).std()
+        df["Bollinger_Upper"] = orta_bant + (std * 2)
+        df["Bollinger_Lower"] = orta_bant - (std * 2)
+
+        # Günlük Yüzdesel Değişim (%)
+        df["Pct_Change"] = df["Close"].pct_change() * 100
 
         # Eksik (NaN) değerleri temizle
         df.dropna(inplace=True)
