@@ -19,12 +19,13 @@ class ChartPlotter:
         )
 
         # Üst Grafik: Fiyat, SMA 50, EMA 20 ve Bollinger Bantları
+        # Üst Grafik: Fiyat, SMA 50 ve EMA 20
         ax1.plot(
             self.df.index,
             self.df["Close"],
             label="Kapanış",
             color="blue",
-            linewidth=1.5,
+            linewidth=1.8,
         )
         ax1.plot(
             self.df.index,
@@ -40,21 +41,15 @@ class ChartPlotter:
             color="green",
             linestyle="-.",
         )
-        ax1.plot(
-            self.df.index,
-            self.df["Bollinger_Upper"],
-            label="Bollinger Üst",
-            color="red",
-            linestyle=":",
-            alpha=0.7,
-        )
-        ax1.plot(
+
+        # Bollinger Bantlarını Çizgi Yerine Şeffaf Alan Olarak Boyuyoruz (Daha Temiz Görünüm)
+        ax1.fill_between(
             self.df.index,
             self.df["Bollinger_Lower"],
-            label="Bollinger Alt",
+            self.df["Bollinger_Upper"],
             color="gray",
-            linestyle=":",
-            alpha=0.7,
+            alpha=0.15,
+            label="Bollinger Bandı",
         )
 
         ax1.set_title(f"{self.symbol} - Teknik Analiz Grafiği")

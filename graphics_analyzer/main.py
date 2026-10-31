@@ -5,7 +5,19 @@ from plotter import ChartPlotter
 
 def main():
     # Analiz etmek istediğimiz tüm semboller (Döviz, BIST Hisse, Kripto vb.)
-    takip_listesi = ["USDTRY=X", "THYAO.IS", "BTC-USD"]
+    takip_listesi = takip_listesi = [
+        # Döviz & Maden
+        "USDTRY=X",
+        "EURTRY=X",
+        "GC=F",
+        # BIST Hisseleri
+        "THYAO.IS",
+        "GARAN.IS",
+        "ASELS.IS",
+        # Kripto
+        "BTC-USD",
+        "ETH-USD",
+    ]
 
     for symbol in takip_listesi:
         print(f"\n==========================================")
