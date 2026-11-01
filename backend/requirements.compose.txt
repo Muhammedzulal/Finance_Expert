@@ -1,0 +1,9 @@
+# Var olan projenin backend/requirements.txt'inden gereken temel kutuphaneler.
+fastapi==0.162.0
+uvicorn==0.54.0
+SQLAlchemy==2.1.6
+PyMySQL==1.2.3
+python-dotenv==1.2.4
+PyJWT==2.15.1
+pwdlib[argon2]==0.3.1
+email-validator==2.3.0

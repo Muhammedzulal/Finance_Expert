@@ -1,0 +1,4 @@
+# AI worker'in calismasi icin gereken bagimliliklar.
+ollama>=0.6,<1
+jsonschema>=4.20,<5
+yfinance>=0.2,<1

@@ -1554,6 +1554,62 @@ def get_latest_quote(symbol: str):
         raise HTTPException(status_code=503, detail="Fiyat bilgisi alinamadi")
 
 
+
+# ==================================================
+# HISSE FIYAT GECMISI API'SI
+# ==================================================
+
+# Mobil uygulamanin fiyat grafigi icin eski fiyatlari listeler.
+@app.get("/api/v1/stocks/{symbol}/history", tags=["Stocks"])
+def get_stock_history(
+    symbol: str,
+    limit: int = Query(default=100, ge=1, le=500)
+):
+    # Hisse kodu uygun formatta mi?
+    if not re.fullmatch(r"[A-Z0-9]{1,15}", symbol):
+        raise HTTPException(status_code=422, detail="Gecersiz hisse kodu")
+
+    try:
+        with engine.connect() as connection:
+            # Istek yapilan hisse veritabaninda var mi?
+            stock = connection.execute(
+                text("SELECT symbol FROM stocks WHERE symbol = :symbol"),
+                {"symbol": symbol}
+            ).first()
+
+            if stock is None:
+                raise HTTPException(status_code=404, detail="Hisse bulunamadi")
+
+            # En yeni 'limit' kaydi aliyoruz.
+            prices = connection.execute(
+                text("""
+                    SELECT symbol, price, currency, as_of, provider, is_delayed
+                    FROM quotes
+                    WHERE symbol = :symbol
+                    ORDER BY as_of DESC, id DESC
+                    LIMIT :limit
+                """),
+                {"symbol": symbol, "limit": limit}
+            ).mappings().all()
+
+        # Grafik soldan saga eski tarihten yeni tarihe ilerlesin.
+        history = [serialize_quote(row) for row in reversed(prices)]
+
+        return {
+            "symbol": symbol,
+            "count": len(history),
+            "history": history
+        }
+
+    except HTTPException:
+        raise
+    except SQLAlchemyError:
+        raise HTTPException(
+            status_code=503,
+            detail="Fiyat gecmisi alinamadi"
+        )
+
+
 # ==================================================
 # KULLANICI KAYDI, GIRIS VE TOKEN YONETIMI
 # ==================================================
@@ -2035,3 +2091,295 @@ def execute_virtual_trade(
         raise HTTPException(status_code=409, detail="VALIDATION_ERROR: Islem kaydi cakismasi")
     except SQLAlchemyError:
         raise HTTPException(status_code=503, detail="Sanal islem gerceklestirilemedi")
+
+
+# ==================================================
+# HAFTA 3 / GOREV 2 - ISLEM GECMISI VE PORTFOY DEGERI
+# ==================================================
+
+# Yeni API'lerde cuzdan kimligini ayni sekilde kontrol ediyoruz.
+def parse_wallet_id(wallet_id: str) -> int:
+    match = re.fullmatch(r"wallet:([1-9][0-9]*)", wallet_id)
+    if match is None:
+        raise HTTPException(
+            status_code=400,
+            detail="Gecersiz cuzdan kimligi. Ornek: wallet:1"
+        )
+    return int(match.group(1))
+
+
+# Kullanici sadece kendi cuzdanina ait verileri gorebilir.
+def get_owned_wallet(connection, numeric_wallet_id: int, user_id: int):
+    wallet = connection.execute(
+        text("""
+            SELECT wallet_id, currency, cash_balance, realized_pnl, updated_at
+            FROM wallets
+            WHERE wallet_id = :wallet_id AND user_id = :user_id
+        """),
+        {"wallet_id": numeric_wallet_id, "user_id": user_id}
+    ).mappings().first()
+
+    if wallet is None:
+        raise HTTPException(status_code=404, detail="Cuzdan bulunamadi")
+    return wallet
+
+
+# Yapilan alis ve satis islemlerini en yeniden eskiye listeler.
+@app.get("/api/v1/wallets/{wallet_id}/trades", tags=["Wallets"])
+def get_trade_history(
+    wallet_id: str,
+    limit: int = Query(default=20, ge=1, le=100),
+    offset: int = Query(default=0, ge=0),
+    user_id: int = Depends(current_user_id)
+):
+    numeric_wallet_id = parse_wallet_id(wallet_id)
+
+    try:
+        with engine.connect() as connection:
+            # Listeye erismeden once cuzdan sahibini dogruluyoruz.
+            get_owned_wallet(connection, numeric_wallet_id, user_id)
+
+            total = connection.execute(
+                text("SELECT COUNT(*) FROM trades WHERE wallet_id = :wallet_id"),
+                {"wallet_id": numeric_wallet_id}
+            ).scalar_one()
+
+            rows = connection.execute(
+                text("""
+                    SELECT trade_id, wallet_id, symbol, side, quantity,
+                           price, total_amount, realized_pnl, currency,
+                           quote_as_of, executed_at, idempotency_key
+                    FROM trades
+                    WHERE wallet_id = :wallet_id
+                    ORDER BY executed_at DESC, trade_id DESC
+                    LIMIT :limit OFFSET :offset
+                """),
+                {
+                    "wallet_id": numeric_wallet_id,
+                    "limit": limit,
+                    "offset": offset
+                }
+            ).mappings().all()
+
+        items = []
+        for row in rows:
+            trade = trade_to_contract(row)
+            # Her satisin kendi gerceklesen kar/zarari.
+            trade["realized_pnl"] = format(
+                Decimal(str(row["realized_pnl"])), ".2f"
+            )
+            items.append(trade)
+
+        return {
+            "schema_version": "1.0",
+            "wallet_id": f"wallet:{numeric_wallet_id}",
+            "total": int(total),
+            "limit": limit,
+            "offset": offset,
+            "has_more": offset + len(items) < int(total),
+            "items": items
+        }
+
+    except HTTPException:
+        raise
+    except SQLAlchemyError:
+        raise HTTPException(
+            status_code=503,
+            detail="Islem gecmisi su anda alinamiyor"
+        )
+
+
+# Kayitli en son fiyatlarla cuzdanin degerini hesaplar.
+# Fiyat eski veya test verisiyse bunu ayrica belirtiyoruz.
+@app.get("/api/v1/wallets/{wallet_id}/valuation", tags=["Wallets"])
+def get_wallet_valuation(
+    wallet_id: str,
+    user_id: int = Depends(current_user_id)
+):
+    numeric_wallet_id = parse_wallet_id(wallet_id)
+
+    try:
+        with engine.connect() as connection:
+            wallet = get_owned_wallet(connection, numeric_wallet_id, user_id)
+
+            # Her pozisyonu o hisseye ait son kayitli fiyatla eslestiriyoruz.
+            rows = connection.execute(
+                text("""
+                    SELECT p.symbol, p.quantity, p.average_cost,
+                           q.price AS last_price,
+                           q.currency AS quote_currency,
+                           q.as_of AS quote_as_of,
+                           q.provider AS provider,
+                           q.is_delayed AS is_delayed
+                    FROM positions p
+                    LEFT JOIN quotes q ON q.id = (
+                        SELECT q2.id
+                        FROM quotes q2
+                        WHERE q2.symbol = p.symbol
+                        ORDER BY q2.as_of DESC, q2.id DESC
+                        LIMIT 1
+                    )
+                    WHERE p.wallet_id = :wallet_id AND p.quantity > 0
+                    ORDER BY p.symbol
+                """),
+                {"wallet_id": numeric_wallet_id}
+            ).mappings().all()
+
+        now = datetime.now(timezone.utc)
+        currency = wallet["currency"]
+        cash = money_round(Decimal(str(wallet["cash_balance"])))
+        realized = money_round(Decimal(str(wallet["realized_pnl"])))
+        total_cost = Decimal("0.00")
+        priced_value = Decimal("0.00")
+        complete = True
+        all_current = True
+        position_items = []
+        warnings = []
+
+        for row in rows:
+            quantity = int(row["quantity"])
+            avg_cost = Decimal(str(row["average_cost"]))
+            cost = money_round(avg_cost * quantity)
+            total_cost += cost
+
+            item = {
+                "symbol": row["symbol"],
+                "quantity": quantity,
+                "average_cost": format(avg_cost, ".6f"),
+                "cost_basis": format(cost, ".2f"),
+                "last_price": None,
+                "market_value": None,
+                "unrealized_pnl": None,
+                "unrealized_pnl_percent": None,
+                "quote_as_of": None,
+                "provider": None,
+                "is_delayed": None,
+                "price_is_stale": None,
+                "price_is_test": None,
+                "price_status": "missing"
+            }
+
+            # Olmayan ya da farkli para birimindeki fiyatla hesap yapmiyoruz.
+            if row["last_price"] is None:
+                complete = False
+                all_current = False
+                warnings.append(f"{row['symbol']}: kayitli fiyat bulunamadi")
+                position_items.append(item)
+                continue
+
+            if row["quote_currency"] != currency:
+                complete = False
+                all_current = False
+                item["price_status"] = "currency_mismatch"
+                warnings.append(f"{row['symbol']}: fiyat para birimi uyusmuyor")
+                position_items.append(item)
+                continue
+
+            price = Decimal(str(row["last_price"]))
+            if not price.is_finite() or price <= 0:
+                complete = False
+                all_current = False
+                item["price_status"] = "invalid"
+                warnings.append(f"{row['symbol']}: gecersiz fiyat")
+                position_items.append(item)
+                continue
+
+            quote_time = row["quote_as_of"]
+            quote_time = (
+                quote_time.replace(tzinfo=timezone.utc)
+                if quote_time.tzinfo is None
+                else quote_time.astimezone(timezone.utc)
+            )
+            age_seconds = (now - quote_time).total_seconds()
+            is_delayed = bool(row["is_delayed"])
+            is_test = str(row["provider"]).upper() == "TEST"
+            is_stale = (
+                age_seconds < 0
+                or age_seconds > MAX_QUOTE_AGE_SECONDS
+                or is_delayed
+            )
+
+            value = money_round(price * quantity)
+            pnl = money_round((price - avg_cost) * quantity)
+            pnl_percent = (
+                (pnl / cost * Decimal("100")).quantize(
+                    MONEY_STEP, rounding=ROUND_HALF_UP
+                )
+                if cost > 0 else None
+            )
+            priced_value += value
+
+            item.update({
+                "last_price": format(price, ".6f"),
+                "market_value": format(value, ".2f"),
+                "unrealized_pnl": format(pnl, ".2f"),
+                "unrealized_pnl_percent": (
+                    format(pnl_percent, ".2f")
+                    if pnl_percent is not None else None
+                ),
+                "quote_as_of": format_datetime(quote_time),
+                "provider": row["provider"],
+                "is_delayed": is_delayed,
+                "price_is_stale": is_stale,
+                "price_is_test": is_test,
+                "price_status": (
+                    "test" if is_test else "stale" if is_stale else "current"
+                )
+            })
+            if is_stale or is_test:
+                all_current = False
+                warnings.append(
+                    f"{row['symbol']}: son fiyat eski/gecikmeli veya test verisi"
+                )
+            position_items.append(item)
+
+        total_cost = money_round(total_cost)
+        priced_value = money_round(priced_value)
+
+        # Tek bir hissede bile fiyat eksikse toplam degeri tahmin etmiyoruz.
+        portfolio_value = money_round(cash + priced_value) if complete else None
+        unrealized = money_round(priced_value - total_cost) if complete else None
+        unrealized_percent = (
+            (unrealized / total_cost * Decimal("100")).quantize(
+                MONEY_STEP, rounding=ROUND_HALF_UP
+            )
+            if complete and total_cost > 0 else None
+        )
+
+        return {
+            "schema_version": "1.0",
+            "wallet_id": f"wallet:{numeric_wallet_id}",
+            "currency": currency,
+            "cash_balance": format(cash, ".2f"),
+            "realized_pnl": format(realized, ".2f"),
+            "positions_cost": format(total_cost, ".2f"),
+            "priced_positions_value": format(priced_value, ".2f"),
+            "positions_value": (
+                format(priced_value, ".2f") if complete else None
+            ),
+            "portfolio_value": (
+                format(portfolio_value, ".2f")
+                if portfolio_value is not None else None
+            ),
+            "unrealized_pnl": (
+                format(unrealized, ".2f") if unrealized is not None else None
+            ),
+            "unrealized_pnl_percent": (
+                format(unrealized_percent, ".2f")
+                if unrealized_percent is not None else None
+            ),
+            "valuation_complete": complete,
+            "valuation_is_current": complete and all_current and bool(rows),
+            "valuation_basis": "latest_stored_quote",
+            "calculated_at": format_datetime(now),
+            "positions": position_items,
+            "warnings": warnings
+        }
+
+    except HTTPException:
+        raise
+    except SQLAlchemyError:
+        raise HTTPException(
+            status_code=503,
+            detail="Portfoy degeri su anda hesaplanamiyor"
+        )
