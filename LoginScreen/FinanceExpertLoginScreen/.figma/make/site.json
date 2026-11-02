@@ -1,0 +1,10 @@
+{
+  "description": "A mobile-friendly sign-in experience for Finance Expert, helping users access an AI-powered investment assistant with ease.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

@@ -1,0 +1,83 @@
+name: finance-expert-week3
+
+services:
+  # Ayri bir MySQL konteyneri. Eski finance-expert-mysql konteynerine dokunmaz.
+  mysql:
+    image: mysql:8.4
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: finance_expert
+      MYSQL_USER: ${DB_USER:?DB_USER ayarlanmali}
+      MYSQL_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD ayarlanmali}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?MYSQL_ROOT_PASSWORD ayarlanmali}
+      TZ: UTC
+    ports:
+      - "127.0.0.1:${HOST_MYSQL_PORT:-3308}:3306"
+    volumes:
+      - finance_expert_week3_mysql_data:/var/lib/mysql
+      # Yalnizca bos/yeni veritabani ilk kez acilirken schema yuklenir.
+      - ./database/finance_expert_schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - 'MYSQL_PWD="$${MYSQL_PASSWORD}" mysql -h 127.0.0.1 -u "$${MYSQL_USER}" "$${MYSQL_DATABASE}" -Nse "SELECT COUNT(*) FROM users" >/dev/null 2>&1'
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 40s
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      DB_HOST: mysql
+      DB_PORT: "3306"
+      DB_NAME: finance_expert
+      DB_USER: ${DB_USER:?DB_USER ayarlanmali}
+      DB_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD ayarlanmali}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:?JWT_SECRET_KEY ayarlanmali}
+      INTERNAL_API_KEY: ${INTERNAL_API_KEY:?INTERNAL_API_KEY ayarlanmali}
+      # TEST ancak lokal testlerde bilincli olarak acilabilir.
+      TRADE_ALLOWED_QUOTE_PROVIDERS: ${TRADE_ALLOWED_QUOTE_PROVIDERS:-}
+    ports:
+      - "127.0.0.1:${HOST_BACKEND_PORT:-8001}:8000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/db', timeout=5)"]
+      interval: 10s
+      timeout: 7s
+      retries: 20
+      start_period: 20s
+
+  # Ollama worker'in kullanacagi yerel LLM servisi.
+  ollama:
+    image: ollama/ollama:latest
+    restart: unless-stopped
+    volumes:
+      - finance_expert_week3_ollama_models:/root/.ollama
+
+  ai_worker:
+    build:
+      context: .
+      dockerfile: ai/Dockerfile
+    restart: unless-stopped
+    environment:
+      BACKEND_URL: http://backend:8000
+      INTERNAL_API_KEY: ${INTERNAL_API_KEY:?INTERNAL_API_KEY ayarlanmali}
+      OLLAMA_HOST: http://ollama:11434
+      AI_MODEL: qwen3.5:4b
+      BEKLEME_SANIYE: "30"
+      PYTHONUNBUFFERED: "1"
+    depends_on:
+      backend:
+        condition: service_healthy
+      ollama:
+        condition: service_started
+
+volumes:
+  finance_expert_week3_mysql_data:
+  finance_expert_week3_ollama_models:

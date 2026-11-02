@@ -1,0 +1,14 @@
+.git
+**/.env
+**/.env.*
+!**/.env.example
+**/.venv
+**/__pycache__
+**/*.pyc
+**/*.png
+**/*.jpg
+**/*.jpeg
+**/*.zip
+**/*.pdf
+**/*.pptx
+backend/reset_test_password.py
