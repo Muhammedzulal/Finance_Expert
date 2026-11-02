@@ -1,95 +1,87 @@
-# Finance Expert - mimari v1 taslağı
+# Finance Expert - sistem mimarisi
 
-Tarih: 20 Ekim 2026.
-Durum: Ekip incelemesine hazır tasarım; uygulama ve ekip kabulü bekleniyor.
-İncelenen repo: `b3c18e7823530d1a4f5559441130b634b1e9e1b2`.
+Güncelleme: 2 Kasım 2026. Mobil istemci Flutter/Dart'tır.
 
-## Mevcut durum
+## Mevcut bileşenler
 
-`Web_scaper/kap_scraper.py`, Playwright ve BeautifulSoup ile KAP bildirimlerini
-yerel JSON listesine yazar. `Web_scaper/blmbrght.py`, feedparser ile RSS okur,
-anahtar kelime filtresi uygular, bağlantıya göre tekrarları ayıklar ve yerel JSON'a
-yazar. Kodda bekleme süresi 300 saniyedir; üstteki 30 dakika yorumu güncel değildir.
-KAP kaydında yayın/çekim zamanı yoktur; Bloomberg çekim zamanı saat dilimsizdir.
-Backend, MySQL, Android ve AI modülleri incelenen commit'te yoktur.
-
-## Hedef yapı
+- `mobile/finance_expert`: Flutter ekranları (giriş, ana sayfa, piyasa, cüzdan, profil).
+  Pubspec'te henüz HTTP veya kalıcı önbellek paketi yoktur; ekranların bulunması API
+  entegrasyonunun tamamlandığı anlamına gelmez.
+- `backend/main.py`: FastAPI REST API, kullanıcı kaydı/girişi, JWT, haber/analiz,
+  fiyatlar, sanal işlemler ve yeni okuma uçları.
+- `backend/database.py`, `database/finance_expert_schema.sql`: SQLAlchemy/PyMySQL
+  bağlantısı ve MySQL şeması. Parasal hesaplar Decimal, depolama DECIMAL.
+- `ai/worker.py`: analiz işi alma, sonuç gönderme ve hata bildirme; Docker ortamında
+  Ollama servisine bağlanır. Model compose yapılandırmasından seçilir.
+- `Web_scaper`: KAP/RSS toplama; kaynak çıktıları ortak News formatına uyarlanmalıdır.
+- `docker-compose.yml`: MySQL, backend, Ollama ve AI worker servisleri.
 
 ```mermaid
 flowchart LR
-    K[KAP / RSS] --> S[Muhammed: botlar ve normalizasyon]
-    S -->|News v1| B[Ensar: REST API]
-    P[Fiyat sağlayıcı: henüz seçilmedi] -->|Quote v1| B
-    B --> DB[(MySQL)]
-    DB -->|Bekleyen haber| W[Kutay: AI worker]
-    W --> L[LLM]
-    L --> W
-    W -->|Analysis v1| B
-    B -->|Haber / analiz / fiyat / cüzdan| A[Eray + Furkan: Android]
-    A -->|Sanal emir| B
+    K[KAP / RSS] --> S[Botlar ve normalizasyon]
+    S -->|News| B[FastAPI REST API]
+    P[Fiyat sağlayıcı] -->|Quote| B
+    B <--> DB[(MySQL)]
+    W[AI worker] <-->|İş alma / analiz / hata| B
+    W <--> L[Ollama]
+    B <-->|HTTPS JSON + Bearer JWT| R[Flutter repository / API servisi]
+    R <--> M[Dart veri modelleri ve ekran durumu]
+    M <--> U[Flutter ekranları]
 ```
 
-Proje sorumlusu katmanlar arası sözleşme ve entegrasyonu koordine eder.
-Şükrü sanal işlem kurallarını ve finansal senaryoları doğrular.
+Flutter repository/API servisi ve model katmanı hedef tasarımdır. Native Android
+Retrofit/Room/XML yaklaşımı kullanılmaz. Android ve iOS aynı Dart katmanını kullanır.
+HTTP istemcisi, state management ve yerel önbellek paketi henüz belirlenmemiştir.
 
-## Bileşen sınırları
+## Flutter veri akışı
 
-| Bileşen | Sorumlu | Girdi | Çıktı |
-| --- | --- | --- | --- |
-| Botlar ve adaptör | Muhammed | KAP HTML, RSS | Normalize ve doğrulanmış News |
-| AI worker | Kutay | News kimliği, başlık, özet, eşleşmiş semboller | Doğrulanmış Analysis |
-| REST API ve veri tabanı | Ensar | News, Analysis, Quote, sanal emir | Kalıcı kayıt ve kullanıcı yanıtları |
-| Android veri katmanı | Eray | REST yanıtları | Retrofit modelleri, Room önbelleği |
-| Android arayüz | Furkan | Veri katmanı modelleri | Haber, grafik, sanal cüzdan ekranları |
-| Finansal kontrol | Şükrü | Temsili işlem senaryoları | Kâr/zarar ve hata senaryosu kabulü |
+1. Widget kullanıcı olayını ekran durumuna iletir; ağ isteğini doğrudan widget içinde yönetmez.
+2. Repository, API servisinden JSON alır; Dart modelleri `fromJson` ile doğrulanır.
+3. Para alanları String olarak taşınır; sunucu hesap sonucu esas alınır. Grafik
+   çizimi için sayıya dönüşüm yapılabilir; bu değerle bakiye/kâr hesabı yapılmaz.
+4. UTC zamanları parse edilip yerel gösterime çevrilir. Loading, boş sonuç, hata,
+   eski fiyat ve eksik değer ayrı ekran durumlarıdır.
+5. JWT oturum katmanından gönderilir; token loglanmaz, düz metin tercihlerine yazılmaz.
+   Kullanıcı değişince önceki cüzdan ve işlem önbelleği temizlenir.
+6. Sanal emir kullanıcı eylemiyle oluşturulur. AI analizi emir tetiklemez.
 
-Backend framework'ü, LLM modeli, fiyat sağlayıcısı ve kullanıcı oturum yöntemi
-bu pakette seçilmemiştir. Docker servisleri için öneri: API, MySQL, AI worker;
-botlar ayrı zamanlanmış süreçlerdir. İlk fazda mesaj kuyruğu yerine MySQL'de
-iş durumu tablosu yeterlidir. Servislerin uygulanması ilgili modül sahibindedir.
+## Yeni okuma uçları
 
-## Haberden ekrana akış
-
-1. Bot kaynağı okur ve ham çıktıyı korur. Adaptör ortak News v1 üretir.
-2. Backend şemayı doğrular; `news_id` üzerinden aynı haberi tekrar oluşturmaz.
-3. News kaydı ve `pending` analiz işi aynı transaction içinde kaydedilir.
-4. Worker işi atomik olarak `processing` durumuna geçirip süreli kilit alır.
-5. Worker LLM çıktısını Analysis şemasına ve News bağlantısına göre doğrular.
-   Haber içeriği model talimatı olarak kullanılmaz. HTML ve betikler temizlenir.
-6. Başarılı çıktı kaydedilir ve iş `completed` olur. Hatalı çıktı ekrana verilmez;
-   en fazla 3 denemeden sonra `failed` olur. Süresi dolan kilit tekrar alınabilir.
-7. Android haberleri analizden bağımsız gösterir; bekleyen analiz için durum metni
-   kullanır. Fiyat bulunamazsa grafik boş durum gösterir ve sanal emir kabul edilmez.
-
-## Veri modeli önerisi
-
-| Tablo | Anahtar / ilişki | Kritik kural |
+| Ekran | Uç | Gösterim |
 | --- | --- | --- |
-| news | PK news_id | Kaynak kimliğine göre tekrar engeli |
-| news_symbols | PK (news_id, symbol) | FK news_id; semboller ana listeden doğrulanır |
-| analysis_jobs | PK news_id | FK news_id; status, attempts, locked_until |
-| analyses | PK analysis_id, FK news_id | prompt_version ve model saklanır |
-| quotes | PK (symbol, as_of) | currency ve provider saklanır |
-| wallets | PK wallet_id, kullanıcı ilişkisi | Para DECIMAL; nakit negatif olamaz |
-| positions | PK (wallet_id, symbol) | quantity tam sayı, average_cost DECIMAL |
-| trades | PK trade_id, FK wallet_id | UNIQUE (wallet_id, idempotency_key) |
+| Piyasa / hisse detayı | GET /api/v1/stocks/{symbol}/history | Zaman sıralı son fiyat noktalarından çizgi grafik |
+| Cüzdan işlem listesi | GET /api/v1/wallets/{wallet_id}/trades | Limit/offset sayfalama, en yeni işlem önce |
+| Cüzdan özeti | GET /api/v1/wallets/{wallet_id}/valuation | Nakit + fiyatlanmış pozisyonlar, güncellik ve eksik fiyat uyarıları |
 
-JSON'da parasal değerler ondalık metindir; MySQL tarafında DECIMAL kullanılır.
-Ham JSON arşivleri, .env, servis anahtarları ve kullanıcı verisi Git'e eklenmez.
-Android yalnız API'ye erişir; MySQL ve LLM anahtarı istemciye verilmez.
-İç veri yazma uçları servis kimliğiyle, cüzdan uçları kullanıcı oturumuyla korunur.
-API her cüzdan isteğinde sahipliği kontrol eder; istemciden fiyat veya bakiye kabul etmez.
+Portföy uç noktası canlı fiyat aboneliği değildir; son kayıtlı fiyatlarla anlık
+istek sırasında hesap yapar. Eksik toplam null gösterilir; sıfır gibi sunulmaz.
+WebSocket veya sürekli güncelleme bu teslimin kapsamında değildir.
 
-## Hata ve gözlemlenebilirlik
+## Güvenlik ve analiz
 
-Bot kesintisi eski haberi silmez. Her döngüde kaynak, başarı/hata, yeni kayıt sayısı
-ve çalışma süresi loglanır. API `request_id` ile hata döndürür. LLM hata loglarında
-anahtarlar ve kullanıcı bilgileri bulunmaz. Fiyat zamanı kullanıcıya gösterilir.
-API veri tabanına bağlanamazsa hazır olma kontrolü başarısız olur.
+Flutter yalnız API'ye erişir; MySQL, servis API anahtarı ve LLM istemciye açılmaz.
+Cüzdan uçları JWT ve sahiplik kontrolü kullanır; başka kullanıcıya ait cüzdan 404 döner.
+İç yazma uçları servis anahtarıyla korunur. Gerçek fiyat ve bakiye istemciden alınmaz.
+Analiz için hedef sözleşme Analysis v1.1 ve zorunlu uyarıdır; mevcut backend/AI
+üreticilerinin bu sözleşmeye tam uyumu ayrı entegrasyon işidir. Haber etkisi dili
+ve gösterim kuralları [analiz ilkelerinde](analiz-ilkeleri.md) tanımlıdır.
 
-## İlk entegrasyonun kabul koşulu
+## CI ve doğrulama sınırı
 
-Tek bir temsili News kaydı API'ye verilir, aynı kayıt tekrarlandığında çoğalmaz,
-ona bağlı Analysis kaydı Android modeline okunur. AI kapalıyken haber listesi
-çalışır. Eski fiyatla veya yetersiz bakiyeyle sanal emir reddedilir. Bu koşullar
-henüz uygulama üzerinde sınanmamıştır; bu haftanın doğrulaması JSON sözleşmesidir.
+CI'da `validate-contracts` mevcut şemaları ve AI worker testlerini çalıştırır.
+`backend-tests` FastAPI TestClient ile üç okuma ucunu sınar. DB sınırı taklit
+edilir: gerçek MySQL sorgu yürütme, transaction/kilitler, Docker, canlı fiyat,
+LLM veya Flutter cihaz testi değildir. Backend gerçek HTTP yönlendirmesi,
+parametre doğrulaması, oturum gereksinimi, sahiplik sorgusu, hata durumu,
+serileştirme ve portföy hesapları sınanır.
+
+Ayrıntılı yeni uç sözleşmeleri: [Okuma uç noktaları](okuma-uc-noktalari.md).
+
+### Bilinen AI sözleşmesi uyumsuzluğu
+
+Bu dokümantasyon dalındaki Analysis v1.1 şemasına göre AI kodu disclaimer ekler.
+Mevcut backend AnalysisCreate hâlâ v1.0 ve extra=forbid kullanır; AI worker
+sahte backend testi de eski alan listesini kabul eder. Bu yüzden ai/test_worker.py
+çalışmasında 3 senaryo 422 nedeniyle başarısızdır. Yeni backend-tests işi bundan
+bağımsızdır. AI üreticisi, backend modeli/serileştirmesi ve test çiftinin aynı sürüme
+geçirilmesi ayrı entegrasyon işidir; CI'nın tamamı yeşil sayılmamalıdır.

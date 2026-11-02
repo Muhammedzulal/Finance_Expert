@@ -1,0 +1,505 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Market and wallet read responses v1",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/PriceHistory"
+    },
+    {
+      "$ref": "#/$defs/TradeHistory"
+    },
+    {
+      "$ref": "#/$defs/PortfolioValuation"
+    }
+  ],
+  "$defs": {
+    "Money": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.[0-9]{2,6}$"
+    },
+    "SignedMoney": {
+      "type": "string",
+      "pattern": "^-?(0|[1-9][0-9]*)\\.[0-9]{2,6}$"
+    },
+    "Time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "Symbol": {
+      "type": "string",
+      "pattern": "^[A-Z0-9]{1,15}$"
+    },
+    "Trade": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "trade_id",
+        "wallet_id",
+        "symbol",
+        "side",
+        "quantity",
+        "idempotency_key",
+        "execution_price",
+        "gross_amount",
+        "currency",
+        "quote_as_of",
+        "executed_at"
+      ],
+      "properties": {
+        "schema_version": {
+          "$ref": "#/$defs/Version"
+        },
+        "trade_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "wallet_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "symbol": {
+          "$ref": "#/$defs/Symbol"
+        },
+        "side": {
+          "enum": [
+            "buy",
+            "sell"
+          ]
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "idempotency_key": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "execution_price": {
+          "$ref": "#/$defs/Money"
+        },
+        "gross_amount": {
+          "$ref": "#/$defs/Money"
+        },
+        "currency": {
+          "const": "TRY"
+        },
+        "quote_as_of": {
+          "$ref": "#/$defs/Time"
+        },
+        "executed_at": {
+          "$ref": "#/$defs/Time"
+        }
+      }
+    },
+    "PriceHistory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "symbol",
+        "count",
+        "history"
+      ],
+      "properties": {
+        "symbol": {
+          "$ref": "#/$defs/Symbol"
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "history": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "symbol",
+              "price",
+              "currency",
+              "as_of",
+              "provider",
+              "is_delayed"
+            ],
+            "properties": {
+              "symbol": {
+                "$ref": "#/$defs/Symbol"
+              },
+              "price": {
+                "$ref": "#/$defs/Money"
+              },
+              "currency": {
+                "const": "TRY"
+              },
+              "as_of": {
+                "$ref": "#/$defs/Time"
+              },
+              "provider": {
+                "type": "string",
+                "minLength": 1
+              },
+              "is_delayed": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "TradeHistory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "wallet_id",
+        "total",
+        "limit",
+        "offset",
+        "has_more",
+        "items"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "wallet_id": {
+          "type": "string",
+          "pattern": "^wallet:[1-9][0-9]*$"
+        },
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "offset": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "has_more": {
+          "type": "boolean"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "schema_version",
+              "trade_id",
+              "wallet_id",
+              "symbol",
+              "side",
+              "quantity",
+              "idempotency_key",
+              "execution_price",
+              "gross_amount",
+              "currency",
+              "quote_as_of",
+              "executed_at",
+              "realized_pnl"
+            ],
+            "properties": {
+              "schema_version": {
+                "$ref": "#/$defs/Version"
+              },
+              "trade_id": {
+                "$ref": "#/$defs/Id"
+              },
+              "wallet_id": {
+                "$ref": "#/$defs/Id"
+              },
+              "symbol": {
+                "$ref": "#/$defs/Symbol"
+              },
+              "side": {
+                "enum": [
+                  "buy",
+                  "sell"
+                ]
+              },
+              "quantity": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "idempotency_key": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "execution_price": {
+                "$ref": "#/$defs/Money"
+              },
+              "gross_amount": {
+                "$ref": "#/$defs/Money"
+              },
+              "currency": {
+                "const": "TRY"
+              },
+              "quote_as_of": {
+                "$ref": "#/$defs/Time"
+              },
+              "executed_at": {
+                "$ref": "#/$defs/Time"
+              },
+              "realized_pnl": {
+                "$ref": "#/$defs/SignedMoney"
+              }
+            }
+          }
+        }
+      }
+    },
+    "PortfolioValuation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "wallet_id",
+        "currency",
+        "cash_balance",
+        "realized_pnl",
+        "positions_cost",
+        "priced_positions_value",
+        "positions_value",
+        "portfolio_value",
+        "unrealized_pnl",
+        "unrealized_pnl_percent",
+        "valuation_complete",
+        "valuation_is_current",
+        "valuation_basis",
+        "calculated_at",
+        "positions",
+        "warnings"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "wallet_id": {
+          "type": "string",
+          "pattern": "^wallet:[1-9][0-9]*$"
+        },
+        "currency": {
+          "const": "TRY"
+        },
+        "cash_balance": {
+          "$ref": "#/$defs/Money"
+        },
+        "realized_pnl": {
+          "$ref": "#/$defs/SignedMoney"
+        },
+        "positions_cost": {
+          "$ref": "#/$defs/Money"
+        },
+        "priced_positions_value": {
+          "$ref": "#/$defs/Money"
+        },
+        "positions_value": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Money"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "portfolio_value": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Money"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unrealized_pnl": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SignedMoney"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unrealized_pnl_percent": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SignedMoney"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "valuation_complete": {
+          "type": "boolean"
+        },
+        "valuation_is_current": {
+          "type": "boolean"
+        },
+        "valuation_basis": {
+          "const": "latest_stored_quote"
+        },
+        "calculated_at": {
+          "$ref": "#/$defs/Time"
+        },
+        "positions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "symbol",
+              "quantity",
+              "average_cost",
+              "cost_basis",
+              "last_price",
+              "market_value",
+              "unrealized_pnl",
+              "unrealized_pnl_percent",
+              "quote_as_of",
+              "provider",
+              "is_delayed",
+              "price_is_stale",
+              "price_is_test",
+              "price_status"
+            ],
+            "properties": {
+              "symbol": {
+                "$ref": "#/$defs/Symbol"
+              },
+              "quantity": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "average_cost": {
+                "$ref": "#/$defs/Money"
+              },
+              "cost_basis": {
+                "$ref": "#/$defs/Money"
+              },
+              "last_price": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Money"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "market_value": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Money"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "unrealized_pnl": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/SignedMoney"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "unrealized_pnl_percent": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/SignedMoney"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "quote_as_of": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Time"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "provider": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "is_delayed": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "price_is_stale": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "price_is_test": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "price_status": {
+                "enum": [
+                  "missing",
+                  "currency_mismatch",
+                  "invalid",
+                  "test",
+                  "stale",
+                  "current"
+                ]
+              }
+            }
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Version": {
+      "const": "1.0"
+    },
+    "Id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    }
+  }
+}
