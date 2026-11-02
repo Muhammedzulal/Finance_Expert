@@ -3,7 +3,7 @@ Mobil Programlama projemiz
 
 ## Dokümantasyon
 
-Haber toplama, AI analizi, REST API ve Android modülleri için mimari ve veri formatları.
+Haber toplama, AI analizi, REST API ve Flutter modülleri için mimari ve veri formatları.
 
 - [Mimari ve veri akışı](docs/mimari.md)
 - [JSON sözleşmeleri ve API taslağı](docs/veri-sozlesmeleri.md)
@@ -20,3 +20,12 @@ python tools/validate_contracts.py
 ```
 
 Bu kontrol ağ bağlantısı, fiyat servisi veya LLM anahtarı gerektirmez.
+
+## Backend okuma uçları
+
+[Grafik, işlem geçmişi ve portföy değeri sözleşmeleri](docs/okuma-uc-noktalari.md)
+
+```sh
+python -m pip install -r backend/requirements-test.txt
+python -m pytest backend/tests -q
+```

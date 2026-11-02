@@ -10,7 +10,7 @@ JSON Schema Draft 2020-12 kullanılır; her mesaj kendi `$defs` adıyla doğrula
 - Tüm listelenen nesne alanları zorunludur. Bilinmeyen alanlar reddedilir.
   Bilinmeyen değer yalnız şemanın izin verdiği yerde `null` veya boş listedir.
 - Zamanlar saat dilimi içeren RFC 3339 biçimindedir. Depolama UTC,
-  Android gösterimi Europe/Istanbul olabilir; `2026-10-20 09:00:00` kabul edilmez.
+  Flutter gösterimi Europe/Istanbul olabilir; `2026-10-20 09:00:00` kabul edilmez.
 - Para/fiyat alanları 2-6 ondalık basamaklı metindir (`"100.00"`). Sayısal JSON
   veya virgüllü metin kabul edilmez. Hesaplar Decimal/BigDecimal ile yapılır.
 - İlk kapsam TRY, tam lot hisse ve sanal işlemdir. Sembol büyük harfli ve
@@ -20,7 +20,7 @@ JSON Schema Draft 2020-12 kullanılır; her mesaj kendi `$defs` adıyla doğrula
   bile mevcut sıkı doğrulayıcıları bozabilir: tüketiciler hazırlanıp sürüm birlikte
   yükseltilir; mevcut `1.0` biçimi sessizce değiştirilmez.
 
-## News: Muhammed -> backend -> Kutay / Android
+## News: Muhammed -> backend -> Kutay / Flutter
 
 | Alan | Anlam |
 | --- | --- |
@@ -66,10 +66,10 @@ Eski arşivde gerçek çekim zamanı bilinmiyorsa yeni zaman uydurulmaz; arşiv 
 ayrı ele alınır. Repo örnekleri doğrudan yeni şemaya uyuyor sayılmaz. Bu paket
 geçişi tarif eder; adaptör uygulaması Muhammed'in takip işidir.
 
-## Analysis: Kutay -> backend -> Android
+## Analysis: Kutay -> backend -> Flutter
 
 Analysis v1.1, zorunlu `disclaimer` alanını ekler. v1.0 analiz nesneleri yeni
-şemadan geçmez; AI üreticisi, backend ve Android modelleri birlikte güncellenmelidir.
+şemadan geçmez; AI üreticisi, backend ve Flutter modelleri birlikte güncellenmelidir.
 Haber, fiyat ve sanal işlem sözleşmeleri `1.0` olarak kalır. Mevcut şema dosyasının
 adı korunmuştur; nesne sürümünü `schema_version` belirler.
 
@@ -98,7 +98,7 @@ azalış giderleri azaltabilir. Diğer piyasa koşulları nedeniyle fiyat etkisi
 Bu cümle yalnız dil örneğidir; güncel haber veya THYAO değerlendirmesi değildir.
 
 Her Analysis nesnesinde şemadaki sabit `disclaimer` zorunludur. Uyarıyı LLM
-üretmez; backend doğrulanmış model sonucuna ekler. Android analiz kartında,
+üretmez; backend doğrulanmış model sonucuna ekler. Flutter analiz kartında,
 detay ekranında ve bildirim önizlemesinde en az “Yatırım tavsiyesi değildir.”
 ifadesini görünür tutar; tam metin kart ve detayda gösterilir. Uyarı yalnız
 kullanım koşullarına veya gizli bir menüye bırakılmaz.
@@ -185,3 +185,12 @@ STALE_QUOTE / IDEMPOTENCY_CONFLICT / VALIDATION_ERROR,
 JSON Schema tek başına FK, sembol ana listesi, tutar hesabı, mükerrer pozisyon,
 zaman sırası, cüzdan sahipliği, fiyat yaşı ve transaction bütünlüğünü doğrulamaz.
 Bu kontroller backend ve Şükrü'nün entegrasyon senaryolarında uygulanacaktır.
+
+## Flutter ve yeni okuma uçları
+
+Mobil istemci Flutter/Dart olarak güncellenmiştir. Native Flutter Retrofit/Room
+atıfları eski tasarımı anlatır; güncel mimari için [mimari dokümanına](mimari.md) bakın.
+Grafik fiyat geçmişi, işlem geçmişi ve portföy değerinin mevcut API sözleşmeleri
+[okuma uç noktalarında](okuma-uc-noktalari.md) tanımlanmıştır. Bu üç uç için belge,
+uygulanmış backend yanıtını esas alır; yukarıdaki eski endpoint taslaklarıyla farkları
+(hata zarfı, fiyat öğesi, sayfalama) bu belgede ayrıca belirtilir.
