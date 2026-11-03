@@ -10,6 +10,7 @@ uygun sonuç üretir. Uygulama al/sat/tut önerisi üretmez; haberin olası etki
 | `worker.py` | Backend'den iş alır (`claim`), analiz eder, sonucu kaydeder ya da `fail` bildirir |
 | `analiz.py` | Analiz çekirdeği: prompt, model çağrısı, Türkçe cevabın sözleşmeye çevrilmesi, içerik denetimi |
 | `piyasa.py` | Modele verilen fiyat bağlamı (son kapanış, 1/5/20 günlük değişim, RSI, 50 günlük ortalama) |
+| `grafik_yorum.py` | Muhammed'in indikatörlerinden (SMA 50, EMA 20, RSI, Bollinger, % değişim) al/sat demeden Türkçe grafik yorumu |
 | `tutarlilik.py` | Model aynı habere aynı yorumu yapıyor mu? (gerçek modelle elle çalıştırılır) |
 | `test_worker.py` | Ollama, MySQL ve internet gerektirmeyen testler (CI'da çalışır) |
 | `gecici/` | **Silinecek.** Backend'e haber gelene kadar Muhammed'in JSON dosyalarıyla deneme |
@@ -32,6 +33,7 @@ python ai/test_worker.py              # testler
 python ai/worker.py                   # backend'e bağlı sürekli çalışma
 python ai/worker.py --bir-kez         # bekleyen işleri bitirip çık
 python ai/tutarlilik.py               # tutarlılık ölçümü (Ollama gerekir)
+python ai/grafik_yorum.py             # 8 sembol için grafik yorumu (Ollama + yfinance gerekir)
 python ai/gecici/cevrimdisi.py        # backend olmadan deneme (Ollama gerekir)
 ```
 
@@ -44,6 +46,20 @@ python ai/gecici/cevrimdisi.py        # backend olmadan deneme (Ollama gerekir)
 - Fiyat verisi yalnız bağlamdır; etki yönünü haberin içeriği belirler. Fiyat verisi
   alınamazsa analiz bağlamsız yapılır.
 - Sözleşme sürümü ve varsa zorunlu uyarı metni şemadan okunur.
+- Model adı `AI_MODEL` ortam değişkeninden okunur (varsayılan `qwen3.5:4b`).
+
+## Grafik yorumu nasıl çalışır?
+
+1. Kod, indikatörlerden kesin "gerçek" cümleleri çıkarır (ör. "Fiyat 50 günlük ortalamanın %4,2 üzerinde").
+2. Model bu gerçekleri 2-4 cümlelik sade bir paragrafa çevirir.
+3. Tahmin ("yükselebilir", "bekleniyor"), sinyal ("alım sinyali", "aşırı alım", "destek"),
+   ortalamaların "kesiştiği/geçtiği" iddiası, yazıyla sayı ("yüzde bir", "iki ay") ya da
+   gerçeklerde olmayan bir sayı içeren yorum reddedilir. Doğru sayı yanlış göstergeye
+   yazılmışsa (ör. 50 günlük ortalama farkı "son gün değişimi" diye) o da reddedilir.
+4. Model 3 denemede başaramazsa gerçek cümlelerinden oluşan şablon metin kullanılır (`source: "sablon"`).
+
+Çıktı biçimi (`ChartCommentary`, `schema_version: "0.1-taslak"`) henüz sözleşmede yok;
+Berke'nin onayı ve Ensar'ın backend ucu bekleniyor. Şimdilik `ai/cikti/grafik_yorumlari.json`'a yazılır.
 
 ## `gecici/` ne zaman silinir?
 

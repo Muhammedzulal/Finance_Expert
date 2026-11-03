@@ -35,6 +35,7 @@ def sahte_chat(model, messages, options, **kwargs):
 sys.modules["ollama"] = types.SimpleNamespace(chat=sahte_chat)
 
 import analiz  # noqa: E402
+import grafik_yorum  # noqa: E402
 import piyasa  # noqa: E402
 import tutarlilik  # noqa: E402
 import worker  # noqa: E402
@@ -242,6 +243,141 @@ class TutarlilikTesti(unittest.TestCase):
         ]
         tutarsiz = tutarlilik.benzer_haber_karsilastir(sonuclar)
         self.assertEqual(list(tutarsiz), ["Pay Alım Satım Bildirimi"])
+
+
+def grafik_satirlari(rsi=72.4):
+    """THYAO benzeri, yükselen ve bandı daralan 25 günlük sahte indikatör verisi."""
+    satirlar = []
+    for i in range(25):
+        kapanis = 280 + i * 1.5
+        satirlar.append({"tarih": f"2026-10-{i + 1:02d}", "Close": kapanis, "SMA_50": 270.0,
+                         "EMA_20": kapanis - 5, "RSI": rsi, "Bollinger_Upper": kapanis + 2 - i * 0.1,
+                         "Bollinger_Lower": kapanis - 20 + i * 0.3, "Pct_Change": 0.53})
+    return satirlar
+
+
+IYI_GRAFIK_YORUMU = ("Türk Hava Yolları hissesinin son fiyatı 316,00 TL oldu ve son 20 işlem gününde "
+                     "%10,5 yükseldi. Fiyat, 50 günlük ortalamanın %17 üzerinde. RSI değeri 72 ile son "
+                     "günlerde yükselişlerin baskın olduğunu gösteriyor.")
+
+
+class GrafikYorumuTesti(unittest.TestCase):
+    def setUp(self):
+        self.satirlar = grafik_satirlari()
+        self.g = grafik_yorum.gostergeler(self.satirlar)
+        self.gercekler = grafik_yorum.gercekleri_cikar(self.g, "TL")
+
+    def test_gercekler_dogru_hesaplanir(self):
+        metin = " ".join(self.gercekler)
+        self.assertIn("Son fiyat 316,00 TL; bir önceki kapanışa göre %0,5 yükseliş", metin)
+        self.assertIn("50 günlük ortalamanın %17,0 üzerinde", metin)
+        self.assertIn("RSI değeri 72: 70 eşiğinin üzerinde", metin)
+        self.assertIn("Bollinger üst bandının üzerinde", metin)
+        self.assertIn("daraldı", metin)
+
+    def test_rsi_bolgeleri(self):
+        for rsi, beklenen in [(25.0, "30 eşiğinin altında"), (50.0, "30-70 aralığında"), (75.0, "70 eşiğinin üzerinde")]:
+            g = grafik_yorum.gostergeler(grafik_satirlari(rsi))
+            self.assertIn(beklenen, " ".join(grafik_yorum.gercekleri_cikar(g, "TL")))
+
+    def test_iyi_yorum_kabul_edilir(self):
+        self.assertIsNone(grafik_yorum.denetle(IYI_GRAFIK_YORUMU, self.gercekler, self.g["tarih"]))
+
+    def test_tahmin_ve_sinyal_reddedilir(self):
+        for ek in ["Fiyat yükselebilir.", "Kısa vadede artabilir.", "Gerileyebilir.", "Düşüş gelebilir.",
+                   "Yükselişin sürmesi bekleniyor.", "Alım sinyali oluştu.", "RSI aşırı alım bölgesinde.",
+                   "Golden cross oluştu.", "Fiyat destek seviyesinde.", "Alım fırsatı var."]:
+            self.assertIsNotNone(grafik_yorum.denetle(IYI_GRAFIK_YORUMU + " " + ek, self.gercekler,
+                                                      self.g["tarih"]), ek)
+
+    def test_gercek_model_hatalari_yakalanir(self):
+        # 3 Kasım 2026'da qwen3.5:4b'nin gerçek çıktılarında görülen hatalar
+        for metin in ["20 günlük ortalama da 50 günlük ortalamayı geçerek yükseldi.",  # uydurma kesişim
+                      "Bu günde yüzde bir düşüş yaşandı.",                             # yazıyla sayı
+                      "Son iki ayda fiyat aşağı yönlü hareket etti.",                   # uydurma süre
+                      "MACD sinyal çizgisini yukarı kesti.", "Son haftada fiyat düştü.",
+                      "3 ay önceye göre yükseldi."]:
+            self.assertIsNotNone(grafik_yorum.yasak_bul(metin), metin)
+
+    def test_gercek_model_iyi_cumleleri_gecer(self):
+        for metin in ["Türk Hava Yolları'nın son kapanış fiyatı 262,25 TL olarak kaydedilirken, bu seviye "
+                      "hem 50 günlük hem de 20 günlük ortalamaların altında kalmıştır.",
+                      "Fiyatın son 20 işlem gününde %10,2 düşüş göstermesi ve Bollinger bandının "
+                      "genişlemesiyle birlikte oynaklığın artması gözlemlendi.",
+                      "Bitcoin'in son kapanış fiyatı 76.489,43 dolar iken son 20 işlem gününde düşüş kaydedildi.",
+                      "Fiyat bir süredir ortalamanın altında.", "Fiyat geçen gün düştü."]:
+            self.assertIsNone(grafik_yorum.yasak_bul(metin), metin)
+
+    def test_yanlis_gostergeye_baglanan_sayi(self):
+        # Gerçek hata: THYAO'da 50 günlük ortalama farkı (%8,4) "son gün yükselişi" diye yazıldı
+        f = ["Son kapanış 262,50 TL; son günde %0,1 yükseliş.", "Son 20 işlem gününde fiyat %10,1 düştü.",
+             "Fiyat 50 günlük ortalamanın %8,4 altında.",
+             "Fiyat 20 günlük üstel ortalamanın %2,3 altında; 20 günlük ortalama 50 günlüğün altında.",
+             "RSI değeri 36: 30-70 aralığında; son 14 günde yükseliş ve düşüşler görece dengeli."]
+        kotu = ("Türk Hava Yolları'nın son kapanış fiyatı 262,50 TL olarak kaydedilirken, son gün %8,4'ün "
+                "yükselişi ile birlikte son 20 işlem günü içinde %10,1'in düşüşü gözlemlenir.")
+        iyi = ("Türk Hava Yolları'nın son kapanış fiyatı 262,50 TL; son günde %0,1 yükseldi, son 20 işlem "
+               "gününde ise %10,1 düştü. Fiyat 50 günlük ortalamanın %8,4, 20 günlük üstel ortalamanın "
+               "%2,3 altında. RSI 36 ile dengeli bölgede.")
+        self.assertIn("yanlış göstergeye", grafik_yorum.denetle(kotu, f, "2026-11-03"))
+        self.assertIsNone(grafik_yorum.denetle(iyi, f, "2026-11-03"))
+
+    def test_gercek_iyi_yorumlar_kabul_edilir(self):
+        # 3 Kasım 2026 ikinci turda modelin doğru yazdığı yorumlar (gerçekleri yeniden kurulmuş)
+        ornekler = [
+            (["Son kapanış 56,00 TL; son günde %0,4 yükseliş.", "Son 20 işlem gününde fiyat %1,7 yükseldi.",
+              "RSI değeri 71: 70 eşiğinin üzerinde; son 14 günde yükselişler belirgin şekilde baskın."],
+             "Euro/TL fiyatı son gün %0,4 yükselerek 56,00 TL seviyesinde kapanmış ve son 20 işlem günü "
+             "içinde toplamda %1,7 artış kaydetmiştir. RSI göstergesi 71 seviyesinde yükselişlerin baskın "
+             "olduğu bir konumdadır."),
+            (["Son kapanış 76498,25 USD; son günde %0,2 düşüş.", "Son 20 işlem gününde fiyat %6,2 düştü."],
+             "Bitcoin fiyatı son günlerde %0,2 düşerek 76.498,25 dolar seviyesinde kapanmış ve son 20 "
+             "işlem günü içinde %6,2 değer kaybetmiştir."),
+            (["Son kapanış 2251,19 USD; son günde %0,3 düşüş.", "Son 20 işlem gününde fiyat %6,9 düştü.",
+              "Fiyat 50 günlük ortalamanın %10,2 altında."],
+             "Ethereum'un son kapanış fiyatı 2251,19 USD olarak kaydedilirken, son 20 işlem gününde %6,9'luk "
+             "bir düşüş ve 50 günlük ortalamadan %10,2 altında olması dikkat çekiyor."),
+        ]
+        for gercekler, yorum in ornekler:
+            self.assertIsNone(grafik_yorum.denetle(yorum, gercekler, "2026-11-03"), yorum[:40])
+
+    def test_100_artik_izinli_degil(self):
+        self.assertIsNotNone(grafik_yorum.denetle(
+            "RSI göstergesi 100 ile 70 aralığında ve fiyat 50 günlük ortalamanın %17 üzerinde seyrediyor.",
+            self.gercekler, self.g["tarih"]))
+
+    def test_betimleyici_dil_serbest(self):
+        for metin in ["Oynaklık arttı.", "Satış baskısı yoğundu.", "Fiyat artışı devam etti.",
+                      "RSI, son günlerdeki yükseliş ve düşüşlerin dengesini ölçer."]:
+            self.assertIsNone(grafik_yorum.yasak_bul(metin), metin)
+
+    def test_uydurma_sayi_reddedilir_yuvarlama_ve_tarih_serbest(self):
+        g, f, t = self.g, self.gercekler, self.g["tarih"]
+        self.assertIn("3,8", grafik_yorum.denetle(
+            "Fiyat son günde %3,8 yükseldi ve 50 günlük ortalamanın %17 üzerinde, güçlü görünüyor.", f, t))
+        self.assertIsNone(grafik_yorum.denetle(
+            "25 Ekim 2026 itibarıyla fiyat 316 TL ve 50 günlük ortalamanın %17 üzerinde seyrediyor.", f, t))
+        self.assertEqual(grafik_yorum._sayi_adaylari("105.234,50"), {105234.5})
+
+    def test_model_basarisizsa_sablon_kullanilir(self):
+        s = grafik_yorum.yorum_uret("THYAO.IS", self.satirlar,
+                                    yazdir=lambda *a, **k: {"yorum": "Fiyat kesinlikle yükselecek, hemen alın!"})
+        self.assertEqual(s["source"], "sablon")
+        self.assertEqual(s["attempts"], 3)
+        self.assertTrue(s["commentary"].startswith("Türk Hava Yolları: Son fiyat"))
+        self.assertIsNone(grafik_yorum.yasak_bul(s["commentary"]))  # şablon da kurallara uyar
+
+    def test_ikinci_denemede_duzelen_model(self):
+        cagrilar = []
+
+        def yazdir(ad, sembol, tarih, gercekler, sicaklik=0):
+            cagrilar.append(sicaklik)
+            return {"yorum": "Alım fırsatı var, fiyat yükselebilir ve çok güzel görünüyor."
+                    if len(cagrilar) == 1 else IYI_GRAFIK_YORUMU}
+
+        s = grafik_yorum.yorum_uret("THYAO.IS", self.satirlar, yazdir=yazdir)
+        self.assertEqual((s["source"], s["attempts"], cagrilar), ("model", 2, [0, 0.4]))
+        self.assertIn("Yatırım tavsiyesi değildir", s["disclaimer"])
 
 
 class IcerikDenetimiTesti(unittest.TestCase):
