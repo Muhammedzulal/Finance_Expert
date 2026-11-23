@@ -1,0 +1,2174 @@
+{
+  "aciklama": "Muhammed (graphics_analyzer) tarafından üretilen gerçek indikatör ve piyasa bağlamı örnekleri",
+  "olusturulma_tarihi": "2026-11-23T13:58:26.335353+00:00",
+  "semboller": {
+    "THYAO.IS": {
+      "son_kapanis": 321.0,
+      "guncel_gostergeler": {
+        "RSI_14": 87.58,
+        "SMA_50": 288.934,
+        "EMA_20": 306.3046,
+        "Bollinger_Orta": 297.2475,
+        "Bollinger_Ust": 357.4207,
+        "Bollinger_Alt": 237.0743,
+        "Son_Gun_Degisim_Yuzde": -2.43
+      },
+      "piyasa_baglami": {
+        "degisim_1g": -2.43,
+        "degisim_5g": -0.77,
+        "degisim_20g": 24.42,
+        "sma50_farki": 11.1
+      },
+      "teknik_yorum_sablonu": "Fiyat (321.00), 50 günlük ortalamanın (288.93) üzerinde. Genel trend YUKARI.\nRSI değeri 87.58 ile AŞIRI ALIM bölgesinde. Kısa vadede düşüş/düzeltme gelebilir.",
+      "son_25_gun_serisi": [
+        {
+          "tarih": "2026-10-19",
+          "Close": 266.0,
+          "SMA_50": 293.71,
+          "EMA_20": 284.2551,
+          "RSI": 25.0,
+          "Bollinger_Upper": 301.8088,
+          "Bollinger_Lower": 270.6162,
+          "Pct_Change": -2.74
+        },
+        {
+          "tarih": "2026-10-20",
+          "Close": 273.5,
+          "SMA_50": 293.16,
+          "EMA_20": 283.2308,
+          "RSI": 40.3,
+          "Bollinger_Upper": 300.5341,
+          "Bollinger_Lower": 269.4409,
+          "Pct_Change": 2.82
+        },
+        {
+          "tarih": "2026-10-21",
+          "Close": 265.0,
+          "SMA_50": 292.285,
+          "EMA_20": 281.4945,
+          "RSI": 30.63,
+          "Bollinger_Upper": 299.9122,
+          "Bollinger_Lower": 266.7128,
+          "Pct_Change": -3.11
+        },
+        {
+          "tarih": "2026-10-22",
+          "Close": 259.0,
+          "SMA_50": 291.305,
+          "EMA_20": 279.3522,
+          "RSI": 20.54,
+          "Bollinger_Upper": 301.4631,
+          "Bollinger_Lower": 262.2119,
+          "Pct_Change": -2.26
+        },
+        {
+          "tarih": "2026-10-23",
+          "Close": 258.0,
+          "SMA_50": 290.36,
+          "EMA_20": 277.3187,
+          "RSI": 19.82,
+          "Bollinger_Upper": 302.0353,
+          "Bollinger_Lower": 258.3647,
+          "Pct_Change": -0.39
+        },
+        {
+          "tarih": "2026-10-26",
+          "Close": 258.25,
+          "SMA_50": 289.505,
+          "EMA_20": 275.5026,
+          "RSI": 20.81,
+          "Bollinger_Upper": 302.4221,
+          "Bollinger_Lower": 255.1029,
+          "Pct_Change": 0.1
+        },
+        {
+          "tarih": "2026-10-27",
+          "Close": 253.0,
+          "SMA_50": 288.555,
+          "EMA_20": 273.3595,
+          "RSI": 20.44,
+          "Bollinger_Upper": 302.3276,
+          "Bollinger_Lower": 251.3474,
+          "Pct_Change": -2.03
+        },
+        {
+          "tarih": "2026-10-28",
+          "Close": 252.5,
+          "SMA_50": 287.58,
+          "EMA_20": 271.3729,
+          "RSI": 21.0,
+          "Bollinger_Upper": 302.7924,
+          "Bollinger_Lower": 247.8076,
+          "Pct_Change": -0.2
+        },
+        {
+          "tarih": "2026-10-30",
+          "Close": 242.2,
+          "SMA_50": 286.399,
+          "EMA_20": 268.5945,
+          "RSI": 13.35,
+          "Bollinger_Upper": 303.735,
+          "Bollinger_Lower": 242.435,
+          "Pct_Change": -4.08
+        },
+        {
+          "tarih": "2026-11-02",
+          "Close": 261.0,
+          "SMA_50": 285.599,
+          "EMA_20": 267.8712,
+          "RSI": 34.31,
+          "Bollinger_Upper": 301.2794,
+          "Bollinger_Lower": 241.7906,
+          "Pct_Change": 7.76
+        },
+        {
+          "tarih": "2026-11-03",
+          "Close": 265.0,
+          "SMA_50": 284.889,
+          "EMA_20": 267.5978,
+          "RSI": 37.1,
+          "Bollinger_Upper": 298.3783,
+          "Bollinger_Lower": 241.9667,
+          "Pct_Change": 1.53
+        },
+        {
+          "tarih": "2026-11-04",
+          "Close": 291.25,
+          "SMA_50": 284.664,
+          "EMA_20": 269.8504,
+          "RSI": 55.91,
+          "Bollinger_Upper": 298.5313,
+          "Bollinger_Lower": 241.8887,
+          "Pct_Change": 9.91
+        },
+        {
+          "tarih": "2026-11-05",
+          "Close": 297.0,
+          "SMA_50": 284.434,
+          "EMA_20": 272.436,
+          "RSI": 59.66,
+          "Bollinger_Upper": 300.711,
+          "Bollinger_Lower": 240.784,
+          "Pct_Change": 1.97
+        },
+        {
+          "tarih": "2026-11-06",
+          "Close": 299.25,
+          "SMA_50": 284.274,
+          "EMA_20": 274.9897,
+          "RSI": 62.4,
+          "Bollinger_Upper": 303.5613,
+          "Bollinger_Lower": 239.4337,
+          "Pct_Change": 0.76
+        },
+        {
+          "tarih": "2026-11-09",
+          "Close": 310.0,
+          "SMA_50": 284.324,
+          "EMA_20": 278.3241,
+          "RSI": 70.54,
+          "Bollinger_Upper": 308.4128,
+          "Bollinger_Lower": 236.8322,
+          "Pct_Change": 3.59
+        },
+        {
+          "tarih": "2026-11-10",
+          "Close": 313.75,
+          "SMA_50": 284.554,
+          "EMA_20": 281.698,
+          "RSI": 69.47,
+          "Bollinger_Upper": 313.9288,
+          "Bollinger_Lower": 234.1162,
+          "Pct_Change": 1.21
+        },
+        {
+          "tarih": "2026-11-11",
+          "Close": 314.75,
+          "SMA_50": 284.819,
+          "EMA_20": 284.8458,
+          "RSI": 75.95,
+          "Bollinger_Upper": 319.0559,
+          "Bollinger_Lower": 231.8391,
+          "Pct_Change": 0.32
+        },
+        {
+          "tarih": "2026-11-12",
+          "Close": 319.0,
+          "SMA_50": 285.369,
+          "EMA_20": 288.0986,
+          "RSI": 81.88,
+          "Bollinger_Upper": 325.1984,
+          "Bollinger_Lower": 229.6716,
+          "Pct_Change": 1.35
+        },
+        {
+          "tarih": "2026-11-13",
+          "Close": 320.25,
+          "SMA_50": 285.944,
+          "EMA_20": 291.1606,
+          "RSI": 82.99,
+          "Bollinger_Upper": 331.0614,
+          "Bollinger_Lower": 228.1586,
+          "Pct_Change": 0.39
+        },
+        {
+          "tarih": "2026-11-16",
+          "Close": 323.5,
+          "SMA_50": 286.494,
+          "EMA_20": 294.2405,
+          "RSI": 83.51,
+          "Bollinger_Upper": 337.0519,
+          "Bollinger_Lower": 227.1681,
+          "Pct_Change": 1.01
+        },
+        {
+          "tarih": "2026-11-17",
+          "Close": 322.25,
+          "SMA_50": 287.004,
+          "EMA_20": 296.9081,
+          "RSI": 87.09,
+          "Bollinger_Upper": 342.1053,
+          "Bollinger_Lower": 227.7397,
+          "Pct_Change": -0.39
+        },
+        {
+          "tarih": "2026-11-18",
+          "Close": 323.75,
+          "SMA_50": 287.379,
+          "EMA_20": 299.4645,
+          "RSI": 87.76,
+          "Bollinger_Upper": 346.8758,
+          "Bollinger_Lower": 227.9942,
+          "Pct_Change": 0.47
+        },
+        {
+          "tarih": "2026-11-19",
+          "Close": 328.25,
+          "SMA_50": 287.924,
+          "EMA_20": 302.206,
+          "RSI": 98.59,
+          "Bollinger_Upper": 351.7191,
+          "Bollinger_Lower": 229.4759,
+          "Pct_Change": 1.39
+        },
+        {
+          "tarih": "2026-11-20",
+          "Close": 329.0,
+          "SMA_50": 288.519,
+          "EMA_20": 304.7578,
+          "RSI": 98.23,
+          "Bollinger_Upper": 355.6162,
+          "Bollinger_Lower": 232.5788,
+          "Pct_Change": 0.23
+        },
+        {
+          "tarih": "2026-11-23",
+          "Close": 321.0,
+          "SMA_50": 288.934,
+          "EMA_20": 306.3046,
+          "RSI": 87.58,
+          "Bollinger_Upper": 357.4207,
+          "Bollinger_Lower": 237.0743,
+          "Pct_Change": -2.43
+        }
+      ]
+    },
+    "GARAN.IS": {
+      "son_kapanis": 142.6,
+      "guncel_gostergeler": {
+        "RSI_14": 66.91,
+        "SMA_50": 134.666,
+        "EMA_20": 142.9404,
+        "Bollinger_Orta": 141.69,
+        "Bollinger_Ust": 162.5273,
+        "Bollinger_Alt": 120.8527,
+        "Son_Gun_Degisim_Yuzde": -1.11
+      },
+      "piyasa_baglami": {
+        "degisim_1g": -1.11,
+        "degisim_5g": -5.0,
+        "degisim_20g": 12.73,
+        "sma50_farki": 5.89
+      },
+      "teknik_yorum_sablonu": "Fiyat (142.60), 50 günlük ortalamanın (134.67) üzerinde. Genel trend YUKARI.\nRSI değeri 66.91 ile nötr bölgede. Dengeli seyir var.",
+      "son_25_gun_serisi": [
+        {
+          "tarih": "2026-10-19",
+          "Close": 132.5,
+          "SMA_50": 130.784,
+          "EMA_20": 130.532,
+          "RSI": 56.03,
+          "Bollinger_Upper": 135.4447,
+          "Bollinger_Lower": 124.4753,
+          "Pct_Change": 0.76
+        },
+        {
+          "tarih": "2026-10-20",
+          "Close": 134.6,
+          "SMA_50": 130.946,
+          "EMA_20": 130.9195,
+          "RSI": 74.27,
+          "Bollinger_Upper": 135.5933,
+          "Bollinger_Lower": 124.3967,
+          "Pct_Change": 1.58
+        },
+        {
+          "tarih": "2026-10-21",
+          "Close": 132.6,
+          "SMA_50": 130.978,
+          "EMA_20": 131.0795,
+          "RSI": 64.04,
+          "Bollinger_Upper": 135.3854,
+          "Bollinger_Lower": 124.4846,
+          "Pct_Change": -1.49
+        },
+        {
+          "tarih": "2026-10-22",
+          "Close": 128.5,
+          "SMA_50": 130.956,
+          "EMA_20": 130.8338,
+          "RSI": 54.89,
+          "Bollinger_Upper": 135.3737,
+          "Bollinger_Lower": 124.4063,
+          "Pct_Change": -3.09
+        },
+        {
+          "tarih": "2026-10-23",
+          "Close": 126.5,
+          "SMA_50": 130.866,
+          "EMA_20": 130.4211,
+          "RSI": 41.91,
+          "Bollinger_Upper": 135.4148,
+          "Bollinger_Lower": 124.0352,
+          "Pct_Change": -1.56
+        },
+        {
+          "tarih": "2026-10-26",
+          "Close": 128.8,
+          "SMA_50": 130.862,
+          "EMA_20": 130.2667,
+          "RSI": 45.31,
+          "Bollinger_Upper": 135.3984,
+          "Bollinger_Lower": 123.9916,
+          "Pct_Change": 1.82
+        },
+        {
+          "tarih": "2026-10-27",
+          "Close": 127.3,
+          "SMA_50": 130.822,
+          "EMA_20": 129.9842,
+          "RSI": 44.96,
+          "Bollinger_Upper": 135.4039,
+          "Bollinger_Lower": 123.8061,
+          "Pct_Change": -1.16
+        },
+        {
+          "tarih": "2026-10-28",
+          "Close": 126.7,
+          "SMA_50": 130.716,
+          "EMA_20": 129.6714,
+          "RSI": 46.4,
+          "Bollinger_Upper": 134.8731,
+          "Bollinger_Lower": 124.7169,
+          "Pct_Change": -0.47
+        },
+        {
+          "tarih": "2026-10-30",
+          "Close": 125.2,
+          "SMA_50": 130.634,
+          "EMA_20": 129.2455,
+          "RSI": 42.02,
+          "Bollinger_Upper": 134.9891,
+          "Bollinger_Lower": 124.5009,
+          "Pct_Change": -1.18
+        },
+        {
+          "tarih": "2026-11-02",
+          "Close": 129.3,
+          "SMA_50": 130.622,
+          "EMA_20": 129.2507,
+          "RSI": 49.15,
+          "Bollinger_Upper": 134.8454,
+          "Bollinger_Lower": 124.9846,
+          "Pct_Change": 3.27
+        },
+        {
+          "tarih": "2026-11-03",
+          "Close": 128.8,
+          "SMA_50": 130.566,
+          "EMA_20": 129.2078,
+          "RSI": 45.58,
+          "Bollinger_Upper": 134.7841,
+          "Bollinger_Lower": 124.8859,
+          "Pct_Change": -0.39
+        },
+        {
+          "tarih": "2026-11-04",
+          "Close": 137.5,
+          "SMA_50": 130.664,
+          "EMA_20": 129.9975,
+          "RSI": 59.67,
+          "Bollinger_Upper": 136.1544,
+          "Bollinger_Lower": 124.1456,
+          "Pct_Change": 6.75
+        },
+        {
+          "tarih": "2026-11-05",
+          "Close": 142.0,
+          "SMA_50": 130.838,
+          "EMA_20": 131.1406,
+          "RSI": 60.86,
+          "Bollinger_Upper": 138.7588,
+          "Bollinger_Lower": 122.7512,
+          "Pct_Change": 3.27
+        },
+        {
+          "tarih": "2026-11-06",
+          "Close": 144.3,
+          "SMA_50": 131.064,
+          "EMA_20": 132.3939,
+          "RSI": 67.2,
+          "Bollinger_Upper": 141.4942,
+          "Bollinger_Lower": 121.5958,
+          "Pct_Change": 1.62
+        },
+        {
+          "tarih": "2026-11-09",
+          "Close": 153.1,
+          "SMA_50": 131.45,
+          "EMA_20": 134.3659,
+          "RSI": 72.89,
+          "Bollinger_Upper": 146.511,
+          "Bollinger_Lower": 118.959,
+          "Pct_Change": 6.1
+        },
+        {
+          "tarih": "2026-11-10",
+          "Close": 155.4,
+          "SMA_50": 131.94,
+          "EMA_20": 136.3692,
+          "RSI": 73.01,
+          "Bollinger_Upper": 151.0213,
+          "Bollinger_Lower": 117.0087,
+          "Pct_Change": 1.5
+        },
+        {
+          "tarih": "2026-11-11",
+          "Close": 154.8,
+          "SMA_50": 132.378,
+          "EMA_20": 138.1245,
+          "RSI": 75.34,
+          "Bollinger_Upper": 154.498,
+          "Bollinger_Lower": 115.882,
+          "Pct_Change": -0.39
+        },
+        {
+          "tarih": "2026-11-12",
+          "Close": 152.6,
+          "SMA_50": 132.79,
+          "EMA_20": 139.5031,
+          "RSI": 78.76,
+          "Bollinger_Upper": 156.9551,
+          "Bollinger_Lower": 115.6349,
+          "Pct_Change": -1.42
+        },
+        {
+          "tarih": "2026-11-13",
+          "Close": 150.3,
+          "SMA_50": 133.168,
+          "EMA_20": 140.5314,
+          "RSI": 78.2,
+          "Bollinger_Upper": 158.6578,
+          "Bollinger_Lower": 115.5722,
+          "Pct_Change": -1.51
+        },
+        {
+          "tarih": "2026-11-16",
+          "Close": 150.1,
+          "SMA_50": 133.542,
+          "EMA_20": 141.4427,
+          "RSI": 76.56,
+          "Bollinger_Upper": 160.1654,
+          "Bollinger_Lower": 115.9246,
+          "Pct_Change": -0.13
+        },
+        {
+          "tarih": "2026-11-17",
+          "Close": 148.7,
+          "SMA_50": 133.846,
+          "EMA_20": 142.1338,
+          "RSI": 76.75,
+          "Bollinger_Upper": 161.3044,
+          "Bollinger_Lower": 116.4056,
+          "Pct_Change": -0.93
+        },
+        {
+          "tarih": "2026-11-18",
+          "Close": 145.7,
+          "SMA_50": 134.04,
+          "EMA_20": 142.4735,
+          "RSI": 72.41,
+          "Bollinger_Upper": 161.9651,
+          "Bollinger_Lower": 116.8549,
+          "Pct_Change": -2.02
+        },
+        {
+          "tarih": "2026-11-19",
+          "Close": 146.4,
+          "SMA_50": 134.282,
+          "EMA_20": 142.8474,
+          "RSI": 75.48,
+          "Bollinger_Upper": 162.6222,
+          "Bollinger_Lower": 117.5778,
+          "Pct_Change": 0.48
+        },
+        {
+          "tarih": "2026-11-20",
+          "Close": 144.2,
+          "SMA_50": 134.498,
+          "EMA_20": 142.9762,
+          "RSI": 68.77,
+          "Bollinger_Upper": 162.7909,
+          "Bollinger_Lower": 118.9791,
+          "Pct_Change": -1.5
+        },
+        {
+          "tarih": "2026-11-23",
+          "Close": 142.6,
+          "SMA_50": 134.666,
+          "EMA_20": 142.9404,
+          "RSI": 66.91,
+          "Bollinger_Upper": 162.5273,
+          "Bollinger_Lower": 120.8527,
+          "Pct_Change": -1.11
+        }
+      ]
+    },
+    "ASELS.IS": {
+      "son_kapanis": 316.0,
+      "guncel_gostergeler": {
+        "RSI_14": 37.14,
+        "SMA_50": 350.66,
+        "EMA_20": 339.557,
+        "Bollinger_Orta": 340.35,
+        "Bollinger_Ust": 359.9274,
+        "Bollinger_Alt": 320.7726,
+        "Son_Gun_Degisim_Yuzde": -3.36
+      },
+      "piyasa_baglami": {
+        "degisim_1g": -3.36,
+        "degisim_5g": -10.48,
+        "degisim_20g": -6.51,
+        "sma50_farki": -9.88
+      },
+      "teknik_yorum_sablonu": "Fiyat (316.00), 50 günlük ortalamanın (350.66) altında. Genel trend AŞAĞI.\nRSI değeri 37.14 ile nötr bölgede. Dengeli seyir var.",
+      "son_25_gun_serisi": [
+        {
+          "tarih": "2026-10-19",
+          "Close": 322.25,
+          "SMA_50": 375.34,
+          "EMA_20": 354.4288,
+          "RSI": 44.14,
+          "Bollinger_Upper": 388.2588,
+          "Bollinger_Lower": 323.8662,
+          "Pct_Change": -5.29
+        },
+        {
+          "tarih": "2026-10-20",
+          "Close": 342.75,
+          "SMA_50": 375.07,
+          "EMA_20": 353.3165,
+          "RSI": 51.99,
+          "Bollinger_Upper": 385.9668,
+          "Bollinger_Lower": 322.9832,
+          "Pct_Change": 6.36
+        },
+        {
+          "tarih": "2026-10-21",
+          "Close": 345.75,
+          "SMA_50": 374.365,
+          "EMA_20": 352.5959,
+          "RSI": 40.43,
+          "Bollinger_Upper": 381.6797,
+          "Bollinger_Lower": 323.6953,
+          "Pct_Change": 0.88
+        },
+        {
+          "tarih": "2026-10-22",
+          "Close": 338.25,
+          "SMA_50": 373.215,
+          "EMA_20": 351.2296,
+          "RSI": 40.35,
+          "Bollinger_Upper": 379.9789,
+          "Bollinger_Lower": 322.4461,
+          "Pct_Change": -2.17
+        },
+        {
+          "tarih": "2026-10-23",
+          "Close": 338.0,
+          "SMA_50": 372.225,
+          "EMA_20": 349.9697,
+          "RSI": 35.86,
+          "Bollinger_Upper": 377.0452,
+          "Bollinger_Lower": 321.9548,
+          "Pct_Change": -0.07
+        },
+        {
+          "tarih": "2026-10-26",
+          "Close": 335.0,
+          "SMA_50": 371.145,
+          "EMA_20": 348.544,
+          "RSI": 32.48,
+          "Bollinger_Upper": 374.8267,
+          "Bollinger_Lower": 320.9483,
+          "Pct_Change": -0.89
+        },
+        {
+          "tarih": "2026-10-27",
+          "Close": 340.75,
+          "SMA_50": 370.335,
+          "EMA_20": 347.8017,
+          "RSI": 45.81,
+          "Bollinger_Upper": 374.7926,
+          "Bollinger_Lower": 321.2074,
+          "Pct_Change": 1.72
+        },
+        {
+          "tarih": "2026-10-28",
+          "Close": 358.5,
+          "SMA_50": 369.445,
+          "EMA_20": 348.8206,
+          "RSI": 54.3,
+          "Bollinger_Upper": 375.7104,
+          "Bollinger_Lower": 322.4896,
+          "Pct_Change": 5.21
+        },
+        {
+          "tarih": "2026-10-30",
+          "Close": 347.0,
+          "SMA_50": 368.34,
+          "EMA_20": 348.6472,
+          "RSI": 48.26,
+          "Bollinger_Upper": 372.6788,
+          "Bollinger_Lower": 323.2212,
+          "Pct_Change": -3.21
+        },
+        {
+          "tarih": "2026-11-02",
+          "Close": 342.25,
+          "SMA_50": 367.12,
+          "EMA_20": 348.0379,
+          "RSI": 50.21,
+          "Bollinger_Upper": 370.7539,
+          "Bollinger_Lower": 323.0961,
+          "Pct_Change": -1.37
+        },
+        {
+          "tarih": "2026-11-03",
+          "Close": 342.5,
+          "SMA_50": 365.975,
+          "EMA_20": 347.5105,
+          "RSI": 46.21,
+          "Bollinger_Upper": 366.3543,
+          "Bollinger_Lower": 324.5957,
+          "Pct_Change": 0.07
+        },
+        {
+          "tarih": "2026-11-04",
+          "Close": 353.75,
+          "SMA_50": 364.975,
+          "EMA_20": 348.1048,
+          "RSI": 52.45,
+          "Bollinger_Upper": 360.1418,
+          "Bollinger_Lower": 328.5832,
+          "Pct_Change": 3.28
+        },
+        {
+          "tarih": "2026-11-05",
+          "Close": 329.0,
+          "SMA_50": 363.59,
+          "EMA_20": 346.2853,
+          "RSI": 42.09,
+          "Bollinger_Upper": 360.4194,
+          "Bollinger_Lower": 326.3306,
+          "Pct_Change": -7.0
+        },
+        {
+          "tarih": "2026-11-06",
+          "Close": 331.75,
+          "SMA_50": 362.15,
+          "EMA_20": 344.9009,
+          "RSI": 46.76,
+          "Bollinger_Upper": 360.1273,
+          "Bollinger_Lower": 324.9227,
+          "Pct_Change": 0.84
+        },
+        {
+          "tarih": "2026-11-09",
+          "Close": 337.75,
+          "SMA_50": 360.825,
+          "EMA_20": 344.2199,
+          "RSI": 56.51,
+          "Bollinger_Upper": 359.0748,
+          "Bollinger_Lower": 324.6252,
+          "Pct_Change": 1.81
+        },
+        {
+          "tarih": "2026-11-10",
+          "Close": 337.0,
+          "SMA_50": 359.84,
+          "EMA_20": 343.5323,
+          "RSI": 47.1,
+          "Bollinger_Upper": 358.9736,
+          "Bollinger_Lower": 324.2514,
+          "Pct_Change": -0.22
+        },
+        {
+          "tarih": "2026-11-11",
+          "Close": 343.25,
+          "SMA_50": 359.015,
+          "EMA_20": 343.5054,
+          "RSI": 48.78,
+          "Bollinger_Upper": 358.0839,
+          "Bollinger_Lower": 324.3911,
+          "Pct_Change": 1.85
+        },
+        {
+          "tarih": "2026-11-12",
+          "Close": 344.75,
+          "SMA_50": 358.295,
+          "EMA_20": 343.6239,
+          "RSI": 53.37,
+          "Bollinger_Upper": 357.7081,
+          "Bollinger_Lower": 324.4419,
+          "Pct_Change": 0.44
+        },
+        {
+          "tarih": "2026-11-13",
+          "Close": 345.5,
+          "SMA_50": 357.6,
+          "EMA_20": 343.8026,
+          "RSI": 53.87,
+          "Bollinger_Upper": 356.916,
+          "Bollinger_Lower": 324.684,
+          "Pct_Change": 0.22
+        },
+        {
+          "tarih": "2026-11-16",
+          "Close": 353.0,
+          "SMA_50": 356.895,
+          "EMA_20": 344.6786,
+          "RSI": 58.87,
+          "Bollinger_Upper": 358.4459,
+          "Bollinger_Lower": 324.4291,
+          "Pct_Change": 2.17
+        },
+        {
+          "tarih": "2026-11-17",
+          "Close": 341.5,
+          "SMA_50": 355.875,
+          "EMA_20": 344.3758,
+          "RSI": 50.35,
+          "Bollinger_Upper": 356.818,
+          "Bollinger_Lower": 327.982,
+          "Pct_Change": -3.26
+        },
+        {
+          "tarih": "2026-11-18",
+          "Close": 343.75,
+          "SMA_50": 354.95,
+          "EMA_20": 344.3162,
+          "RSI": 41.96,
+          "Bollinger_Upper": 356.88,
+          "Bollinger_Lower": 328.02,
+          "Pct_Change": 0.66
+        },
+        {
+          "tarih": "2026-11-19",
+          "Close": 337.0,
+          "SMA_50": 353.645,
+          "EMA_20": 343.6194,
+          "RSI": 44.25,
+          "Bollinger_Upper": 356.5514,
+          "Bollinger_Lower": 327.4736,
+          "Pct_Change": -1.96
+        },
+        {
+          "tarih": "2026-11-20",
+          "Close": 327.0,
+          "SMA_50": 352.215,
+          "EMA_20": 342.0366,
+          "RSI": 41.73,
+          "Bollinger_Upper": 357.4036,
+          "Bollinger_Lower": 325.4964,
+          "Pct_Change": -2.97
+        },
+        {
+          "tarih": "2026-11-23",
+          "Close": 316.0,
+          "SMA_50": 350.66,
+          "EMA_20": 339.557,
+          "RSI": 37.14,
+          "Bollinger_Upper": 359.9274,
+          "Bollinger_Lower": 320.7726,
+          "Pct_Change": -3.36
+        }
+      ]
+    },
+    "USDTRY=X": {
+      "son_kapanis": 50.5963,
+      "guncel_gostergeler": {
+        "RSI_14": 94.76,
+        "SMA_50": 49.5641,
+        "EMA_20": 50.1743,
+        "Bollinger_Orta": 50.1705,
+        "Bollinger_Ust": 50.6697,
+        "Bollinger_Alt": 49.6712,
+        "Son_Gun_Degisim_Yuzde": 0.07
+      },
+      "piyasa_baglami": {
+        "degisim_1g": 0.07,
+        "degisim_5g": 0.51,
+        "degisim_20g": 1.72,
+        "sma50_farki": 2.08
+      },
+      "teknik_yorum_sablonu": "Fiyat (50.60), 50 günlük ortalamanın (49.56) üzerinde. Genel trend YUKARI.\nRSI değeri 94.76 ile AŞIRI ALIM bölgesinde. Kısa vadede düşüş/düzeltme gelebilir.",
+      "son_25_gun_serisi": [
+        {
+          "tarih": "2026-10-20",
+          "Close": 49.5669,
+          "SMA_50": 48.6418,
+          "EMA_20": 49.1943,
+          "RSI": 97.44,
+          "Bollinger_Upper": 49.6368,
+          "Bollinger_Lower": 48.7447,
+          "Pct_Change": 0.09
+        },
+        {
+          "tarih": "2026-10-21",
+          "Close": 49.5843,
+          "SMA_50": 48.6785,
+          "EMA_20": 49.2314,
+          "RSI": 97.43,
+          "Bollinger_Upper": 49.6745,
+          "Bollinger_Lower": 48.7818,
+          "Pct_Change": 0.04
+        },
+        {
+          "tarih": "2026-10-22",
+          "Close": 49.6225,
+          "SMA_50": 48.7157,
+          "EMA_20": 49.2687,
+          "RSI": 97.17,
+          "Bollinger_Upper": 49.7092,
+          "Bollinger_Lower": 48.8243,
+          "Pct_Change": 0.08
+        },
+        {
+          "tarih": "2026-10-23",
+          "Close": 49.7307,
+          "SMA_50": 48.7528,
+          "EMA_20": 49.3127,
+          "RSI": 97.51,
+          "Bollinger_Upper": 49.7678,
+          "Bollinger_Lower": 48.8438,
+          "Pct_Change": 0.22
+        },
+        {
+          "tarih": "2026-10-26",
+          "Close": 49.7388,
+          "SMA_50": 48.7904,
+          "EMA_20": 49.3533,
+          "RSI": 99.9,
+          "Bollinger_Upper": 49.8166,
+          "Bollinger_Lower": 48.8717,
+          "Pct_Change": 0.02
+        },
+        {
+          "tarih": "2026-10-27",
+          "Close": 49.7809,
+          "SMA_50": 48.8279,
+          "EMA_20": 49.394,
+          "RSI": 99.9,
+          "Bollinger_Upper": 49.8644,
+          "Bollinger_Lower": 48.9024,
+          "Pct_Change": 0.08
+        },
+        {
+          "tarih": "2026-10-28",
+          "Close": 49.7992,
+          "SMA_50": 48.8657,
+          "EMA_20": 49.4326,
+          "RSI": 99.9,
+          "Bollinger_Upper": 49.9041,
+          "Bollinger_Lower": 48.9417,
+          "Pct_Change": 0.04
+        },
+        {
+          "tarih": "2026-10-29",
+          "Close": 49.8295,
+          "SMA_50": 48.9034,
+          "EMA_20": 49.4704,
+          "RSI": 99.88,
+          "Bollinger_Upper": 49.9392,
+          "Bollinger_Lower": 48.9868,
+          "Pct_Change": 0.06
+        },
+        {
+          "tarih": "2026-10-30",
+          "Close": 49.9428,
+          "SMA_50": 48.9414,
+          "EMA_20": 49.5154,
+          "RSI": 99.9,
+          "Bollinger_Upper": 49.9973,
+          "Bollinger_Lower": 49.0112,
+          "Pct_Change": 0.23
+        },
+        {
+          "tarih": "2026-11-02",
+          "Close": 49.9658,
+          "SMA_50": 48.9798,
+          "EMA_20": 49.5583,
+          "RSI": 99.9,
+          "Bollinger_Upper": 50.0501,
+          "Bollinger_Lower": 49.0395,
+          "Pct_Change": 0.05
+        },
+        {
+          "tarih": "2026-11-03",
+          "Close": 49.9873,
+          "SMA_50": 49.018,
+          "EMA_20": 49.5991,
+          "RSI": 99.91,
+          "Bollinger_Upper": 50.0917,
+          "Bollinger_Lower": 49.0825,
+          "Pct_Change": 0.04
+        },
+        {
+          "tarih": "2026-11-04",
+          "Close": 50.0102,
+          "SMA_50": 49.056,
+          "EMA_20": 49.6383,
+          "RSI": 99.9,
+          "Bollinger_Upper": 50.1309,
+          "Bollinger_Lower": 49.1248,
+          "Pct_Change": 0.05
+        },
+        {
+          "tarih": "2026-11-05",
+          "Close": 50.0376,
+          "SMA_50": 49.0941,
+          "EMA_20": 49.6763,
+          "RSI": 99.88,
+          "Bollinger_Upper": 50.1639,
+          "Bollinger_Lower": 49.1743,
+          "Pct_Change": 0.05
+        },
+        {
+          "tarih": "2026-11-06",
+          "Close": 50.1529,
+          "SMA_50": 49.1373,
+          "EMA_20": 49.7217,
+          "RSI": 100.0,
+          "Bollinger_Upper": 50.2216,
+          "Bollinger_Lower": 49.2001,
+          "Pct_Change": 0.23
+        },
+        {
+          "tarih": "2026-11-09",
+          "Close": 50.1233,
+          "SMA_50": 49.1748,
+          "EMA_20": 49.76,
+          "RSI": 95.2,
+          "Bollinger_Upper": 50.2606,
+          "Bollinger_Lower": 49.2399,
+          "Pct_Change": -0.06
+        },
+        {
+          "tarih": "2026-11-10",
+          "Close": 50.2157,
+          "SMA_50": 49.2138,
+          "EMA_20": 49.8034,
+          "RSI": 95.72,
+          "Bollinger_Upper": 50.3062,
+          "Bollinger_Lower": 49.282,
+          "Pct_Change": 0.18
+        },
+        {
+          "tarih": "2026-11-11",
+          "Close": 50.2096,
+          "SMA_50": 49.2524,
+          "EMA_20": 49.8421,
+          "RSI": 94.59,
+          "Bollinger_Upper": 50.3351,
+          "Bollinger_Lower": 49.3398,
+          "Pct_Change": -0.01
+        },
+        {
+          "tarih": "2026-11-12",
+          "Close": 50.2539,
+          "SMA_50": 49.2911,
+          "EMA_20": 49.8813,
+          "RSI": 94.01,
+          "Bollinger_Upper": 50.367,
+          "Bollinger_Lower": 49.3928,
+          "Pct_Change": 0.09
+        },
+        {
+          "tarih": "2026-11-13",
+          "Close": 50.2819,
+          "SMA_50": 49.3282,
+          "EMA_20": 49.9194,
+          "RSI": 94.2,
+          "Bollinger_Upper": 50.4062,
+          "Bollinger_Lower": 49.4295,
+          "Pct_Change": 0.06
+        },
+        {
+          "tarih": "2026-11-16",
+          "Close": 50.3403,
+          "SMA_50": 49.3665,
+          "EMA_20": 49.9595,
+          "RSI": 94.35,
+          "Bollinger_Upper": 50.4447,
+          "Bollinger_Lower": 49.4727,
+          "Pct_Change": 0.12
+        },
+        {
+          "tarih": "2026-11-17",
+          "Close": 50.4185,
+          "SMA_50": 49.4059,
+          "EMA_20": 50.0032,
+          "RSI": 94.84,
+          "Bollinger_Upper": 50.4919,
+          "Bollinger_Lower": 49.5106,
+          "Pct_Change": 0.16
+        },
+        {
+          "tarih": "2026-11-18",
+          "Close": 50.4383,
+          "SMA_50": 49.4454,
+          "EMA_20": 50.0447,
+          "RSI": 94.76,
+          "Bollinger_Upper": 50.5305,
+          "Bollinger_Lower": 49.5575,
+          "Pct_Change": 0.04
+        },
+        {
+          "tarih": "2026-11-19",
+          "Close": 50.462,
+          "SMA_50": 49.4849,
+          "EMA_20": 50.0844,
+          "RSI": 93.97,
+          "Bollinger_Upper": 50.5641,
+          "Bollinger_Lower": 49.6078,
+          "Pct_Change": 0.05
+        },
+        {
+          "tarih": "2026-11-20",
+          "Close": 50.5623,
+          "SMA_50": 49.5243,
+          "EMA_20": 50.1299,
+          "RSI": 94.67,
+          "Bollinger_Upper": 50.62,
+          "Bollinger_Lower": 49.6351,
+          "Pct_Change": 0.2
+        },
+        {
+          "tarih": "2026-11-23",
+          "Close": 50.5963,
+          "SMA_50": 49.5641,
+          "EMA_20": 50.1743,
+          "RSI": 94.76,
+          "Bollinger_Upper": 50.6697,
+          "Bollinger_Lower": 49.6712,
+          "Pct_Change": 0.07
+        }
+      ]
+    },
+    "EURTRY=X": {
+      "son_kapanis": 55.3567,
+      "guncel_gostergeler": {
+        "RSI_14": 36.05,
+        "SMA_50": 55.6831,
+        "EMA_20": 55.6878,
+        "Bollinger_Orta": 55.7912,
+        "Bollinger_Ust": 56.4336,
+        "Bollinger_Alt": 55.1489,
+        "Son_Gun_Degisim_Yuzde": -0.24
+      },
+      "piyasa_baglami": {
+        "degisim_1g": -0.24,
+        "degisim_5g": -0.33,
+        "degisim_20g": -0.85,
+        "sma50_farki": -0.59
+      },
+      "teknik_yorum_sablonu": "Fiyat (55.36), 50 günlük ortalamanın (55.68) altında. Genel trend AŞAĞI.\nRSI değeri 36.05 ile nötr bölgede. Dengeli seyir var.",
+      "son_25_gun_serisi": [
+        {
+          "tarih": "2026-10-20",
+          "Close": 55.6051,
+          "SMA_50": 55.7637,
+          "EMA_20": 55.501,
+          "RSI": 49.94,
+          "Bollinger_Upper": 55.9446,
+          "Bollinger_Lower": 54.9753,
+          "Pct_Change": 0.05
+        },
+        {
+          "tarih": "2026-10-21",
+          "Close": 55.6886,
+          "SMA_50": 55.7746,
+          "EMA_20": 55.5188,
+          "RSI": 52.92,
+          "Bollinger_Upper": 55.8921,
+          "Bollinger_Lower": 55.003,
+          "Pct_Change": 0.15
+        },
+        {
+          "tarih": "2026-10-22",
+          "Close": 55.7467,
+          "SMA_50": 55.7882,
+          "EMA_20": 55.5405,
+          "RSI": 62.54,
+          "Bollinger_Upper": 55.9036,
+          "Bollinger_Lower": 54.9981,
+          "Pct_Change": 0.1
+        },
+        {
+          "tarih": "2026-10-23",
+          "Close": 55.8499,
+          "SMA_50": 55.8005,
+          "EMA_20": 55.57,
+          "RSI": 62.56,
+          "Bollinger_Upper": 55.9352,
+          "Bollinger_Lower": 54.983,
+          "Pct_Change": 0.19
+        },
+        {
+          "tarih": "2026-10-26",
+          "Close": 55.8307,
+          "SMA_50": 55.8101,
+          "EMA_20": 55.5948,
+          "RSI": 70.76,
+          "Bollinger_Upper": 55.9536,
+          "Bollinger_Lower": 54.9743,
+          "Pct_Change": -0.03
+        },
+        {
+          "tarih": "2026-10-27",
+          "Close": 55.6456,
+          "SMA_50": 55.8134,
+          "EMA_20": 55.5997,
+          "RSI": 57.6,
+          "Bollinger_Upper": 55.9397,
+          "Bollinger_Lower": 54.979,
+          "Pct_Change": -0.33
+        },
+        {
+          "tarih": "2026-10-28",
+          "Close": 55.4426,
+          "SMA_50": 55.8126,
+          "EMA_20": 55.5847,
+          "RSI": 59.33,
+          "Bollinger_Upper": 55.9263,
+          "Bollinger_Lower": 54.9758,
+          "Pct_Change": -0.36
+        },
+        {
+          "tarih": "2026-10-29",
+          "Close": 55.6881,
+          "SMA_50": 55.8064,
+          "EMA_20": 55.5946,
+          "RSI": 60.73,
+          "Bollinger_Upper": 55.9429,
+          "Bollinger_Lower": 54.9727,
+          "Pct_Change": 0.44
+        },
+        {
+          "tarih": "2026-10-30",
+          "Close": 55.8569,
+          "SMA_50": 55.8003,
+          "EMA_20": 55.6195,
+          "RSI": 64.94,
+          "Bollinger_Upper": 55.993,
+          "Bollinger_Lower": 54.9851,
+          "Pct_Change": 0.3
+        },
+        {
+          "tarih": "2026-11-02",
+          "Close": 55.7677,
+          "SMA_50": 55.7928,
+          "EMA_20": 55.6337,
+          "RSI": 70.73,
+          "Bollinger_Upper": 56.0239,
+          "Bollinger_Lower": 54.9976,
+          "Pct_Change": -0.16
+        },
+        {
+          "tarih": "2026-11-03",
+          "Close": 55.97,
+          "SMA_50": 55.7905,
+          "EMA_20": 55.6657,
+          "RSI": 70.01,
+          "Bollinger_Upper": 56.065,
+          "Bollinger_Lower": 55.0458,
+          "Pct_Change": 0.36
+        },
+        {
+          "tarih": "2026-11-04",
+          "Close": 56.077,
+          "SMA_50": 55.7883,
+          "EMA_20": 55.7049,
+          "RSI": 71.25,
+          "Bollinger_Upper": 56.1431,
+          "Bollinger_Lower": 55.0364,
+          "Pct_Change": 0.19
+        },
+        {
+          "tarih": "2026-11-05",
+          "Close": 56.3275,
+          "SMA_50": 55.7915,
+          "EMA_20": 55.7642,
+          "RSI": 71.69,
+          "Bollinger_Upper": 56.2515,
+          "Bollinger_Lower": 55.0471,
+          "Pct_Change": 0.45
+        },
+        {
+          "tarih": "2026-11-06",
+          "Close": 56.3392,
+          "SMA_50": 55.8,
+          "EMA_20": 55.8189,
+          "RSI": 71.66,
+          "Bollinger_Upper": 56.3556,
+          "Bollinger_Lower": 55.0446,
+          "Pct_Change": 0.02
+        },
+        {
+          "tarih": "2026-11-09",
+          "Close": 55.9341,
+          "SMA_50": 55.8002,
+          "EMA_20": 55.8299,
+          "RSI": 57.71,
+          "Bollinger_Upper": 56.3673,
+          "Bollinger_Lower": 55.0958,
+          "Pct_Change": -0.72
+        },
+        {
+          "tarih": "2026-11-10",
+          "Close": 56.3441,
+          "SMA_50": 55.8053,
+          "EMA_20": 55.8789,
+          "RSI": 63.33,
+          "Bollinger_Upper": 56.4056,
+          "Bollinger_Lower": 55.1854,
+          "Pct_Change": 0.73
+        },
+        {
+          "tarih": "2026-11-11",
+          "Close": 56.1193,
+          "SMA_50": 55.8081,
+          "EMA_20": 55.9018,
+          "RSI": 57.1,
+          "Bollinger_Upper": 56.4168,
+          "Bollinger_Lower": 55.2555,
+          "Pct_Change": -0.4
+        },
+        {
+          "tarih": "2026-11-12",
+          "Close": 55.8684,
+          "SMA_50": 55.806,
+          "EMA_20": 55.8986,
+          "RSI": 50.33,
+          "Bollinger_Upper": 56.3946,
+          "Bollinger_Lower": 55.3302,
+          "Pct_Change": -0.45
+        },
+        {
+          "tarih": "2026-11-13",
+          "Close": 55.6043,
+          "SMA_50": 55.7921,
+          "EMA_20": 55.8706,
+          "RSI": 46.25,
+          "Bollinger_Upper": 56.3923,
+          "Bollinger_Lower": 55.3363,
+          "Pct_Change": -0.47
+        },
+        {
+          "tarih": "2026-11-16",
+          "Close": 55.5397,
+          "SMA_50": 55.7776,
+          "EMA_20": 55.8391,
+          "RSI": 48.17,
+          "Bollinger_Upper": 56.3952,
+          "Bollinger_Lower": 55.3294,
+          "Pct_Change": -0.12
+        },
+        {
+          "tarih": "2026-11-17",
+          "Close": 55.482,
+          "SMA_50": 55.7601,
+          "EMA_20": 55.8051,
+          "RSI": 50.72,
+          "Bollinger_Upper": 56.4042,
+          "Bollinger_Lower": 55.3081,
+          "Pct_Change": -0.1
+        },
+        {
+          "tarih": "2026-11-18",
+          "Close": 55.4789,
+          "SMA_50": 55.7422,
+          "EMA_20": 55.774,
+          "RSI": 45.83,
+          "Bollinger_Upper": 56.4148,
+          "Bollinger_Lower": 55.2765,
+          "Pct_Change": -0.01
+        },
+        {
+          "tarih": "2026-11-19",
+          "Close": 55.4896,
+          "SMA_50": 55.7218,
+          "EMA_20": 55.7469,
+          "RSI": 42.19,
+          "Bollinger_Upper": 56.4226,
+          "Bollinger_Lower": 55.243,
+          "Pct_Change": 0.02
+        },
+        {
+          "tarih": "2026-11-20",
+          "Close": 55.4925,
+          "SMA_50": 55.7036,
+          "EMA_20": 55.7227,
+          "RSI": 43.92,
+          "Bollinger_Upper": 56.4239,
+          "Bollinger_Lower": 55.206,
+          "Pct_Change": 0.01
+        },
+        {
+          "tarih": "2026-11-23",
+          "Close": 55.3567,
+          "SMA_50": 55.6831,
+          "EMA_20": 55.6878,
+          "RSI": 36.05,
+          "Bollinger_Upper": 56.4336,
+          "Bollinger_Lower": 55.1489,
+          "Pct_Change": -0.24
+        }
+      ]
+    },
+    "GC=F": {
+      "son_kapanis": 3616.0,
+      "guncel_gostergeler": {
+        "RSI_14": 33.37,
+        "SMA_50": 4096.144,
+        "EMA_20": 3883.01,
+        "Bollinger_Orta": 3921.035,
+        "Bollinger_Ust": 4261.6224,
+        "Bollinger_Alt": 3580.4475,
+        "Son_Gun_Degisim_Yuzde": 2.86
+      },
+      "piyasa_baglami": {
+        "degisim_1g": 2.86,
+        "degisim_5g": -6.15,
+        "degisim_20g": -10.46,
+        "sma50_farki": -11.72
+      },
+      "teknik_yorum_sablonu": "Fiyat (3616.00), 50 günlük ortalamanın (4096.14) altında. Genel trend AŞAĞI.\nRSI değeri 33.37 ile nötr bölgede. Dengeli seyir var.",
+      "son_25_gun_serisi": [
+        {
+          "tarih": "2026-10-20",
+          "Close": 4142.6001,
+          "SMA_50": 4364.08,
+          "EMA_20": 4207.4089,
+          "RSI": 44.91,
+          "Bollinger_Upper": 4306.099,
+          "Bollinger_Lower": 4076.361,
+          "Pct_Change": -0.42
+        },
+        {
+          "tarih": "2026-10-21",
+          "Close": 4150.0,
+          "SMA_50": 4358.258,
+          "EMA_20": 4201.9414,
+          "RSI": 43.85,
+          "Bollinger_Upper": 4282.0551,
+          "Bollinger_Lower": 4083.5649,
+          "Pct_Change": 0.18
+        },
+        {
+          "tarih": "2026-10-22",
+          "Close": 4060.3999,
+          "SMA_50": 4350.116,
+          "EMA_20": 4188.4612,
+          "RSI": 39.27,
+          "Bollinger_Upper": 4268.9938,
+          "Bollinger_Lower": 4072.8663,
+          "Pct_Change": -2.16
+        },
+        {
+          "tarih": "2026-10-23",
+          "Close": 4007.8999,
+          "SMA_50": 4341.866,
+          "EMA_20": 4171.2649,
+          "RSI": 35.73,
+          "Bollinger_Upper": 4252.3468,
+          "Bollinger_Lower": 4058.1831,
+          "Pct_Change": -1.29
+        },
+        {
+          "tarih": "2026-10-26",
+          "Close": 4038.3999,
+          "SMA_50": 4333.888,
+          "EMA_20": 4158.6111,
+          "RSI": 35.76,
+          "Bollinger_Upper": 4258.701,
+          "Bollinger_Lower": 4038.829,
+          "Pct_Change": 0.76
+        },
+        {
+          "tarih": "2026-10-27",
+          "Close": 4074.6001,
+          "SMA_50": 4325.906,
+          "EMA_20": 4150.6101,
+          "RSI": 43.54,
+          "Bollinger_Upper": 4257.2033,
+          "Bollinger_Lower": 4029.8167,
+          "Pct_Change": 0.9
+        },
+        {
+          "tarih": "2026-10-28",
+          "Close": 4051.6001,
+          "SMA_50": 4318.526,
+          "EMA_20": 4141.1805,
+          "RSI": 39.84,
+          "Bollinger_Upper": 4255.5814,
+          "Bollinger_Lower": 4017.9285,
+          "Pct_Change": -0.56
+        },
+        {
+          "tarih": "2026-10-29",
+          "Close": 4031.3999,
+          "SMA_50": 4308.248,
+          "EMA_20": 4130.7252,
+          "RSI": 30.72,
+          "Bollinger_Upper": 4251.6791,
+          "Bollinger_Lower": 4004.7409,
+          "Pct_Change": -0.5
+        },
+        {
+          "tarih": "2026-10-30",
+          "Close": 3898.8999,
+          "SMA_50": 4294.798,
+          "EMA_20": 4108.6466,
+          "RSI": 25.12,
+          "Bollinger_Upper": 4274.2247,
+          "Bollinger_Lower": 3955.8553,
+          "Pct_Change": -3.29
+        },
+        {
+          "tarih": "2026-11-02",
+          "Close": 3969.6001,
+          "SMA_50": 4280.578,
+          "EMA_20": 4095.4041,
+          "RSI": 33.87,
+          "Bollinger_Upper": 4276.1411,
+          "Bollinger_Lower": 3935.2189,
+          "Pct_Change": 1.81
+        },
+        {
+          "tarih": "2026-11-03",
+          "Close": 3940.3999,
+          "SMA_50": 4265.43,
+          "EMA_20": 4080.6418,
+          "RSI": 36.12,
+          "Bollinger_Upper": 4274.3747,
+          "Bollinger_Lower": 3912.3153,
+          "Pct_Change": -0.74
+        },
+        {
+          "tarih": "2026-11-04",
+          "Close": 4073.0,
+          "SMA_50": 4253.0,
+          "EMA_20": 4079.914,
+          "RSI": 42.8,
+          "Bollinger_Upper": 4269.7892,
+          "Bollinger_Lower": 3910.1308,
+          "Pct_Change": 3.37
+        },
+        {
+          "tarih": "2026-11-05",
+          "Close": 4113.5,
+          "SMA_50": 4242.204,
+          "EMA_20": 4083.1127,
+          "RSI": 45.19,
+          "Bollinger_Upper": 4265.2367,
+          "Bollinger_Lower": 3910.3333,
+          "Pct_Change": 0.99
+        },
+        {
+          "tarih": "2026-11-06",
+          "Close": 4074.8999,
+          "SMA_50": 4230.422,
+          "EMA_20": 4082.3305,
+          "RSI": 44.09,
+          "Bollinger_Upper": 4247.5578,
+          "Bollinger_Lower": 3913.8721,
+          "Pct_Change": -0.94
+        },
+        {
+          "tarih": "2026-11-09",
+          "Close": 4114.5,
+          "SMA_50": 4222.114,
+          "EMA_20": 4085.3943,
+          "RSI": 48.11,
+          "Bollinger_Upper": 4236.5152,
+          "Bollinger_Lower": 3917.3048,
+          "Pct_Change": 0.97
+        },
+        {
+          "tarih": "2026-11-10",
+          "Close": 4030.2,
+          "SMA_50": 4213.088,
+          "EMA_20": 4080.1377,
+          "RSI": 42.7,
+          "Bollinger_Upper": 4223.1248,
+          "Bollinger_Lower": 3915.9852,
+          "Pct_Change": -2.05
+        },
+        {
+          "tarih": "2026-11-11",
+          "Close": 4000.5,
+          "SMA_50": 4205.17,
+          "EMA_20": 4072.5531,
+          "RSI": 46.06,
+          "Bollinger_Upper": 4219.609,
+          "Bollinger_Lower": 3908.761,
+          "Pct_Change": -0.74
+        },
+        {
+          "tarih": "2026-11-12",
+          "Close": 3885.3,
+          "SMA_50": 4194.584,
+          "EMA_20": 4054.7195,
+          "RSI": 42.55,
+          "Bollinger_Upper": 4216.3119,
+          "Bollinger_Lower": 3883.5781,
+          "Pct_Change": -2.88
+        },
+        {
+          "tarih": "2026-11-13",
+          "Close": 3886.3,
+          "SMA_50": 4181.512,
+          "EMA_20": 4038.6796,
+          "RSI": 40.41,
+          "Bollinger_Upper": 4204.8504,
+          "Bollinger_Lower": 3865.5596,
+          "Pct_Change": 0.03
+        },
+        {
+          "tarih": "2026-11-16",
+          "Close": 3853.0,
+          "SMA_50": 4169.04,
+          "EMA_20": 4020.9958,
+          "RSI": 35.98,
+          "Bollinger_Upper": 4197.31,
+          "Bollinger_Lower": 3842.39,
+          "Pct_Change": -0.86
+        },
+        {
+          "tarih": "2026-11-17",
+          "Close": 3864.2,
+          "SMA_50": 4157.544,
+          "EMA_20": 4006.0629,
+          "RSI": 37.97,
+          "Bollinger_Upper": 4186.4971,
+          "Bollinger_Lower": 3825.3629,
+          "Pct_Change": 0.29
+        },
+        {
+          "tarih": "2026-11-18",
+          "Close": 3741.8999,
+          "SMA_50": 4143.168,
+          "EMA_20": 3980.9045,
+          "RSI": 33.56,
+          "Bollinger_Upper": 4188.3989,
+          "Bollinger_Lower": 3782.6511,
+          "Pct_Change": -3.16
+        },
+        {
+          "tarih": "2026-11-19",
+          "Close": 3685.5,
+          "SMA_50": 4128.732,
+          "EMA_20": 3952.7707,
+          "RSI": 36.74,
+          "Bollinger_Upper": 4206.4644,
+          "Bollinger_Lower": 3727.0956,
+          "Pct_Change": -1.51
+        },
+        {
+          "tarih": "2026-11-20",
+          "Close": 3515.3999,
+          "SMA_50": 4110.862,
+          "EMA_20": 3911.1164,
+          "RSI": 24.88,
+          "Bollinger_Upper": 4254.2974,
+          "Bollinger_Lower": 3630.0126,
+          "Pct_Change": -4.62
+        },
+        {
+          "tarih": "2026-11-23",
+          "Close": 3616.0,
+          "SMA_50": 4096.144,
+          "EMA_20": 3883.01,
+          "RSI": 33.37,
+          "Bollinger_Upper": 4261.6224,
+          "Bollinger_Lower": 3580.4475,
+          "Pct_Change": 2.86
+        }
+      ]
+    },
+    "BTC-USD": {
+      "son_kapanis": 63029.5195,
+      "guncel_gostergeler": {
+        "RSI_14": 24.14,
+        "SMA_50": 76194.9057,
+        "EMA_20": 67335.4366,
+        "Bollinger_Orta": 68604.1518,
+        "Bollinger_Ust": 81803.057,
+        "Bollinger_Alt": 55405.2466,
+        "Son_Gun_Degisim_Yuzde": 3.05
+      },
+      "piyasa_baglami": {
+        "degisim_1g": 3.05,
+        "degisim_5g": 0.07,
+        "degisim_20g": -18.51,
+        "sma50_farki": -17.28
+      },
+      "teknik_yorum_sablonu": "Fiyat (63029.52), 50 günlük ortalamanın (76194.91) altında. Genel trend AŞAĞI.\nRSI değeri 24.14 ile AŞIRI SATIŞ bölgesinde. Tepki yükselişi gelebilir.",
+      "son_25_gun_serisi": [
+        {
+          "tarih": "2026-10-30",
+          "Close": 77198.2109,
+          "SMA_50": 81891.1334,
+          "EMA_20": 80935.7359,
+          "RSI": 32.67,
+          "Bollinger_Upper": 84678.5509,
+          "Bollinger_Lower": 77941.6225,
+          "Pct_Change": -0.74
+        },
+        {
+          "tarih": "2026-10-31",
+          "Close": 77434.75,
+          "SMA_50": 81896.3525,
+          "EMA_20": 80602.3086,
+          "RSI": 34.25,
+          "Bollinger_Upper": 84591.7215,
+          "Bollinger_Lower": 77403.9801,
+          "Pct_Change": 0.31
+        },
+        {
+          "tarih": "2026-11-01",
+          "Close": 78248.4531,
+          "SMA_50": 81915.9122,
+          "EMA_20": 80378.1319,
+          "RSI": 35.17,
+          "Bollinger_Upper": 84597.6205,
+          "Bollinger_Lower": 77046.6701,
+          "Pct_Change": 1.05
+        },
+        {
+          "tarih": "2026-11-02",
+          "Close": 76677.2969,
+          "SMA_50": 81912.695,
+          "EMA_20": 80025.6714,
+          "RSI": 31.66,
+          "Bollinger_Upper": 84544.739,
+          "Bollinger_Lower": 76457.7688,
+          "Pct_Change": -2.01
+        },
+        {
+          "tarih": "2026-11-03",
+          "Close": 77345.0469,
+          "SMA_50": 81896.3283,
+          "EMA_20": 79770.3739,
+          "RSI": 29.57,
+          "Bollinger_Upper": 84535.6884,
+          "Bollinger_Lower": 76045.0749,
+          "Pct_Change": 0.87
+        },
+        {
+          "tarih": "2026-11-04",
+          "Close": 80405.2891,
+          "SMA_50": 81992.1839,
+          "EMA_20": 79830.842,
+          "RSI": 38.5,
+          "Bollinger_Upper": 84359.5702,
+          "Bollinger_Lower": 76047.5759,
+          "Pct_Change": 3.96
+        },
+        {
+          "tarih": "2026-11-05",
+          "Close": 75942.125,
+          "SMA_50": 81988.02,
+          "EMA_20": 79460.488,
+          "RSI": 34.61,
+          "Bollinger_Upper": 84444.0381,
+          "Bollinger_Lower": 75407.24,
+          "Pct_Change": -5.55
+        },
+        {
+          "tarih": "2026-11-06",
+          "Close": 75746.9297,
+          "SMA_50": 81974.8831,
+          "EMA_20": 79106.8158,
+          "RSI": 34.7,
+          "Bollinger_Upper": 84472.0428,
+          "Bollinger_Lower": 74815.7135,
+          "Pct_Change": -0.26
+        },
+        {
+          "tarih": "2026-11-07",
+          "Close": 75747.5781,
+          "SMA_50": 81871.8055,
+          "EMA_20": 78786.8884,
+          "RSI": 35.27,
+          "Bollinger_Upper": 84321.0843,
+          "Bollinger_Lower": 74339.6696,
+          "Pct_Change": 0.0
+        },
+        {
+          "tarih": "2026-11-08",
+          "Close": 74584.6484,
+          "SMA_50": 81738.8248,
+          "EMA_20": 78386.675,
+          "RSI": 34.48,
+          "Bollinger_Upper": 84234.9643,
+          "Bollinger_Lower": 73698.9005,
+          "Pct_Change": -1.54
+        },
+        {
+          "tarih": "2026-11-09",
+          "Close": 75223.1484,
+          "SMA_50": 81620.4356,
+          "EMA_20": 78085.3868,
+          "RSI": 36.82,
+          "Bollinger_Upper": 83753.1758,
+          "Bollinger_Lower": 73408.9039,
+          "Pct_Change": 0.86
+        },
+        {
+          "tarih": "2026-11-10",
+          "Close": 73720.1172,
+          "SMA_50": 81362.7797,
+          "EMA_20": 77669.6468,
+          "RSI": 31.2,
+          "Bollinger_Upper": 83006.1825,
+          "Bollinger_Lower": 73126.712,
+          "Pct_Change": -2.0
+        },
+        {
+          "tarih": "2026-11-11",
+          "Close": 73964.4688,
+          "SMA_50": 81118.6234,
+          "EMA_20": 77316.7727,
+          "RSI": 30.4,
+          "Bollinger_Upper": 82714.815,
+          "Bollinger_Lower": 72683.3374,
+          "Pct_Change": 0.33
+        },
+        {
+          "tarih": "2026-11-12",
+          "Close": 71342.9688,
+          "SMA_50": 80857.8227,
+          "EMA_20": 76747.839,
+          "RSI": 31.89,
+          "Bollinger_Upper": 82714.1449,
+          "Bollinger_Lower": 71710.8855,
+          "Pct_Change": -3.54
+        },
+        {
+          "tarih": "2026-11-13",
+          "Close": 68249.2734,
+          "SMA_50": 80535.2269,
+          "EMA_20": 75938.4518,
+          "RSI": 27.93,
+          "Bollinger_Upper": 83129.9157,
+          "Bollinger_Lower": 70040.9585,
+          "Pct_Change": -4.34
+        },
+        {
+          "tarih": "2026-11-14",
+          "Close": 64128.0508,
+          "SMA_50": 80137.0895,
+          "EMA_20": 74813.6517,
+          "RSI": 22.46,
+          "Bollinger_Upper": 84178.2502,
+          "Bollinger_Lower": 67403.0283,
+          "Pct_Change": -6.04
+        },
+        {
+          "tarih": "2026-11-15",
+          "Close": 65305.0625,
+          "SMA_50": 79755.0616,
+          "EMA_20": 73908.0718,
+          "RSI": 23.61,
+          "Bollinger_Upper": 84408.7213,
+          "Bollinger_Lower": 65702.3979,
+          "Pct_Change": 1.84
+        },
+        {
+          "tarih": "2026-11-16",
+          "Close": 64855.8438,
+          "SMA_50": 79363.0168,
+          "EMA_20": 73045.9548,
+          "RSI": 24.74,
+          "Bollinger_Upper": 84245.4171,
+          "Bollinger_Lower": 64270.7786,
+          "Pct_Change": -0.69
+        },
+        {
+          "tarih": "2026-11-17",
+          "Close": 64893.9453,
+          "SMA_50": 78990.8435,
+          "EMA_20": 72269.573,
+          "RSI": 22.66,
+          "Bollinger_Upper": 83688.3769,
+          "Bollinger_Lower": 63190.4547,
+          "Pct_Change": 0.06
+        },
+        {
+          "tarih": "2026-11-18",
+          "Close": 62987.2656,
+          "SMA_50": 78578.1402,
+          "EMA_20": 71385.5437,
+          "RSI": 9.71,
+          "Bollinger_Upper": 83735.4776,
+          "Bollinger_Lower": 61664.5697,
+          "Pct_Change": -2.94
+        },
+        {
+          "tarih": "2026-11-19",
+          "Close": 61901.8203,
+          "SMA_50": 78145.0996,
+          "EMA_20": 70482.332,
+          "RSI": 11.51,
+          "Bollinger_Upper": 83750.7107,
+          "Bollinger_Lower": 60119.6975,
+          "Pct_Change": -1.72
+        },
+        {
+          "tarih": "2026-11-20",
+          "Close": 58798.9805,
+          "SMA_50": 77624.0172,
+          "EMA_20": 69369.6318,
+          "RSI": 9.92,
+          "Bollinger_Upper": 83884.0842,
+          "Bollinger_Lower": 58122.7471,
+          "Pct_Change": -5.01
+        },
+        {
+          "tarih": "2026-11-21",
+          "Close": 60094.0898,
+          "SMA_50": 77135.9548,
+          "EMA_20": 68486.2469,
+          "RSI": 15.12,
+          "Bollinger_Upper": 83379.0387,
+          "Bollinger_Lower": 56812.3562,
+          "Pct_Change": 2.2
+        },
+        {
+          "tarih": "2026-11-22",
+          "Close": 61161.9102,
+          "SMA_50": 76663.9214,
+          "EMA_20": 67788.691,
+          "RSI": 19.96,
+          "Bollinger_Upper": 82795.6976,
+          "Bollinger_Lower": 55844.1586,
+          "Pct_Change": 1.78
+        },
+        {
+          "tarih": "2026-11-23",
+          "Close": 63029.5195,
+          "SMA_50": 76194.9057,
+          "EMA_20": 67335.4366,
+          "RSI": 24.14,
+          "Bollinger_Upper": 81803.057,
+          "Bollinger_Lower": 55405.2466,
+          "Pct_Change": 3.05
+        }
+      ]
+    },
+    "ETH-USD": {
+      "son_kapanis": 1780.36,
+      "guncel_gostergeler": {
+        "RSI_14": 28.71,
+        "SMA_50": 2227.1251,
+        "EMA_20": 1912.9577,
+        "Bollinger_Orta": 1950.5485,
+        "Bollinger_Ust": 2401.3984,
+        "Bollinger_Alt": 1499.6986,
+        "Son_Gun_Degisim_Yuzde": 3.44
+      },
+      "piyasa_baglami": {
+        "degisim_1g": 3.44,
+        "degisim_5g": 0.32,
+        "degisim_20g": -21.66,
+        "sma50_farki": -20.06
+      },
+      "teknik_yorum_sablonu": "Fiyat (1780.36), 50 günlük ortalamanın (2227.13) altında. Genel trend AŞAĞI.\nRSI değeri 28.71 ile AŞIRI SATIŞ bölgesinde. Tepki yükselişi gelebilir.",
+      "son_25_gun_serisi": [
+        {
+          "tarih": "2026-10-30",
+          "Close": 2241.0544,
+          "SMA_50": 2525.7766,
+          "EMA_20": 2390.5662,
+          "RSI": 27.84,
+          "Bollinger_Upper": 2541.0833,
+          "Bollinger_Lower": 2244.3484,
+          "Pct_Change": -0.38
+        },
+        {
+          "tarih": "2026-10-31",
+          "Close": 2252.7478,
+          "SMA_50": 2520.5369,
+          "EMA_20": 2377.4406,
+          "RSI": 31.38,
+          "Bollinger_Upper": 2523.7268,
+          "Bollinger_Lower": 2233.5098,
+          "Pct_Change": 0.52
+        },
+        {
+          "tarih": "2026-11-01",
+          "Close": 2273.0522,
+          "SMA_50": 2515.4791,
+          "EMA_20": 2367.4989,
+          "RSI": 33.3,
+          "Bollinger_Upper": 2518.9957,
+          "Bollinger_Lower": 2221.1104,
+          "Pct_Change": 0.9
+        },
+        {
+          "tarih": "2026-11-02",
+          "Close": 2248.8862,
+          "SMA_50": 2510.9164,
+          "EMA_20": 2356.2024,
+          "RSI": 31.72,
+          "Bollinger_Upper": 2503.4602,
+          "Bollinger_Lower": 2211.872,
+          "Pct_Change": -1.06
+        },
+        {
+          "tarih": "2026-11-03",
+          "Close": 2272.7258,
+          "SMA_50": 2506.0827,
+          "EMA_20": 2348.2523,
+          "RSI": 28.7,
+          "Bollinger_Upper": 2497.974,
+          "Bollinger_Lower": 2202.8101,
+          "Pct_Change": 1.06
+        },
+        {
+          "tarih": "2026-11-04",
+          "Close": 2422.3118,
+          "SMA_50": 2506.5472,
+          "EMA_20": 2355.3056,
+          "RSI": 45.46,
+          "Bollinger_Upper": 2494.9391,
+          "Bollinger_Lower": 2204.0281,
+          "Pct_Change": 6.58
+        },
+        {
+          "tarih": "2026-11-05",
+          "Close": 2234.4763,
+          "SMA_50": 2502.9144,
+          "EMA_20": 2343.798,
+          "RSI": 38.1,
+          "Bollinger_Upper": 2490.354,
+          "Bollinger_Lower": 2190.0841,
+          "Pct_Change": -7.75
+        },
+        {
+          "tarih": "2026-11-06",
+          "Close": 2235.0474,
+          "SMA_50": 2498.6732,
+          "EMA_20": 2333.4408,
+          "RSI": 38.28,
+          "Bollinger_Upper": 2486.3709,
+          "Bollinger_Lower": 2177.592,
+          "Pct_Change": 0.03
+        },
+        {
+          "tarih": "2026-11-07",
+          "Close": 2236.3152,
+          "SMA_50": 2491.1725,
+          "EMA_20": 2324.1908,
+          "RSI": 40.18,
+          "Bollinger_Upper": 2478.954,
+          "Bollinger_Lower": 2167.7663,
+          "Pct_Change": 0.06
+        },
+        {
+          "tarih": "2026-11-08",
+          "Close": 2120.9802,
+          "SMA_50": 2480.9529,
+          "EMA_20": 2304.8374,
+          "RSI": 35.19,
+          "Bollinger_Upper": 2484.0606,
+          "Bollinger_Lower": 2134.2762,
+          "Pct_Change": -5.16
+        },
+        {
+          "tarih": "2026-11-09",
+          "Close": 2131.4985,
+          "SMA_50": 2470.7229,
+          "EMA_20": 2288.3289,
+          "RSI": 36.5,
+          "Bollinger_Upper": 2472.8587,
+          "Bollinger_Lower": 2113.9549,
+          "Pct_Change": 0.5
+        },
+        {
+          "tarih": "2026-11-10",
+          "Close": 2050.1809,
+          "SMA_50": 2456.1972,
+          "EMA_20": 2265.6481,
+          "RSI": 30.24,
+          "Bollinger_Upper": 2462.5697,
+          "Bollinger_Lower": 2082.1854,
+          "Pct_Change": -3.82
+        },
+        {
+          "tarih": "2026-11-11",
+          "Close": 2055.8762,
+          "SMA_50": 2442.262,
+          "EMA_20": 2245.6699,
+          "RSI": 29.85,
+          "Bollinger_Upper": 2461.2045,
+          "Bollinger_Lower": 2050.5193,
+          "Pct_Change": 0.28
+        },
+        {
+          "tarih": "2026-11-12",
+          "Close": 2016.8297,
+          "SMA_50": 2428.9048,
+          "EMA_20": 2223.8756,
+          "RSI": 32.88,
+          "Bollinger_Upper": 2459.5664,
+          "Bollinger_Lower": 2015.4326,
+          "Pct_Change": -1.9
+        },
+        {
+          "tarih": "2026-11-13",
+          "Close": 1927.5889,
+          "SMA_50": 2413.7105,
+          "EMA_20": 2195.6578,
+          "RSI": 29.39,
+          "Bollinger_Upper": 2470.3412,
+          "Bollinger_Lower": 1961.8214,
+          "Pct_Change": -4.42
+        },
+        {
+          "tarih": "2026-11-14",
+          "Close": 1769.1205,
+          "SMA_50": 2395.2834,
+          "EMA_20": 2155.0352,
+          "RSI": 23.34,
+          "Bollinger_Upper": 2505.7511,
+          "Bollinger_Lower": 1870.6315,
+          "Pct_Change": -8.22
+        },
+        {
+          "tarih": "2026-11-15",
+          "Close": 1835.4952,
+          "SMA_50": 2378.0891,
+          "EMA_20": 2124.6028,
+          "RSI": 27.05,
+          "Bollinger_Upper": 2511.6379,
+          "Bollinger_Lower": 1816.2661,
+          "Pct_Change": 3.75
+        },
+        {
+          "tarih": "2026-11-16",
+          "Close": 1819.2759,
+          "SMA_50": 2360.7361,
+          "EMA_20": 2095.5241,
+          "RSI": 27.28,
+          "Bollinger_Upper": 2506.1027,
+          "Bollinger_Lower": 1768.9559,
+          "Pct_Change": -0.88
+        },
+        {
+          "tarih": "2026-11-17",
+          "Close": 1822.9613,
+          "SMA_50": 2343.4219,
+          "EMA_20": 2069.5657,
+          "RSI": 25.69,
+          "Bollinger_Upper": 2489.5721,
+          "Bollinger_Lower": 1732.0202,
+          "Pct_Change": 0.2
+        },
+        {
+          "tarih": "2026-11-18",
+          "Close": 1774.7491,
+          "SMA_50": 2325.3825,
+          "EMA_20": 2041.4879,
+          "RSI": 10.7,
+          "Bollinger_Upper": 2488.0858,
+          "Bollinger_Lower": 1686.0315,
+          "Pct_Change": -2.64
+        },
+        {
+          "tarih": "2026-11-19",
+          "Close": 1755.1898,
+          "SMA_50": 2306.8127,
+          "EMA_20": 2014.2214,
+          "RSI": 13.44,
+          "Bollinger_Upper": 2482.9226,
+          "Bollinger_Lower": 1642.6083,
+          "Pct_Change": -1.1
+        },
+        {
+          "tarih": "2026-11-20",
+          "Close": 1619.4321,
+          "SMA_50": 2285.0906,
+          "EMA_20": 1976.6225,
+          "RSI": 11.07,
+          "Bollinger_Upper": 2485.0702,
+          "Bollinger_Lower": 1577.1291,
+          "Pct_Change": -7.73
+        },
+        {
+          "tarih": "2026-11-21",
+          "Close": 1682.2046,
+          "SMA_50": 2265.3716,
+          "EMA_20": 1948.5827,
+          "RSI": 17.49,
+          "Bollinger_Upper": 2466.0107,
+          "Bollinger_Lower": 1537.1039,
+          "Pct_Change": 3.88
+        },
+        {
+          "tarih": "2026-11-22",
+          "Close": 1721.0757,
+          "SMA_50": 2246.048,
+          "EMA_20": 1926.9153,
+          "RSI": 24.22,
+          "Bollinger_Upper": 2440.4284,
+          "Bollinger_Lower": 1509.9052,
+          "Pct_Change": 2.31
+        },
+        {
+          "tarih": "2026-11-23",
+          "Close": 1780.36,
+          "SMA_50": 2227.1251,
+          "EMA_20": 1912.9577,
+          "RSI": 28.71,
+          "Bollinger_Upper": 2401.3984,
+          "Bollinger_Lower": 1499.6986,
+          "Pct_Change": 3.44
+        }
+      ]
+    }
+  }
+}

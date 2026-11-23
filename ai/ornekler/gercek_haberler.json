@@ -1,0 +1,768 @@
+[
+  {
+    "schema_version": "1.0",
+    "news_id": "bloomberg_ht:84d973beda70297fa18da4e05ac47b95189f897985877cec674aee17a3c30de8",
+    "source": "BLOOMBERG_HT",
+    "source_id": null,
+    "title": "SPK, iki şirketin sermaye artırımını onayladı",
+    "summary": "SPK, Mercan Kimya Sanayi ve Ticaret A.Ş. ve Şekerbank T.A.Ş.'nin sermaye artırımına onay verdi.",
+    "url": "https://www.bloomberght.com/spk-iki-sirketin-sermaye-artirimini-onayladi-3791715",
+    "published_at": "2026-10-16T21:04:41+00:00",
+    "fetched_at": "2026-10-19T09:53:19+00:00",
+    "symbols": [
+      "SKBNK",
+      "MERCN"
+    ],
+    "matched_keywords": [
+      "sermaye artırımı"
+    ],
+    "disclosure_type": null
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "bloomberg_ht:70f1d9dbd1db359c0e001d82bfcdf3ea343707bdcaaccf2171cac1fbcac0b72a",
+    "source": "BLOOMBERG_HT",
+    "source_id": null,
+    "title": "Şirketlerin asgari sermaye uyum süresi uzatıldı",
+    "summary": "Ticaret Bakanlığının düzenlemesiyle, sermayeleri yeni asgari tutarların altında kalan anonim ve limited şirketlerin sermaye artırımı için tanınan süre 31 Aralık 2027'ye kadar uzatıldı.",
+    "url": "https://www.bloomberght.com/sirketlerin-asgari-sermaye-uyum-suresi-uzatildi-3791716",
+    "published_at": "2026-10-16T21:26:34+00:00",
+    "fetched_at": "2026-10-19T09:53:19+00:00",
+    "symbols": [],
+    "matched_keywords": [
+      "sermaye artırımı"
+    ],
+    "disclosure_type": null
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "bloomberg_ht:492794ca2ac074f33b999207351924c4adf153237e8f6801f8439ef38cce2628",
+    "source": "BLOOMBERG_HT",
+    "source_id": null,
+    "title": "2027'de 31 bin 54 sözleşmeli sağlık personeli istihdam edilecek",
+    "summary": "Resmi Gazete'de yayımlanan kararla, 2027 yılında 31 bin 54 sözleşmeli sağlık personelinin istihdam edileceği hizmet birimleri belirlendi. Personelin 31 bin 40'ı yataklı tedavi hizmetlerinde görevlendirilecek.",
+    "url": "https://www.bloomberght.com/2027-de-31-bin-54-sozlesmeli-saglik-personeli-istihdam-edilecek-3791717",
+    "published_at": "2026-10-16T21:33:10+00:00",
+    "fetched_at": "2026-10-19T09:53:19+00:00",
+    "symbols": [],
+    "matched_keywords": [
+      "istihdam"
+    ],
+    "disclosure_type": null
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "bloomberg_ht:03d1aebc0ee4e542c4285eb328cb6173c8d53ce381bd30a5678cd1d29633b94f",
+    "source": "BLOOMBERG_HT",
+    "source_id": null,
+    "title": "7 başlıkla geçen hafta",
+    "summary": "Küresel piyasalarda geçen hafta Fed Bej kitap, yetkililerden gelen mesajlar ve enflasyon verisi öne çıkarken, yurt içi piyasalarda fon piyasasında yaşanan gelişmeler yakından takip edildi.",
+    "url": "https://www.bloomberght.com/7-baslikla-gecen-hafta-3791723",
+    "published_at": "2026-10-17T07:34:11+00:00",
+    "fetched_at": "2026-10-19T09:53:19+00:00",
+    "symbols": [],
+    "matched_keywords": [
+      "küresel piyasalar"
+    ],
+    "disclosure_type": null
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "bloomberg_ht:57d1835d107482315aa05fda0cf958a262379e4616c39ae5aa15e87c7aa110ed",
+    "source": "BLOOMBERG_HT",
+    "source_id": null,
+    "title": "Bakan Bayraktar: Gabar'dan yakında yeni petrol müjdesi verebiliriz",
+    "summary": "Enerji ve Tabii Kaynaklar Bakanı Alparslan Bayraktar, Türkiye'nin petrol ve doğalgaz arama çalışmalarını sürdürdüğünü belirterek, yakın zamanda Gabar'daki petrol üretim sahasından yeni keşif müjdesi verebileceklerini söyledi.",
+    "url": "https://www.bloomberght.com/bakan-bayraktar-gabar-dan-yakinda-yeni-petrol-mujdesi-verebiliriz-3791724",
+    "published_at": "2026-10-17T08:08:05+00:00",
+    "fetched_at": "2026-10-19T09:53:19+00:00",
+    "symbols": [],
+    "matched_keywords": [
+      "doğalgaz"
+    ],
+    "disclosure_type": null
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "bloomberg_ht:dd52bdfdaa11b379516363b57ee5810070807d3b25c05d46c988bfc8d66bd0c0",
+    "source": "BLOOMBERG_HT",
+    "source_id": null,
+    "title": "Piyasalar yoğun veri gündemine odaklandı",
+    "summary": "ABD'de tahminleri aşan enflasyon verisi sonrası ABD Merkez Bankasının (Fed) gelecek dönemde faiz artışına gidebileceği beklentisi güç kazandı. Para piyasalarında, Fed'in gelecek yılın sonuna kadar toplam 3 kez faiz artırımına gidebileceği fiyatlanmasına rağmen tahvil faizleri ve dolar endeksi haftayı düşüşle tamamladı.",
+    "url": "https://www.bloomberght.com/piyasalar-yogun-veri-gundemine-odaklandi-3791725",
+    "published_at": "2026-10-17T09:42:56+00:00",
+    "fetched_at": "2026-10-19T09:53:19+00:00",
+    "symbols": [],
+    "matched_keywords": [
+      "faiz artırımı",
+      "faiz artışı",
+      "dolar endeksi",
+      "endeks",
+      "tahvil"
+    ],
+    "disclosure_type": null
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "bloomberg_ht:2144b97a9e7d40f8ec063365fd8183aa84028454c09583514e19688db519b1fa",
+    "source": "BLOOMBERG_HT",
+    "source_id": null,
+    "title": "Hisse geri alımları düşüşlere çare olur mu?",
+    "summary": "Borsa İstanbul'da fon krizi ile birlikte yaşanan sert düşüşler karşısında birçok şirket birbiri ardına hisse geri alım programı açıkladı. Hisse geri alımına toplamda 3 milyar lira harcayan şirketlerin yarısından fazlası hisselerindeki düşüşün önüne geçemedi.",
+    "url": "https://www.bloomberght.com/hisse-geri-alimlari-dususlere-care-olur-mu-3791726",
+    "published_at": "2026-10-17T09:54:34+00:00",
+    "fetched_at": "2026-10-19T09:53:19+00:00",
+    "symbols": [],
+    "matched_keywords": [
+      "borsa",
+      "hisse geri alımı",
+      "geri alım programı",
+      "sert düşüş"
+    ],
+    "disclosure_type": null
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "bloomberg_ht:e52fc746228baf0f3d7ce3acd5c61102bf9dd8c56944948b4ee350f43a8430dd",
+    "source": "BLOOMBERG_HT",
+    "source_id": null,
+    "title": "ABD'de faiz maliyetleri rekor seviyeye ulaştı",
+    "summary": "ABD'nin net faiz giderleri, 2026 mali yılında 1,05 trilyon dolara yükselerek rekor kırdı. Artan borç stoku ve yükselen faiz oranları, federal bütçe üzerindeki baskıyı artırırken ülkenin ekonomik şoklara karşı kırılganlığını da büyütüyor. Ekonomistler, mevcut tablonun henüz bir krize işaret etmediğini ancak ABD'nin mali hareket alanının giderek daraldığını belirtiyor.",
+    "url": "https://www.bloomberght.com/abd-de-faiz-maliyetleri-rekor-seviyeye-ulasti-3791727",
+    "published_at": "2026-10-17T12:37:50+00:00",
+    "fetched_at": "2026-10-19T09:53:19+00:00",
+    "symbols": [],
+    "matched_keywords": [
+      "rekor seviye"
+    ],
+    "disclosure_type": null
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "bloomberg_ht:5917300bd62a1ccd63dfc299ffa73a28b936c99c17e1b86553c285da5d245706",
+    "source": "BLOOMBERG_HT",
+    "source_id": null,
+    "title": "Cumhurbaşkanı Erdoğan: Gaz üretimi ikiye katlanacak",
+    "summary": "Cumhurbaşkanı Recep Tayyip Erdoğan, \"Karadeniz'deki doğalgaz üretimimiz günlük 20 milyon metreküpe çıkarak ikiye katlanacak, 2027 yılı başından itibaren her 3 haneden 1'i yerli doğalgazımızı kullanacak\" dedi.",
+    "url": "https://www.bloomberght.com/cumhurbaskani-erdogan-gaz-uretimi-ikiye-katlanacak-3791729",
+    "published_at": "2026-10-17T13:00:22+00:00",
+    "fetched_at": "2026-10-19T09:53:19+00:00",
+    "symbols": [],
+    "matched_keywords": [
+      "doğalgaz"
+    ],
+    "disclosure_type": null
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "bloomberg_ht:9d4c4f9ecfd393d40cdb14eb43ea3dcf97d1758490910e9f8542aa4c22257fa3",
+    "source": "BLOOMBERG_HT",
+    "source_id": null,
+    "title": "\"İnşaat sektöründe dengelenme sinyalleri görülüyor\"",
+    "summary": "Saint-Gobain Yapı Kimyasalları Türkiye ve Orta Asya Başkan Yardımcısı Osman İlgen, Bloomberg HT'ye yaptığı değerlendirmede, inşaat sektöründe uzun süredir devam eden büyümenin ardından ikinci çeyrekte görülen daralmanın bir dengelenme sürecine işaret edebileceğini söyledi.",
+    "url": "https://www.bloomberght.com/insaat-sektorunde-dengelenme-sinyalleri-goruluyor-3791730",
+    "published_at": "2026-10-17T15:28:48+00:00",
+    "fetched_at": "2026-10-19T09:53:19+00:00",
+    "symbols": [],
+    "matched_keywords": [
+      "büyüme",
+      "daralma",
+      "inşaat sektörü"
+    ],
+    "disclosure_type": null
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "bloomberg_ht:5f2432fc27b4a66b13bbb984ab37b7e265a9972c867f3f471acd5f7601d4037e",
+    "source": "BLOOMBERG_HT",
+    "source_id": null,
+    "title": "Takasbank'tan finansman iddialarına yanıt",
+    "summary": "Takasbank, TPP ve TEFAS işlemlerine ilişkin iddialara yanıt verdi. TPP'de yaklaşık 240 milyar liralık işleme karşılık 450 milyar lira tutarında teminat bulunduğunu açıklayan Takasbank, piyasada bugüne kadar herhangi bir temerrüt yaşanmadığını ve kaynak sağlayan hiçbir kurumun zarara uğramadığını bildirdi.",
+    "url": "https://www.bloomberght.com/takasbanktan-finansman-iddialarina-yanit-3791742",
+    "published_at": "2026-10-18T10:58:40+00:00",
+    "fetched_at": "2026-10-19T09:53:19+00:00",
+    "symbols": [],
+    "matched_keywords": [
+      "temerrüt"
+    ],
+    "disclosure_type": null
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "bloomberg_ht:d75a8fafd416e49e2f2698acbf09f88167472ae55cccdb41158617b6cc47f10c",
+    "source": "BLOOMBERG_HT",
+    "source_id": null,
+    "title": "İngiltere'de enflasyon faiz artırımının önünü açabilir",
+    "summary": "İngiltere'de enflasyonun Eylül'de yüzde 3,4'e yükselerek dokuz ayın zirvesine çıkması beklenirken, açıklanacak verilerin İngiltere Merkez Bankası'nın (BoE) 5 Kasım'daki toplantısında faiz artırımı kararı almasına zemin hazırlayabileceği değerlendiriliyor.",
+    "url": "https://www.bloomberght.com/ingilterede-enflasyon-faiz-artiriminin-onunu-acabilir-3791746",
+    "published_at": "2026-10-18T13:52:18+00:00",
+    "fetched_at": "2026-10-19T09:53:19+00:00",
+    "symbols": [],
+    "matched_keywords": [
+      "faiz artırımı"
+    ],
+    "disclosure_type": null
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "bloomberg_ht:8417a9183274f01543c0f8755de465781405ed8559995aff5198eecb108c3dcb",
+    "source": "BLOOMBERG_HT",
+    "source_id": null,
+    "title": "Bakan Bayraktar'dan doğalgazda zam ve elektrikte limit açılaması",
+    "summary": "Enerji ve Tabii Kaynaklar Bakanı Alparslan Bayraktar, Osman Gazi Yüzer Üretim Platformu ile Türk petrol ve doğalgaz üretiminde bir ilki gerçekleştirdiklerini belirterek, \"Filyos'ta gazı karaya getirerek karada işleme faaliyetlerini yapmıştık. Şimdi artık işlemeyi yerinde, denizin üzerinde yapacağız.",
+    "url": "https://www.bloomberght.com/bakan-bayraktar-dan-dogalgazda-zam-ve-elektrikte-limit-acilamasi-3791747",
+    "published_at": "2026-10-18T14:13:59+00:00",
+    "fetched_at": "2026-10-19T09:53:19+00:00",
+    "symbols": [],
+    "matched_keywords": [
+      "doğalgaz"
+    ],
+    "disclosure_type": null
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "bloomberg_ht:50bf31e76848445da87c5a127c1d88c907b9ee4c569904447b648f85b6194f59",
+    "source": "BLOOMBERG_HT",
+    "source_id": null,
+    "title": "Petrol, Rusya'ya yönelik yaptırımların hafifletilmesiyle geriledi",
+    "summary": "Petrol, ABD Başkanı Donald Trump'ın Rusya'ya yönelik bazı yaptırım ve tarifeleri askıya alarak Rus yakıtı ihracatının artabileceği beklentisini güçlendirmesinin ardından pazartesi günü düştü.",
+    "url": "https://www.bloomberght.com/petrol-rusyaya-yonelik-yaptirimlarin-hafifletilmesiyle-geriledi-3791753",
+    "published_at": "2026-10-19T03:30:43+00:00",
+    "fetched_at": "2026-10-19T09:53:19+00:00",
+    "symbols": [],
+    "matched_keywords": [
+      "ihracat"
+    ],
+    "disclosure_type": null
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "bloomberg_ht:eeb213e926eb03fc913d57cf45d6e691e2426bc7c95d9bafd06409e64d145c8d",
+    "source": "BLOOMBERG_HT",
+    "source_id": null,
+    "title": "Ukrayna, tahıl koridoru için Türkiye, Hindistan ve Mısır'la görüşüyor",
+    "summary": "Ukrayna Devlet Başkanı Volodimir Zelenskiy, Karadeniz'de sivil deniz taşımacılığının, özellikle tarım ürünleri ihracatı amacıyla yeniden başlatılması için Türkiye, Mısır ve Hindistan ile görüşmeler yürütüldüğünü açıkladı.",
+    "url": "https://www.bloomberght.com/ukrayna-tahil-koridoru-icin-turkiye-hindistan-ve-misirla-gorusuyor-3791759",
+    "published_at": "2026-10-19T04:35:48+00:00",
+    "fetched_at": "2026-10-19T09:53:19+00:00",
+    "symbols": [],
+    "matched_keywords": [
+      "ihracat"
+    ],
+    "disclosure_type": null
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "bloomberg_ht:2eac63b442f92b46a328c499b6b35ab224ba62fc8f5596435665ce2d1446ce08",
+    "source": "BLOOMBERG_HT",
+    "source_id": null,
+    "title": "Ünlü yatırımcı Marks: Yapay zeka balonu endişeleri için henüz erken",
+    "summary": "Yapay zeka yatırımlarının hisse piyasasında balon oluşturduğuna ilişkin endişeler artarken, Oaktree Capital Management Eş Başkanı Howard Marks henüz böyle bir oluşumun kesinleşmediğini düşünüyor.",
+    "url": "https://www.bloomberght.com/unlu-yatirimci-marks-yapay-zeka-balonu-endiseleri-icin-henuz-erken-3791760",
+    "published_at": "2026-10-19T04:44:59+00:00",
+    "fetched_at": "2026-10-19T09:53:19+00:00",
+    "symbols": [],
+    "matched_keywords": [
+      "balon"
+    ],
+    "disclosure_type": null
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "bloomberg_ht:c8c002351eeb1f3084f80f5a90aac9112cddc54fcd69d4ac50101b274ab5d448",
+    "source": "BLOOMBERG_HT",
+    "source_id": null,
+    "title": "Küresel piyasalarda bilanço gündemi",
+    "summary": "Yapay zeka hisselerindeki satışlar ABD tahvillerine güvenli liman talebini artırırken, yatırımcılar volatilitenin daha geniş piyasalara yayılmasına karşı pozisyon alıyor.",
+    "url": "https://www.bloomberght.com/kuresel-piyasalarda-bilanco-gundemi-3791761",
+    "published_at": "2026-10-19T05:33:29+00:00",
+    "fetched_at": "2026-10-19T09:53:19+00:00",
+    "symbols": [],
+    "matched_keywords": [
+      "küresel piyasalar",
+      "volatilite",
+      "bilanço",
+      "tahvil",
+      "güvenli liman"
+    ],
+    "disclosure_type": null
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "bloomberg_ht:2c136371ea44042862815f5cbc32ff04b7c31d9055d10387aa98a5b8dbd1af3c",
+    "source": "BLOOMBERG_HT",
+    "source_id": null,
+    "title": "Piyasalarda volatilite endişesi",
+    "summary": "ABD'de hızlanan enflasyon ve yapay zeka sektöründeki sarsıntılar son günlerde hisse senetlerini etkilerken, bazı yatırımcılar teknoloji hisselerindeki daha büyük dalgalanmaların sonunda daha geniş piyasalara yayılacağına yönelik pozisyon almaya başladı.",
+    "url": "https://www.bloomberght.com/piyasalarda-volatilite-endisesi-3791762",
+    "published_at": "2026-10-19T05:33:51+00:00",
+    "fetched_at": "2026-10-19T09:53:19+00:00",
+    "symbols": [],
+    "matched_keywords": [
+      "volatilite"
+    ],
+    "disclosure_type": null
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683423",
+    "source": "KAP",
+    "source_id": "1683423",
+    "title": "AKFEN İNŞAAT TURİZM VE TİCARET A.Ş.Özel Durum Açıklaması (Genel)",
+    "summary": "Yönetim Kurulu Başkanımıza İlişkin Açıklama",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683423",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.298718+00:00",
+    "symbols": [],
+    "matched_keywords": [],
+    "disclosure_type": "Özel Durum Açıklaması (Genel)"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683422",
+    "source": "KAP",
+    "source_id": "1683422",
+    "title": "ENERJİSA ENERJİ A.Ş.Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz İçeren)",
+    "summary": "TRSENSAE2619 ISIN Kodlu Tahvilin 8. Kupon Oranının Belirlenmesi.",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683422",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.298718+00:00",
+    "symbols": [
+      "ENJSA"
+    ],
+    "matched_keywords": [
+      "tahvil"
+    ],
+    "disclosure_type": "Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz İçeren)"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683421",
+    "source": "KAP",
+    "source_id": "1683421",
+    "title": "BESLER GIDA VE KİMYA SANAYİ VE TİCARET A.Ş.Finansal Takvim",
+    "summary": "2026 3. Çeyrek Finansal Takvim",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683421",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.298718+00:00",
+    "symbols": [],
+    "matched_keywords": [],
+    "disclosure_type": "Finansal Takvim"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683420",
+    "source": "KAP",
+    "source_id": "1683420",
+    "title": "KAMUYU AYDINLATMA PLATFORMUKamuyu Aydınlatma Platformu Duyurusu/ BAHKM, BBN, BIK, BLA, BSN, BULGS, CGCAM, DAGI, DHI, DHS, ECILC, EMKEL, ERCB, ETYAT, EUYO, FRIGO, GRTHO, IZENR, KLRHO, KOPOL, LYDYE, PETKM, POB, PRZMA, PSR, TGSAS",
+    "summary": "Özel Durumlar Tebliği'nin 12-(4). maddesi gereğince yapılan açıklama",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683420",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.298718+00:00",
+    "symbols": [
+      "BAHKM",
+      "BBN",
+      "BIK",
+      "BLA",
+      "BSN",
+      "BULGS",
+      "CGCAM",
+      "DAGI",
+      "DHI",
+      "DHS",
+      "ECILC",
+      "EMKEL",
+      "ERCB",
+      "ETYAT",
+      "EUYO",
+      "FRIGO",
+      "GRTHO",
+      "IZENR",
+      "KLRHO",
+      "KOPOL",
+      "LYDYE",
+      "PETKM",
+      "POB",
+      "PRZMA",
+      "PSR"
+    ],
+    "matched_keywords": [],
+    "disclosure_type": "Kamuyu Aydınlatma Platformu Duyurusu"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683417",
+    "source": "KAP",
+    "source_id": "1683417",
+    "title": "IŞIKLAR ENERJİ VE YAPI HOLDİNG A.Ş.Özel Durum Açıklaması (Genel)/ CEMAS",
+    "summary": "İştirakimiz in Çemaş Pay Alışı",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683417",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.298718+00:00",
+    "symbols": [
+      "CEMAS"
+    ],
+    "matched_keywords": [],
+    "disclosure_type": "Özel Durum Açıklaması (Genel)"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683415",
+    "source": "KAP",
+    "source_id": "1683415",
+    "title": "EKOS TEKNOLOJİ VE ELEKTRİK A.Ş.Payların Geri Alınmasına İlişkin Bildirim",
+    "summary": "Payların Geri Alınmasına İlişkin Bildirim",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683415",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.312996+00:00",
+    "symbols": [],
+    "matched_keywords": [],
+    "disclosure_type": "Payların Geri Alınmasına İlişkin Bildirim"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683414",
+    "source": "KAP",
+    "source_id": "1683414",
+    "title": "KAMUYU AYDINLATMA PLATFORMUPay Alım Satım Bildirimi/ ENTRA",
+    "summary": "Pay Alım Satım Bildirimi",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683414",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.314015+00:00",
+    "symbols": [
+      "ENTRA"
+    ],
+    "matched_keywords": [],
+    "disclosure_type": "Pay Alım Satım Bildirimi"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683413",
+    "source": "KAP",
+    "source_id": "1683413",
+    "title": "KAMUYU AYDINLATMA PLATFORMUPay Alım Satım Bildirimi/ AHSGY",
+    "summary": "Pay Alım Satım Bildirimi",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683413",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.316028+00:00",
+    "symbols": [
+      "AHSGY"
+    ],
+    "matched_keywords": [],
+    "disclosure_type": "Pay Alım Satım Bildirimi"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683412",
+    "source": "KAP",
+    "source_id": "1683412",
+    "title": "KAMUYU AYDINLATMA PLATFORMUPay Alım Satım Bildirimi/ BEGYO",
+    "summary": "Pay Alım Satım Bildirimi",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683412",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.316028+00:00",
+    "symbols": [
+      "BEGYO"
+    ],
+    "matched_keywords": [],
+    "disclosure_type": "Pay Alım Satım Bildirimi"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683411",
+    "source": "KAP",
+    "source_id": "1683411",
+    "title": "KAMUYU AYDINLATMA PLATFORMUPay Alım Satım Bildirimi/ INVEO",
+    "summary": "Pay Alım Satım Bildirimi",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683411",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.316028+00:00",
+    "symbols": [
+      "INVEO"
+    ],
+    "matched_keywords": [],
+    "disclosure_type": "Pay Alım Satım Bildirimi"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683409",
+    "source": "KAP",
+    "source_id": "1683409",
+    "title": "KAMUYU AYDINLATMA PLATFORMUPay Alım Satım Bildirimi/ RUZYE",
+    "summary": "Pay Alım Satım Bildirimi",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683409",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.318482+00:00",
+    "symbols": [
+      "RUZYE"
+    ],
+    "matched_keywords": [],
+    "disclosure_type": "Pay Alım Satım Bildirimi"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683408",
+    "source": "KAP",
+    "source_id": "1683408",
+    "title": "KAMUYU AYDINLATMA PLATFORMUPay Alım Satım Bildirimi/ ARSAN",
+    "summary": "Pay Alım Satım Bildirimi",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683408",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.318482+00:00",
+    "symbols": [
+      "ARSAN"
+    ],
+    "matched_keywords": [],
+    "disclosure_type": "Pay Alım Satım Bildirimi"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683407",
+    "source": "KAP",
+    "source_id": "1683407",
+    "title": "BİG MEDYA TEKNOLOJİ A.Ş.Özel Durum Açıklaması (Genel)",
+    "summary": "Big Medya Teknoloji A.Ş. Paylarında Gerçekleştirilen Satış İşlemleri Hakkında",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683407",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.319667+00:00",
+    "symbols": [],
+    "matched_keywords": [],
+    "disclosure_type": "Özel Durum Açıklaması (Genel)"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683406",
+    "source": "KAP",
+    "source_id": "1683406",
+    "title": "KAMUYU AYDINLATMA PLATFORMUPay Alım Satım Bildirimi/ KLRHO",
+    "summary": "Pay Alım Satım Bildirimi",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683406",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.319667+00:00",
+    "symbols": [
+      "KLRHO"
+    ],
+    "matched_keywords": [],
+    "disclosure_type": "Pay Alım Satım Bildirimi"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683405",
+    "source": "KAP",
+    "source_id": "1683405",
+    "title": "KAMUYU AYDINLATMA PLATFORMUPay Alım Satım Bildirimi/ KLRHO",
+    "summary": "Pay Alım Satım Bildirimi",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683405",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.319667+00:00",
+    "symbols": [
+      "KLRHO"
+    ],
+    "matched_keywords": [],
+    "disclosure_type": "Pay Alım Satım Bildirimi"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683404",
+    "source": "KAP",
+    "source_id": "1683404",
+    "title": "KAMUYU AYDINLATMA PLATFORMUPay Alım Satım Bildirimi/ CEMAS",
+    "summary": "Pay Alım Satım Bildirimi",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683404",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.322006+00:00",
+    "symbols": [
+      "CEMAS"
+    ],
+    "matched_keywords": [],
+    "disclosure_type": "Pay Alım Satım Bildirimi"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683403",
+    "source": "KAP",
+    "source_id": "1683403",
+    "title": "KAMUYU AYDINLATMA PLATFORMUPay Alım Satım Bildirimi/ KLRHO",
+    "summary": "Pay Alım Satım Bildirimi",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683403",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.322006+00:00",
+    "symbols": [
+      "KLRHO"
+    ],
+    "matched_keywords": [],
+    "disclosure_type": "Pay Alım Satım Bildirimi"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683402",
+    "source": "KAP",
+    "source_id": "1683402",
+    "title": "EMLAK KATILIM VARLIK KİRALAMA A.Ş.Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faizsiz)/ EKT",
+    "summary": "TRDEVKS127B0 ISIN Kodlu Kira Sertifikası İhracının Nitelikli Yatırımcıya Satışının Tamamlanması Hk.",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683402",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.322006+00:00",
+    "symbols": [
+      "EKT"
+    ],
+    "matched_keywords": [],
+    "disclosure_type": "Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faizsiz)"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683401",
+    "source": "KAP",
+    "source_id": "1683401",
+    "title": "TEB YATIRIM MENKUL DEĞERLER A.Ş.Yatırım Kuruluşu Varant - Sertifika - Senetlerine İlişkin Bildirim/ BNPPI",
+    "summary": "BNP Paribas Issuance B.V. 16/10/2026 Vadeli Yatırım Kuruluşu Varantları İtfa Fiyatları",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683401",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.324245+00:00",
+    "symbols": [
+      "BNPPI"
+    ],
+    "matched_keywords": [],
+    "disclosure_type": "Yatırım Kuruluşu Varant - Sertifika - Senetlerine İlişkin Bildirim"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683400",
+    "source": "KAP",
+    "source_id": "1683400",
+    "title": "KARTONSAN KARTON SANAYİ VE TİCARET A.Ş.Payların Geri Alınmasına İlişkin Bildirim",
+    "summary": "16.10.2026 Tarihli Pay Geri Alım İşlemleri",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683400",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.324245+00:00",
+    "symbols": [],
+    "matched_keywords": [],
+    "disclosure_type": "Payların Geri Alınmasına İlişkin Bildirim"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683399",
+    "source": "KAP",
+    "source_id": "1683399",
+    "title": "ODİNE SOLUTİONS TEKNOLOJİ TİCARET VE SANAYİ A.Ş.Kurumsal Yönetim Bilgi Formu (Güncelleme) - Yönetim Kurulu-1",
+    "summary": "Kurumsal Yönetim Bilgi Formu (Yönetici Sorumluluk Sigortası Bilgisinde Güncelleme)",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683399",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.326503+00:00",
+    "symbols": [],
+    "matched_keywords": [],
+    "disclosure_type": "Kurumsal Yönetim Bilgi Formu (Güncelleme) - Yönetim Kurulu-1"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683398",
+    "source": "KAP",
+    "source_id": "1683398",
+    "title": "ODİNE SOLUTİONS TEKNOLOJİ TİCARET VE SANAYİ A.Ş.Özel Durum Açıklaması (Genel)",
+    "summary": "Yönetici Sorumluluk Sigortası",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683398",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.326503+00:00",
+    "symbols": [],
+    "matched_keywords": [],
+    "disclosure_type": "Özel Durum Açıklaması (Genel)"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683397",
+    "source": "KAP",
+    "source_id": "1683397",
+    "title": "GENTAŞ DEKORATİF YÜZEYLER SANAYİ VE TİCARET A.Ş.Payların Geri Alınmasına İlişkin Bildirim",
+    "summary": "16 Ekim 2026 Tarihli Pay Geri Alım İşlemleri",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683397",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.329295+00:00",
+    "symbols": [],
+    "matched_keywords": [],
+    "disclosure_type": "Payların Geri Alınmasına İlişkin Bildirim"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683396",
+    "source": "KAP",
+    "source_id": "1683396",
+    "title": "ÇAĞDAŞ CAM SANAYİ VE TİCARET A.Ş.Şirket Genel Bilgi Formu",
+    "summary": "",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683396",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.329295+00:00",
+    "symbols": [],
+    "matched_keywords": [],
+    "disclosure_type": "Şirket Genel Bilgi Formu"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683395",
+    "source": "KAP",
+    "source_id": "1683395",
+    "title": "ÇAĞDAŞ CAM SANAYİ VE TİCARET A.Ş.Pay Alım Satım Bildirimi",
+    "summary": "Pay Alımı Hk.",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683395",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.329295+00:00",
+    "symbols": [],
+    "matched_keywords": [],
+    "disclosure_type": "Pay Alım Satım Bildirimi"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683394",
+    "source": "KAP",
+    "source_id": "1683394",
+    "title": "ÇAĞDAŞ CAM SANAYİ VE TİCARET A.Ş.Pay Alım Satım Bildirimi",
+    "summary": "Pay Alımı Hk.",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683394",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.331307+00:00",
+    "symbols": [],
+    "matched_keywords": [],
+    "disclosure_type": "Pay Alım Satım Bildirimi"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683393",
+    "source": "KAP",
+    "source_id": "1683393",
+    "title": "ÇAĞDAŞ CAM SANAYİ VE TİCARET A.Ş.Pay Alım Satım Bildirimi",
+    "summary": "Pay Alımı Hk.",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683393",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.331307+00:00",
+    "symbols": [],
+    "matched_keywords": [],
+    "disclosure_type": "Pay Alım Satım Bildirimi"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683392",
+    "source": "KAP",
+    "source_id": "1683392",
+    "title": "ÇAĞDAŞ CAM SANAYİ VE TİCARET A.Ş.Pay Alım Satım Bildirimi",
+    "summary": "Pay Alımı Hk.",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683392",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.331307+00:00",
+    "symbols": [],
+    "matched_keywords": [],
+    "disclosure_type": "Pay Alım Satım Bildirimi"
+  },
+  {
+    "schema_version": "1.0",
+    "news_id": "kap:1683391",
+    "source": "KAP",
+    "source_id": "1683391",
+    "title": "EUROPAP TEZOL KAĞIT SANAYİ VE TİCARET A.Ş.Payların Geri Alınmasına İlişkin Bildirim",
+    "summary": "Pay Geri Alım İşlemleri",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1683391",
+    "published_at": null,
+    "fetched_at": "2026-11-23T13:58:26.333343+00:00",
+    "symbols": [],
+    "matched_keywords": [],
+    "disclosure_type": "Payların Geri Alınmasına İlişkin Bildirim"
+  }
+]
