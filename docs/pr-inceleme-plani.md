@@ -33,3 +33,5 @@ PR'da da belirtilmiş; bu finansal kural otomatik olarak gevşetilmemelidir.
 - flutter-analyze: stable SDK, pub get, fatal info/warning ile statik analiz.
 
 GitHub reviewer ataması/branch protection bu teslimde değiştirilmemiştir.
+
+Flutter CI, mobile/.metadata içindeki ee80f08 commit'inin resmi 3.44.6 sürümüne sabitlenmiştir. Yeni SDK geçişi ayrı PR olarak değerlendirilmelidir.
