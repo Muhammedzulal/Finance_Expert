@@ -21,7 +21,7 @@ from fastapi import FastAPI, HTTPException, Header, Query, Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.responses import JSONResponse
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator, EmailStr
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator, EmailStr
 
 from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError
@@ -360,7 +360,7 @@ class AnalysisCreate(BaseModel):
 
     model_config = ConfigDict(extra="forbid")
 
-    schema_version: Literal["1.1"]
+    schema_version: Literal["1.0", "1.1"]
 
     analysis_id: str = Field(
         min_length=1,
@@ -380,9 +380,17 @@ class AnalysisCreate(BaseModel):
 
     summary: str = Field(min_length=1)
 
-    disclaimer: Literal[ANALYSIS_DISCLAIMER]
+    disclaimer: Literal[ANALYSIS_DISCLAIMER] | None = None
 
     impacts: list[AnalysisImpactCreate]
+
+    @model_validator(mode="after")
+    def validate_versioned_disclaimer(self):
+        if self.schema_version == "1.1" and self.disclaimer is None:
+            raise ValueError("Analysis v1.1 icin yatirim uyarisi zorunlu")
+        if self.schema_version == "1.0" and self.disclaimer is not None:
+            raise ValueError("Uyari alani icin Analysis v1.1 kullanilmali")
+        return self
 
     @field_validator("created_at")
     @classmethod
@@ -1163,7 +1171,7 @@ def create_analysis(
         # Yeni analiz olusturuldu.
         return JSONResponse(
             status_code=201,
-            content=analysis.model_dump(mode="json")
+            content=analysis.model_dump(mode="json", exclude_none=True)
         )
 
     except HTTPException:

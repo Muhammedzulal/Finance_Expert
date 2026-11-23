@@ -157,7 +157,7 @@ def test_analysis_model_matches_contract():
     serialized = api.serialize_analysis(row, payload['impacts'])
     schema = json.loads((ROOT / 'contracts/finance-v1.schema.json').read_text(encoding='utf-8'))
     Draft202012Validator({'$defs':schema['$defs'],'$ref':'#/$defs/Analysis'},format_checker=FormatChecker()).validate(serialized)
-    for change in [{'schema_version':'1.0'},{'disclaimer':''},{'disclaimer':'other'}]:
+    for change in [{'schema_version':'2.0'},{'schema_version':'1.0'},{'disclaimer':''},{'disclaimer':'other'}]:
         with pytest.raises(ValidationError):
             api.AnalysisCreate.model_validate(dict(payload, **change))
     missing = dict(payload); del missing['disclaimer']
@@ -179,3 +179,42 @@ def test_analysis_insert_persists_disclaimer(client, monkeypatch):
     inserts = [call for call in transaction.execute.call_args_list if 'INSERT INTO analyses (' in str(call.args[0])]
     assert len(inserts) == 1
     assert inserts[0].args[1]['disclaimer'] == payload['disclaimer']
+
+
+def test_legacy_analysis_insert_and_retry(client, monkeypatch):
+    c, _ = client
+    payload = json.loads((ROOT / 'contracts/examples.json').read_text(encoding='utf-8'))['Analysis']
+    payload['schema_version'] = '1.0'
+    del payload['disclaimer']
+    monkeypatch.setenv('INTERNAL_API_KEY','contract-test-key')
+    monkeypatch.setattr(api, 'get_news_symbols', lambda connection, news_id: ['DEMO'])
+    transaction = MagicMock()
+    api.engine.begin.return_value.__enter__.return_value = transaction
+    transaction.execute.side_effect = [result(first={'news_id':payload['news_id'],'status':'processing'}),result(),result(),result(),result()]
+    response = c.post('/api/v1/internal/analyses', json=payload, headers={'X-API-Key':'contract-test-key'})
+    assert response.status_code == 201 and response.json() == payload
+    model = api.AnalysisCreate.model_validate(payload)
+    saved = dict(model.model_dump(), created_at=api.to_mysql_datetime(model.created_at))
+    saved['disclaimer'] = None
+    monkeypatch.setattr(api, 'get_analysis_impacts', lambda connection, analysis_id: payload['impacts'])
+    transaction.execute.side_effect = [result(first={'news_id':payload['news_id'],'status':'completed'}),result(first=saved)]
+    retry = c.post('/api/v1/internal/analyses', json=payload, headers={'X-API-Key':'contract-test-key'})
+    assert retry.status_code == 200
+    expected = dict(payload, created_at=api.format_datetime(model.created_at))
+    assert retry.json() == expected
+
+
+def test_current_analysis_retry(client, monkeypatch):
+    c, _ = client
+    payload = json.loads((ROOT / 'contracts/examples.json').read_text(encoding='utf-8'))['Analysis']
+    monkeypatch.setenv('INTERNAL_API_KEY','contract-test-key')
+    model = api.AnalysisCreate.model_validate(payload)
+    saved = dict(model.model_dump(), created_at=api.to_mysql_datetime(model.created_at))
+    transaction = MagicMock()
+    api.engine.begin.return_value.__enter__.return_value = transaction
+    monkeypatch.setattr(api, 'get_analysis_impacts', lambda connection, analysis_id: payload['impacts'])
+    transaction.execute.side_effect = [result(first={'news_id':payload['news_id'],'status':'completed'}),result(first=saved)]
+    retry = c.post('/api/v1/internal/analyses', json=payload, headers={'X-API-Key':'contract-test-key'})
+    assert retry.status_code == 200
+    expected = dict(payload, created_at=api.format_datetime(model.created_at))
+    assert retry.json() == expected

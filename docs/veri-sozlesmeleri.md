@@ -194,3 +194,12 @@ Grafik fiyat geçmişi, işlem geçmişi ve portföy değerinin mevcut API sözl
 [okuma uç noktalarında](okuma-uc-noktalari.md) tanımlanmıştır. Bu üç uç için belge,
 uygulanmış backend yanıtını esas alır; yukarıdaki eski endpoint taslaklarıyla farkları
 (hata zarfı, fiyat öğesi, sayfalama) bu belgede ayrıca belirtilir.
+
+### Geçiş uyumluluğu
+
+Yeni üreticiler için Analysis v1.1 ve sabit disclaimer zorunludur. Backend geçiş
+süresince uyarısız eski v1.0 isteklerini de kabul eder; bu kayıtları sessizce v1.1'e
+çevirmez. v1.0 yanıtına yeni alan eklenmez. Böylece eski üreticiler ve aynı analysis_id
+ile tekrar gönderim davranışı korunur. v1.0 isteğinde disclaimer gönderilmesi reddedilir;
+uyarıyla yayın için üretici v1.1'e geçmelidir. Mobil, eski kayıtlarda da yerel sabit
+uyarıyı göstermelidir. Bu geçici kabul yolu yeni v1.1 şemasını gevşetmez.
