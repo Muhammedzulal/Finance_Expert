@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+
+import '../config.dart';
+import '../services/api_client.dart';
+import '../services/auth_service.dart';
 import 'main_screen.dart';
+import 'register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  /// Token süresi dolduğu için yönlendirildiyse bilgi notu gösterilir.
+  final bool sessionExpired;
+
+  const LoginScreen({super.key, this.sessionExpired = false});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -11,6 +19,69 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  bool _loading = false;
+  String? _error;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.sessionExpired) {
+      _error = 'Oturumunuzun süresi doldu, lütfen tekrar giriş yapın.';
+    }
+  }
+
+  Future<void> _login() async {
+    final String email = _emailController.text.trim();
+    final String password = _passwordController.text;
+    if (AppConfig.forceDemo) return _loginDemo();
+    if (!email.contains('@') || password.isEmpty) {
+      setState(() => _error = 'E-posta ve şifrenizi girin.');
+      return;
+    }
+    setState(() {
+      _loading = true;
+      _error = null;
+    });
+    try {
+      AppConfig.demoMode = false;
+      await AuthService.instance.login(email, password);
+      _openMain();
+    } on ApiException catch (e) {
+      setState(
+        () => _error = e.isNetworkError
+            ? '${e.message}\nSunucu: ${AppConfig.apiBaseUrl}'
+            : e.message,
+      );
+    } catch (_) {
+      setState(() => _error = 'Giriş yapılamadı, tekrar deneyin.');
+    } finally {
+      if (mounted) setState(() => _loading = false);
+    }
+  }
+
+  /// Backend'e ulaşılamadığında ekranları örnek verilerle denemek için.
+  Future<void> _loginDemo() async {
+    setState(() {
+      _loading = true;
+      _error = null;
+    });
+    try {
+      await AuthService.instance.loginDemo();
+      _openMain();
+    } catch (_) {
+      setState(() => _error = 'Demo girişi yapılamadı.');
+    } finally {
+      if (mounted) setState(() => _loading = false);
+    }
+  }
+
+  void _openMain() {
+    if (!mounted) return;
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => const MainScreen()),
+    );
+  }
 
   @override
   void dispose() {
@@ -149,26 +220,44 @@ class _LoginScreenState extends State<LoginScreen> {
                   TextField(
                     controller: _passwordController,
                     obscureText: true,
+                    textInputAction: TextInputAction.done,
+                    onSubmitted: (_) => _loading ? null : _login(),
                     style: const TextStyle(color: Colors.white),
                     decoration: _inputDecoration(
                       hint: 'Şifreniz',
                       icon: Icons.lock_outline_rounded,
                     ),
                   ),
+                  if (_error != null) ...[
+                    const SizedBox(height: 16),
+                    Text(
+                      _error!,
+                      style: const TextStyle(
+                        color: Color(0xFFF87171),
+                        fontSize: 13,
+                      ),
+                    ),
+                  ],
+                  if (AppConfig.forceDemo) ...[
+                    const SizedBox(height: 16),
+                    const Text(
+                      'Demo modu açık: bilgi girmeden giriş yapabilirsiniz.',
+                      style: TextStyle(
+                        color: Color(0xFFFBBF24),
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
                   const SizedBox(height: 28),
                   // Giriş Yap Butonu
                   SizedBox(
                     width: double.infinity,
                     height: 54,
                     child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (_) => const MainScreen()),
-                        );
-                      },
+                      onPressed: _loading ? null : _login,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF10B981),
+                        disabledBackgroundColor: const Color(0xFF0E8F68),
                         foregroundColor: Colors.white,
                         elevation: 8,
                         shadowColor: const Color(
@@ -178,7 +267,16 @@ class _LoginScreenState extends State<LoginScreen> {
                           borderRadius: BorderRadius.circular(14),
                         ),
                       ),
-                      child: const Row(
+                      child: _loading
+                          ? const SizedBox(
+                              width: 22,
+                              height: 22,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2.4,
+                                color: Colors.white,
+                              ),
+                            )
+                          : const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
@@ -191,6 +289,55 @@ class _LoginScreenState extends State<LoginScreen> {
                           SizedBox(width: 8),
                           Icon(Icons.chevron_right_rounded, size: 22),
                         ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  if (!AppConfig.forceDemo)
+                    SizedBox(
+                      width: double.infinity,
+                      height: 48,
+                      child: OutlinedButton.icon(
+                        onPressed: _loading ? null : _loginDemo,
+                        icon: const Icon(Icons.play_circle_outline_rounded),
+                        label: const Text('Demo hesabıyla dene'),
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: const Color(0xFFFBBF24),
+                          side: const BorderSide(color: Color(0xFF26334D)),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                        ),
+                      ),
+                    ),
+                  const SizedBox(height: 12),
+                  Center(
+                    child: TextButton(
+                      onPressed: _loading
+                          ? null
+                          : () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const RegisterScreen(),
+                              ),
+                            ),
+                      child: RichText(
+                        text: const TextSpan(
+                          style: TextStyle(fontSize: 14),
+                          children: [
+                            TextSpan(
+                              text: 'Hesabınız yok mu? ',
+                              style: TextStyle(color: Color(0xFF94A3B8)),
+                            ),
+                            TextSpan(
+                              text: 'Kayıt olun',
+                              style: TextStyle(
+                                color: Color(0xFF10B981),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

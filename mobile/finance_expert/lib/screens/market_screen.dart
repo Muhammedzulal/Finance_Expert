@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 
+import '../data/finance_repository.dart';
+import '../models/models.dart';
+import '../theme/app_colors.dart';
+import '../utils/format.dart';
+import '../widgets/common.dart';
+import 'stock_detail_screen.dart';
+
+/// Piyasa ekranı: GET /api/v1/stocks + her hissenin son fiyatı.
 class MarketScreen extends StatefulWidget {
   const MarketScreen({super.key});
 
@@ -8,76 +16,111 @@ class MarketScreen extends StatefulWidget {
 }
 
 class _MarketScreenState extends State<MarketScreen> {
+  final FinanceRepository _repo = FinanceRepository.instance;
+  final TextEditingController _searchController = TextEditingController();
+
   int _selectedFilterIndex = 0;
-  final List<String> _filters = ['Tümü', 'BIST 100', 'ABD'];
+  final List<String> _filters = ['Tümü', 'BIST', 'Diğer'];
+
+  Loaded<List<Stock>>? _stocks;
+  Map<String, Quote?> _quotes = {};
+  String? _error;
+  bool _loading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _searchController.addListener(() => setState(() {}));
+    _load();
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _load() async {
+    setState(() {
+      _loading = true;
+      _error = null;
+    });
+    try {
+      final Loaded<List<Stock>> stocks = await _repo.stocks();
+      final Map<String, Quote?> quotes = await _repo.quotes(
+        stocks.data.map((s) => s.symbol),
+      );
+      if (!mounted) return;
+      setState(() {
+        _stocks = stocks;
+        _quotes = quotes;
+      });
+    } catch (e) {
+      if (!mounted) return;
+      setState(() => _error = e.toString());
+    } finally {
+      if (mounted) setState(() => _loading = false);
+    }
+  }
+
+  List<Stock> get _visibleStocks {
+    final List<Stock> all = _stocks?.data ?? const [];
+    final String query = _searchController.text.trim().toUpperCase();
+    return all.where((s) {
+      if (!s.isActive) return false;
+      if (_selectedFilterIndex == 1 && s.market.toUpperCase() != 'BIST') {
+        return false;
+      }
+      if (_selectedFilterIndex == 2 && s.market.toUpperCase() == 'BIST') {
+        return false;
+      }
+      if (query.isEmpty) return true;
+      return s.symbol.toUpperCase().contains(query) ||
+          s.companyName.toUpperCase().contains(query);
+    }).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      child: RefreshIndicator(
+        color: AppColors.accent,
+        onRefresh: _load,
+        child: ListView(
+          padding: const EdgeInsets.all(20.0),
           children: [
-            // Üst Başlık
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'FINANCE EXPERT',
-                      style: TextStyle(
-                        color: Color(0xFF10B981),
-                        fontSize: 11,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 1.5,
-                      ),
-                    ),
-                    SizedBox(height: 4),
-                    Text(
-                      'Piyasa',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-                _buildNotificationButton(),
-              ],
-            ),
+            const ScreenHeader(title: 'Piyasa'),
             const SizedBox(height: 20),
             // Arama Çubuğu
             TextField(
+              controller: _searchController,
               style: const TextStyle(color: Colors.white),
+              textCapitalization: TextCapitalization.characters,
               decoration: InputDecoration(
-                hintText: 'Hisse veya ETF ara...',
+                hintText: 'Hisse kodu veya şirket ara...',
                 hintStyle: const TextStyle(
-                  color: Color(0xFF64748B),
+                  color: AppColors.subtle,
                   fontSize: 14,
                 ),
                 prefixIcon: const Icon(
                   Icons.search_rounded,
-                  color: Color(0xFF64748B),
+                  color: AppColors.subtle,
                 ),
                 filled: true,
-                fillColor: const Color(0xFF161F30),
+                fillColor: AppColors.card,
                 contentPadding: const EdgeInsets.symmetric(vertical: 14),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(14),
-                  borderSide: const BorderSide(color: Color(0xFF26334D)),
+                  borderSide: const BorderSide(color: AppColors.border),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(14),
-                  borderSide: const BorderSide(color: Color(0xFF10B981)),
+                  borderSide: const BorderSide(color: AppColors.accent),
                 ),
               ),
             ),
             const SizedBox(height: 16),
-            // Filtre Chip'leri (Tümü, BIST 100, ABD)
+            // Filtre Chip'leri
             Row(
               children: List.generate(_filters.length, (index) {
                 final bool isSelected = _selectedFilterIndex == index;
@@ -91,22 +134,18 @@ class _MarketScreenState extends State<MarketScreen> {
                         vertical: 9,
                       ),
                       decoration: BoxDecoration(
-                        color: isSelected
-                            ? const Color(0xFF10B981)
-                            : const Color(0xFF161F30),
+                        color: isSelected ? AppColors.accent : AppColors.card,
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(
                           color: isSelected
-                              ? const Color(0xFF10B981)
-                              : const Color(0xFF26334D),
+                              ? AppColors.accent
+                              : AppColors.border,
                         ),
                       ),
                       child: Text(
                         _filters[index],
                         style: TextStyle(
-                          color: isSelected
-                              ? Colors.white
-                              : const Color(0xFF94A3B8),
+                          color: isSelected ? Colors.white : AppColors.muted,
                           fontSize: 13,
                           fontWeight: FontWeight.w600,
                         ),
@@ -117,86 +156,79 @@ class _MarketScreenState extends State<MarketScreen> {
               }),
             ),
             const SizedBox(height: 20),
-            // Hisse Listesi Kartı
-            Container(
-              decoration: BoxDecoration(
-                color: const Color(0xFF161F30),
-                borderRadius: BorderRadius.circular(18),
-                border: Border.all(color: const Color(0xFF26334D)),
-              ),
-              child: Column(
-                children: [
-                  _buildStockRow(
-                    shortCode: 'TH',
-                    ticker: 'THYAO',
-                    companyName: 'Türk Hava Yolları',
-                    price: '312,75 ₺',
-                    change: '+%3,45',
-                    isPositive: true,
-                  ),
-                  const Divider(color: Color(0xFF26334D), height: 1),
-                  _buildStockRow(
-                    shortCode: 'AA',
-                    ticker: 'AAPL',
-                    companyName: 'Apple Inc.',
-                    price: '7.842,10 ₺',
-                    change: '+%1,82',
-                    isPositive: true,
-                  ),
-                  const Divider(color: Color(0xFF26334D), height: 1),
-                  _buildStockRow(
-                    shortCode: 'GA',
-                    ticker: 'GARAN',
-                    companyName: 'Garanti BBVA',
-                    price: '124,60 ₺',
-                    change: '-%1,20',
-                    isPositive: false,
-                  ),
-                ],
-              ),
-            ),
+            if (_stocks?.fromCache ?? false)
+              OfflineBanner(cachedAt: _stocks!.cachedAt),
+            _buildList(),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildStockRow({
-    required String shortCode,
-    required String ticker,
-    required String companyName,
-    required String price,
-    required String change,
-    required bool isPositive,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-      child: Row(
-        children: [
-          Container(
-            width: 44,
-            height: 44,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: const Color(0xFF232F46),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Text(
-              shortCode,
-              style: const TextStyle(
-                color: Color(0xFF10B981),
-                fontWeight: FontWeight.bold,
-                fontSize: 13,
+  Widget _buildList() {
+    if (_stocks == null && _loading) return const LoadingBox(height: 240);
+    if (_stocks == null) {
+      return ErrorBox(message: _error ?? 'Hisseler alınamadı.', onRetry: _load);
+    }
+    final List<Stock> stocks = _visibleStocks;
+    if (stocks.isEmpty) {
+      return const EmptyBox(
+        message: 'Aramanıza uyan hisse bulunamadı.',
+        icon: Icons.search_off_rounded,
+      );
+    }
+    final List<Widget> rows = [];
+    for (int i = 0; i < stocks.length; i++) {
+      if (i > 0) rows.add(listDivider);
+      rows.add(_buildStockRow(stocks[i], _quotes[stocks[i].symbol]));
+    }
+    return CardBox(child: Column(children: rows));
+  }
+
+  Widget _buildStockRow(Stock stock, Quote? quote) {
+    return InkWell(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => StockDetailScreen(
+            symbol: stock.symbol,
+            companyName: stock.companyName,
+          ),
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        child: Row(
+          children: [
+            SymbolBadge(symbol: stock.symbol),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    stock.symbol,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 3),
+                  Text(
+                    stock.companyName,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(color: AppColors.muted, fontSize: 12),
+                  ),
+                ],
               ),
             ),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  ticker,
+                  quote == null ? '—' : formatMoney(quote.price),
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15,
@@ -205,74 +237,21 @@ class _MarketScreenState extends State<MarketScreen> {
                 ),
                 const SizedBox(height: 3),
                 Text(
-                  companyName,
-                  style: const TextStyle(
-                    color: Color(0xFF94A3B8),
+                  quote == null
+                      ? 'Fiyat yok'
+                      : '${quote.isDelayed ? 'Gecikmeli · ' : ''}${formatShortTime(quote.asOf)}',
+                  style: TextStyle(
+                    color: quote?.isDelayed ?? false
+                        ? AppColors.warning
+                        : AppColors.muted,
                     fontSize: 12,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ],
             ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(
-                price,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 3),
-              Text(
-                change,
-                style: TextStyle(
-                  color: isPositive
-                      ? const Color(0xFF10B981)
-                      : const Color(0xFFF87171),
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildNotificationButton() {
-    return Container(
-      width: 44,
-      height: 44,
-      decoration: BoxDecoration(
-        color: const Color(0xFF161F30),
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: const Color(0xFF26334D)),
-      ),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          const Icon(
-            Icons.notifications_none_rounded,
-            color: Colors.white,
-            size: 22,
-          ),
-          Positioned(
-            top: 10,
-            right: 11,
-            child: Container(
-              width: 7,
-              height: 7,
-              decoration: const BoxDecoration(
-                color: Color(0xFF10B981),
-                shape: BoxShape.circle,
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

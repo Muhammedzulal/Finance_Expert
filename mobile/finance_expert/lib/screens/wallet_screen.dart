@@ -1,248 +1,352 @@
 import 'package:flutter/material.dart';
 
-class WalletScreen extends StatelessWidget {
+import '../app_state.dart';
+import '../data/finance_repository.dart';
+import '../models/models.dart';
+import '../theme/app_colors.dart';
+import '../utils/format.dart';
+import '../widgets/common.dart';
+import 'deposit_screen.dart';
+import 'stock_detail_screen.dart';
+import 'trade_screen.dart';
+
+/// Sanal Cüzdan: portföy değeri, kâr/zarar, varlıklar ve işlem geçmişi.
+class WalletScreen extends StatefulWidget {
   const WalletScreen({super.key});
+
+  @override
+  State<WalletScreen> createState() => _WalletScreenState();
+}
+
+class _WalletScreenState extends State<WalletScreen> {
+  final FinanceRepository _repo = FinanceRepository.instance;
+
+  Loaded<Valuation>? _valuation;
+  Loaded<List<Trade>>? _trades;
+  String? _error;
+  bool _loading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    AppEvents.portfolioChanged.addListener(_load);
+    _load();
+  }
+
+  @override
+  void dispose() {
+    AppEvents.portfolioChanged.removeListener(_load);
+    super.dispose();
+  }
+
+  Future<void> _load() async {
+    if (!mounted) return;
+    setState(() {
+      _loading = true;
+      _error = null;
+    });
+    try {
+      final Loaded<Valuation> valuation = await _repo.valuation();
+      Loaded<List<Trade>>? trades;
+      try {
+        trades = await _repo.trades(limit: 10);
+      } catch (_) {
+        trades = null;
+      }
+      if (!mounted) return;
+      setState(() {
+        _valuation = valuation;
+        _trades = trades;
+      });
+    } catch (e) {
+      if (!mounted) return;
+      setState(() => _error = e.toString());
+    } finally {
+      if (mounted) setState(() => _loading = false);
+    }
+  }
+
+  void _openTrade(bool isBuy) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => TradeScreen(initialIsBuy: isBuy)),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      child: RefreshIndicator(
+        color: AppColors.accent,
+        onRefresh: _load,
+        child: ListView(
+          padding: const EdgeInsets.all(20.0),
           children: [
-            // Üst Başlık
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'FINANCE EXPERT',
-                      style: TextStyle(
-                        color: Color(0xFF10B981),
-                        fontSize: 11,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 1.5,
-                      ),
-                    ),
-                    SizedBox(height: 4),
-                    Text(
-                      'Sanal Cüzdanım',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-                _buildNotificationButton(),
-              ],
-            ),
+            const ScreenHeader(title: 'Sanal Cüzdanım'),
             const SizedBox(height: 24),
-            // Toplam Portföy Değeri Kartı
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(22),
-              decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  colors: [Color(0xFF15264A), Color(0xFF111D38)],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: const Color(0xFF233862)),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Toplam Portföy Değeri',
-                    style: TextStyle(color: Color(0xFF94A3B8), fontSize: 13),
-                  ),
-                  const SizedBox(height: 10),
-                  const Text(
-                    '125.430,00 ₺',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  Divider(
-                    color: Colors.white.withValues(alpha: 0.08),
-                    height: 1,
-                  ),
-                  const SizedBox(height: 14),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Toplam kâr / zarar',
-                        style: TextStyle(
-                          color: Color(0xFF94A3B8),
-                          fontSize: 13,
-                        ),
-                      ),
-                      Text(
-                        '+%12,4',
-                        style: TextStyle(
-                          color: Color(0xFF10B981),
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 18),
-            // Para Yatır & Hisse Al Butonları
-            Row(
-              children: [
-                Expanded(
-                  child: SizedBox(
-                    height: 48,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF10B981),
-                        foregroundColor: Colors.white,
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                      ),
-                      child: const Text(
-                        'Para Yatır',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: SizedBox(
-                    height: 48,
-                    child: OutlinedButton(
-                      onPressed: () {},
-                      style: OutlinedButton.styleFrom(
-                        backgroundColor: const Color(0xFF161F30),
-                        foregroundColor: Colors.white,
-                        side: const BorderSide(color: Color(0xFF26334D)),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                      ),
-                      child: const Text(
-                        'Hisse Al',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+            if (_valuation?.fromCache ?? false)
+              OfflineBanner(cachedAt: _valuation!.cachedAt),
+            if (_valuation == null && _loading)
+              const LoadingBox(height: 200)
+            else if (_valuation == null)
+              ErrorBox(
+                message: _error ?? 'Cüzdan bilgisi alınamadı.',
+                onRetry: _load,
+              )
+            else ...[
+              _buildSummaryCard(_valuation!.data),
+              const SizedBox(height: 18),
+              _buildButtons(),
+              if (_valuation!.data.warnings.isNotEmpty) ...[
+                const SizedBox(height: 14),
+                _buildWarnings(_valuation!.data.warnings),
               ],
-            ),
-            const SizedBox(height: 28),
-            const Text(
-              'Varlıklarım',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 14),
-            // Varlıklarım Listesi
-            Container(
-              decoration: BoxDecoration(
-                color: const Color(0xFF161F30),
-                borderRadius: BorderRadius.circular(18),
-                border: Border.all(color: const Color(0xFF26334D)),
-              ),
-              child: Column(
-                children: [
-                  _buildAssetRow(
-                    shortCode: 'TH',
-                    ticker: 'THYAO',
-                    subtitle: 'Türk Hava Yolları · 120 lot',
-                    totalValue: '37.530,00 ₺',
-                    change: '+%3,45',
-                    isPositive: true,
-                  ),
-                  const Divider(color: Color(0xFF26334D), height: 1),
-                  _buildAssetRow(
-                    shortCode: 'AA',
-                    ticker: 'AAPL',
-                    subtitle: 'Apple Inc. · 4 adet',
-                    totalValue: '31.368,40 ₺',
-                    change: '+%1,82',
-                    isPositive: true,
-                  ),
-                  const Divider(color: Color(0xFF26334D), height: 1),
-                  _buildAssetRow(
-                    shortCode: 'GA',
-                    ticker: 'GARAN',
-                    subtitle: 'Garanti BBVA · 250 lot',
-                    totalValue: '31.150,00 ₺',
-                    change: '-%1,20',
-                    isPositive: false,
-                  ),
-                ],
-              ),
-            ),
+              const SizedBox(height: 28),
+              const SectionTitle('Varlıklarım'),
+              const SizedBox(height: 14),
+              _buildPositions(_valuation!.data),
+              const SizedBox(height: 28),
+              const SectionTitle('Son İşlemler'),
+              const SizedBox(height: 14),
+              _buildTrades(),
+            ],
           ],
         ),
       ),
     );
   }
 
-  Widget _buildAssetRow({
-    required String shortCode,
-    required String ticker,
-    required String subtitle,
-    required String totalValue,
-    required String change,
-    required bool isPositive,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-      child: Row(
+  Widget _buildSummaryCard(Valuation v) {
+    final double? pnl = v.unrealizedPnl;
+    final double? pnlPercent = v.unrealizedPnlPercent;
+    final bool positive = (pnl ?? 0) >= 0;
+    final Color pnlColor = pnl == null
+        ? AppColors.muted
+        : (positive ? AppColors.accent : AppColors.negative);
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(22),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [AppColors.cardBlue, AppColors.cardDark],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: AppColors.borderBlue),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: 44,
-            height: 44,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: const Color(0xFF232F46),
-              borderRadius: BorderRadius.circular(12),
+          const Text(
+            'Toplam Portföy Değeri',
+            style: TextStyle(color: AppColors.muted, fontSize: 13),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            formatMoney(v.displayTotal),
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
             ),
-            child: Text(
-              shortCode,
-              style: const TextStyle(
-                color: Color(0xFF10B981),
-                fontWeight: FontWeight.bold,
-                fontSize: 13,
+          ),
+          if (!v.isComplete)
+            const Padding(
+              padding: EdgeInsets.only(top: 4),
+              child: Text(
+                'Bazı hisselerin fiyatı olmadığı için maliyet üzerinden gösteriliyor.',
+                style: TextStyle(color: AppColors.warning, fontSize: 11),
+              ),
+            ),
+          const SizedBox(height: 16),
+          Divider(color: Colors.white.withValues(alpha: 0.08), height: 1),
+          const SizedBox(height: 14),
+          _summaryRow('Nakit', formatMoney(v.cashBalance)),
+          const SizedBox(height: 8),
+          _summaryRow(
+            'Gerçekleşmemiş kâr / zarar',
+            pnl == null
+                ? '—'
+                : '${formatMoney(pnl)} (${formatPercent(pnlPercent)})',
+            color: pnlColor,
+          ),
+          const SizedBox(height: 8),
+          _summaryRow(
+            'Gerçekleşen kâr / zarar',
+            formatMoney(v.realizedPnl),
+            color: v.realizedPnl >= 0 ? AppColors.accent : AppColors.negative,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _summaryRow(String label, String value, {Color color = Colors.white}) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          label,
+          style: const TextStyle(color: AppColors.muted, fontSize: 13),
+        ),
+        Flexible(
+          child: Text(
+            value,
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              color: color,
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildButtons() {
+    return Row(
+      children: [
+        Expanded(
+          child: SizedBox(
+            height: 48,
+            child: OutlinedButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const DepositScreen()),
+              ),
+              style: OutlinedButton.styleFrom(
+                backgroundColor: AppColors.accent.withValues(alpha: 0.12),
+                foregroundColor: AppColors.accent,
+                side: BorderSide(color: AppColors.accent.withValues(alpha: 0.5)),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14),
+                ),
+              ),
+              child: const Text(
+                'Para Yatır',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
               ),
             ),
           ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          child: SizedBox(
+            height: 48,
+            child: ElevatedButton(
+              onPressed: () => _openTrade(true),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.accent,
+                foregroundColor: Colors.white,
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14),
+                ),
+              ),
+              child: const Text(
+                'Hisse Al',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          child: SizedBox(
+            height: 48,
+            child: OutlinedButton(
+              onPressed: () => _openTrade(false),
+              style: OutlinedButton.styleFrom(
+                backgroundColor: AppColors.card,
+                foregroundColor: Colors.white,
+                side: const BorderSide(color: AppColors.border),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14),
+                ),
+              ),
+              child: const Text(
+                'Hisse Sat',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildWarnings(List<String> warnings) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: AppColors.warning.withValues(alpha: 0.10),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Text(
+        warnings.join('\n'),
+        style: const TextStyle(color: AppColors.warning, fontSize: 12),
+      ),
+    );
+  }
+
+  Widget _buildPositions(Valuation v) {
+    if (v.positions.isEmpty) {
+      return const EmptyBox(
+        message: 'Henüz hisseniz yok. "Hisse Al" ile ilk işleminizi yapın.',
+        icon: Icons.account_balance_wallet_outlined,
+      );
+    }
+    final List<Widget> rows = [];
+    for (int i = 0; i < v.positions.length; i++) {
+      if (i > 0) rows.add(listDivider);
+      rows.add(_buildPositionRow(v.positions[i]));
+    }
+    return CardBox(child: Column(children: rows));
+  }
+
+  Widget _buildPositionRow(ValuedPosition p) {
+    final double? pnlPercent = p.unrealizedPnlPercent;
+    final bool positive = (pnlPercent ?? 0) >= 0;
+    return InkWell(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => StockDetailScreen(symbol: p.symbol)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        child: Row(
+          children: [
+            SymbolBadge(symbol: p.symbol),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    p.symbol,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 3),
+                  Text(
+                    '${p.quantity} adet · ort. ${formatMoney(p.averageCost)}',
+                    style: const TextStyle(color: AppColors.muted, fontSize: 12),
+                  ),
+                ],
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  ticker,
+                  formatMoney(p.marketValue ?? p.costBasis),
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15,
@@ -251,75 +355,91 @@ class WalletScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 3),
                 Text(
-                  subtitle,
-                  style: const TextStyle(
-                    color: Color(0xFF94A3B8),
+                  pnlPercent == null ? 'Fiyat yok' : formatPercent(pnlPercent),
+                  style: TextStyle(
+                    color: pnlPercent == null
+                        ? AppColors.muted
+                        : (positive ? AppColors.accent : AppColors.negative),
                     fontSize: 12,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ],
             ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(
-                totalValue,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 3),
-              Text(
-                change,
-                style: TextStyle(
-                  color: isPositive
-                      ? const Color(0xFF10B981)
-                      : const Color(0xFFF87171),
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildNotificationButton() {
-    return Container(
-      width: 44,
-      height: 44,
-      decoration: BoxDecoration(
-        color: const Color(0xFF161F30),
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: const Color(0xFF26334D)),
-      ),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          const Icon(
-            Icons.notifications_none_rounded,
-            color: Colors.white,
-            size: 22,
-          ),
-          Positioned(
-            top: 10,
-            right: 11,
-            child: Container(
-              width: 7,
-              height: 7,
-              decoration: const BoxDecoration(
-                color: Color(0xFF10B981),
-                shape: BoxShape.circle,
+  Widget _buildTrades() {
+    final List<Trade>? trades = _trades?.data;
+    if (trades == null) {
+      return const EmptyBox(message: 'İşlem geçmişi alınamadı.');
+    }
+    if (trades.isEmpty) {
+      return const EmptyBox(
+        message: 'Henüz işlem yapmadınız.',
+        icon: Icons.receipt_long_outlined,
+      );
+    }
+    final List<Widget> rows = [];
+    for (int i = 0; i < trades.length; i++) {
+      if (i > 0) rows.add(listDivider);
+      final Trade t = trades[i];
+      rows.add(
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          child: Row(
+            children: [
+              Container(
+                width: 38,
+                height: 38,
+                decoration: BoxDecoration(
+                  color: (t.isBuy ? AppColors.blue : AppColors.negative)
+                      .withValues(alpha: 0.15),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Icon(
+                  t.isBuy ? Icons.south_west_rounded : Icons.north_east_rounded,
+                  color: t.isBuy ? const Color(0xFF60A5FA) : AppColors.negative,
+                  size: 18,
+                ),
               ),
-            ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '${t.symbol} · ${t.isBuy ? 'Alış' : 'Satış'}',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 3),
+                    Text(
+                      '${t.quantity} adet × ${formatMoney(t.executionPrice)} · ${formatShortTime(t.executedAt)}',
+                      style: const TextStyle(color: AppColors.muted, fontSize: 12),
+                    ),
+                  ],
+                ),
+              ),
+              Text(
+                formatMoney(t.grossAmount),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
-    );
+        ),
+      );
+    }
+    return CardBox(child: Column(children: rows));
   }
 }

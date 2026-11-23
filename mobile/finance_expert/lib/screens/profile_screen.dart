@@ -1,11 +1,37 @@
 import 'package:flutter/material.dart';
+
+import '../config.dart';
+import '../models/models.dart';
+import '../services/auth_service.dart';
+import '../utils/format.dart';
+import '../widgets/common.dart';
+import 'account_info_screen.dart';
 import 'login_screen.dart';
+import 'notification_settings_screen.dart';
+import 'security_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
+  void _open(BuildContext context, Widget screen) {
+    Navigator.push(context, MaterialPageRoute(builder: (_) => screen));
+  }
+
+  Future<void> _logout(BuildContext context) async {
+    await AuthService.instance.logout();
+    if (!context.mounted) return;
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (_) => const LoginScreen()),
+      (route) => false,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final UserProfile? user = AuthService.instance.currentUser;
+    final String fullName = user?.fullName ?? 'Misafir';
+    final String email = user?.email ?? '';
     return SafeArea(
       child: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
@@ -39,7 +65,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                _buildNotificationButton(),
+                const NotificationButton(),
               ],
             ),
             const SizedBox(height: 24),
@@ -66,9 +92,9 @@ class ProfileScreen extends StatelessWidget {
                         width: 2.2,
                       ),
                     ),
-                    child: const Text(
-                      'FT',
-                      style: TextStyle(
+                    child: Text(
+                      initialsOf(fullName),
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -76,19 +102,29 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const Text(
-                    'Furkan Taşkıran',
-                    style: TextStyle(
+                  Text(
+                    fullName,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   const SizedBox(height: 4),
-                  const Text(
-                    'furkan.taskiran@email.com',
-                    style: TextStyle(color: Color(0xFF94A3B8), fontSize: 13),
+                  Text(
+                    email,
+                    style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 13),
                   ),
+                  if (user?.walletId != null) ...[
+                    const SizedBox(height: 10),
+                    Text(
+                      'Cüzdan: ${user!.walletId}',
+                      style: const TextStyle(
+                        color: Color(0xFF64748B),
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
                 ],
               ),
             ),
@@ -105,19 +141,20 @@ class ProfileScreen extends StatelessWidget {
                   _buildMenuItem(
                     icon: Icons.person_outline_rounded,
                     title: 'Hesap Bilgileri',
-                    onTap: () {},
+                    onTap: () => _open(context, const AccountInfoScreen()),
                   ),
                   const Divider(color: Color(0xFF26334D), height: 1),
                   _buildMenuItem(
                     icon: Icons.notifications_none_rounded,
                     title: 'Bildirim Ayarları',
-                    onTap: () {},
+                    onTap: () =>
+                        _open(context, const NotificationSettingsScreen()),
                   ),
                   const Divider(color: Color(0xFF26334D), height: 1),
                   _buildMenuItem(
                     icon: Icons.verified_user_outlined,
                     title: 'Güvenlik',
-                    onTap: () {},
+                    onTap: () => _open(context, const SecurityScreen()),
                   ),
                 ],
               ),
@@ -125,13 +162,7 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 18),
             // Çıkış Yap Butonu
             GestureDetector(
-              onTap: () {
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (_) => const LoginScreen()),
-                  (route) => false,
-                );
-              },
+              onTap: () => _logout(context),
               child: Container(
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(
@@ -161,6 +192,15 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+            ),
+            const SizedBox(height: 18),
+            Center(
+              child: Text(
+                AppConfig.demoMode
+                    ? 'Demo modu · örnek veriler'
+                    : 'Sunucu: ${AppConfig.apiBaseUrl}',
+                style: const TextStyle(color: Color(0xFF475569), fontSize: 11),
               ),
             ),
           ],
@@ -208,40 +248,6 @@ class ProfileScreen extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildNotificationButton() {
-    return Container(
-      width: 44,
-      height: 44,
-      decoration: BoxDecoration(
-        color: const Color(0xFF161F30),
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: const Color(0xFF26334D)),
-      ),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          const Icon(
-            Icons.notifications_none_rounded,
-            color: Colors.white,
-            size: 22,
-          ),
-          Positioned(
-            top: 10,
-            right: 11,
-            child: Container(
-              width: 7,
-              height: 7,
-              decoration: const BoxDecoration(
-                color: Color(0xFF10B981),
-                shape: BoxShape.circle,
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
