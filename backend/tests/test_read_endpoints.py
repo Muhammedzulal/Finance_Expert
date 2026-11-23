@@ -146,3 +146,36 @@ def test_database_failure(client,path):
     c,db=client; db.execute.side_effect=SQLAlchemyError('private error')
     response=c.get(path)
     assert response.status_code==503 and 'private error' not in response.text
+
+
+def test_analysis_model_matches_contract():
+    from pydantic import ValidationError
+    examples = json.loads((ROOT / 'contracts/examples.json').read_text(encoding='utf-8'))
+    payload = examples['Analysis']
+    model = api.AnalysisCreate.model_validate(payload)
+    row = dict(model.model_dump(), created_at=model.created_at)
+    serialized = api.serialize_analysis(row, payload['impacts'])
+    schema = json.loads((ROOT / 'contracts/finance-v1.schema.json').read_text(encoding='utf-8'))
+    Draft202012Validator({'$defs':schema['$defs'],'$ref':'#/$defs/Analysis'},format_checker=FormatChecker()).validate(serialized)
+    for change in [{'schema_version':'1.0'},{'disclaimer':''},{'disclaimer':'other'}]:
+        with pytest.raises(ValidationError):
+            api.AnalysisCreate.model_validate(dict(payload, **change))
+    missing = dict(payload); del missing['disclaimer']
+    with pytest.raises(ValidationError):
+        api.AnalysisCreate.model_validate(missing)
+
+
+def test_analysis_insert_persists_disclaimer(client, monkeypatch):
+    c, db = client
+    payload = json.loads((ROOT / 'contracts/examples.json').read_text(encoding='utf-8'))['Analysis']
+    monkeypatch.setenv('INTERNAL_API_KEY','contract-test-key')
+    transaction = MagicMock()
+    api.engine.begin.return_value.__enter__.return_value = transaction
+    monkeypatch.setattr(api, 'get_news_symbols', lambda connection, news_id: ['DEMO'])
+    transaction.execute.side_effect = [result(first={'news_id':payload['news_id'],'status':'processing'}),result(),result(),result(),result()]
+    response = c.post('/api/v1/internal/analyses', json=payload, headers={'X-API-Key':'contract-test-key'})
+    assert response.status_code == 201
+    assert response.json()['disclaimer'] == payload['disclaimer']
+    inserts = [call for call in transaction.execute.call_args_list if 'INSERT INTO analyses (' in str(call.args[0])]
+    assert len(inserts) == 1
+    assert inserts[0].args[1]['disclaimer'] == payload['disclaimer']

@@ -2,7 +2,7 @@
 
 Mevcut `backend/main.py` davranışı esas alınmıştır. Makine şeması:
 `contracts/read-endpoints.schema.json`. Eski `finance-v1.schema.json` nesneleri
-bu yanıtların yerine kullanılmaz: tarihçe fiyat öğelerinde schema_version yoktur;
+bu yanıtların yerine kullanılmaz: tarihçe fiyat öğeleri artık schema_version=1.0 taşır;
 işlem geçmişi öğelerinde ek realized_pnl vardır. Bu farklar şemada açıkça tanımlıdır.
 
 ## Fiyat geçmişi
@@ -14,13 +14,13 @@ işlem geçmişi öğelerinde ek realized_pnl vardır. Bu farklar şemada açık
 - limit: 1-500, varsayılan 100. Son N kayıt alınır, `as_of ASC` olarak döndürülür;
   eşit zamanlarda kaynak sırası id ile belirlenir. Tarih filtresi ve sayfalama yoktur.
 - Yanıt: `{symbol, count, history}`. history öğesi
-  `{symbol, price, currency, as_of, provider, is_delayed}` içerir.
+  `{schema_version, symbol, price, currency, as_of, provider, is_delayed}` içerir.
 - price ondalık metin; as_of saat dilimli RFC 3339. OHLC/mum verisi değildir,
   çizgi grafik noktasıdır. Eksik aralıklar doldurulmaz, işlem hacmi üretilmez.
 - Bilinen hissede kayıt yoksa 200 ve boş history; bilinmeyen hisse 404,
   geçersiz parametre 422, DB hatası 503. Bu uç şu an JWT istemez.
 
-Örnek: `{"symbol":"DEMO","count":1,"history":[{"symbol":"DEMO","price":"100.00","currency":"TRY","as_of":"2026-11-02T09:00:00Z","provider":"TEST","is_delayed":false}]}`.
+Örnek: `{"symbol":"DEMO","count":1,"history":[{"schema_version":"1.0","symbol":"DEMO","price":"100.00","currency":"TRY","as_of":"2026-11-02T09:00:00Z","provider":"TEST","is_delayed":false}]}`.
 
 ## İşlem geçmişi
 

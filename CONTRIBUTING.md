@@ -45,3 +45,10 @@ başına kaldırmaz; bunların temizliği ayrı bir değişiklik olarak ele alı
 Repo yöneticisi `main` için PR, en az bir onay, çözülmüş yorumlar ve
 `validate-contracts` başarılı kontrolünü zorunlu kılsın; force push'u kapatsın.
 Bu ayarlar öneridir; bu teslimde GitHub branch koruması değiştirilmemiştir.
+
+## PR inceleme koordinasyonu
+
+Güncel sorumluluklar ve kabul ölçütleri [inceleme planında](docs/pr-inceleme-plani.md)
+yer alır. Backend değişikliği Ensar, AI değişikliği Kutay, Flutter veri modelleri
+Eray/Furkan tarafından incelenir. Finansal kural değişiklikleri Şükrü ile doğrulanır.
+CI kontrol adları: validate-contracts, backend-tests, flutter-analyze.

@@ -92,9 +92,14 @@ class SahteBackend(BaseHTTPRequestHandler):
 
         if self.path == "/api/v1/internal/analyses":
             izinli = {"schema_version", "analysis_id", "news_id", "model", "prompt_version",
-                      "created_at", "summary", "impacts"}
+                      "created_at", "summary", "impacts", "disclaimer"}
             if set(govde) - izinli:
                 return self._gonder(422, {"detail": "beklenmeyen alan"})
+            schema = json.loads((Path(__file__).resolve().parents[1] / "contracts/finance-v1.schema.json").read_text(encoding="utf-8"))
+            from jsonschema import Draft202012Validator
+            validator = Draft202012Validator({"$defs": schema["$defs"], "$ref": "#/$defs/Analysis"})
+            if not validator.is_valid(govde):
+                return self._gonder(422, {"detail": "analiz sozlesmesine aykiri"})
             semboller = isler[govde["news_id"]]["news"]["symbols"]
             if any(i["symbol"] not in semboller for i in govde["impacts"]):
                 return self._gonder(422, {"detail": "Analizde haberle eslesmeyen hisse var"})

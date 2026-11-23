@@ -223,7 +223,8 @@ def serialize_analysis(row, impacts):
             row["created_at"]
         ),
         "summary": row["summary"],
-        "impacts": impacts
+        "impacts": impacts,
+        **({"disclaimer": row["disclaimer"]} if row["schema_version"] == "1.1" else {})
     }
 
 
@@ -352,11 +353,14 @@ class AnalysisImpactCreate(BaseModel):
 
 
 # Kutay'in gonderecegi Analysis v1.0 modeli.
+ANALYSIS_DISCLAIMER = 'Yatırım tavsiyesi değildir. Haberlerin olası etkilerine ilişkin bilgilendirme amaçlı otomatik analizdir; kişisel yatırım danışmanlığı sunmaz.'
+
+
 class AnalysisCreate(BaseModel):
 
     model_config = ConfigDict(extra="forbid")
 
-    schema_version: Literal["1.0"]
+    schema_version: Literal["1.1"]
 
     analysis_id: str = Field(
         min_length=1,
@@ -375,6 +379,8 @@ class AnalysisCreate(BaseModel):
     created_at: datetime
 
     summary: str = Field(min_length=1)
+
+    disclaimer: Literal[ANALYSIS_DISCLAIMER]
 
     impacts: list[AnalysisImpactCreate]
 
@@ -894,7 +900,8 @@ def get_news_analysis(news_id: str):
                         model,
                         prompt_version,
                         created_at,
-                        summary
+                        summary,
+                        disclaimer
                     FROM analyses
                     WHERE news_id = :news_id
                     ORDER BY
@@ -988,7 +995,8 @@ def create_analysis(
                         model,
                         prompt_version,
                         created_at,
-                        summary
+                        summary,
+                        disclaimer
                     FROM analyses
                     WHERE analysis_id = :analysis_id
                 """),
@@ -1032,6 +1040,7 @@ def create_analysis(
                     and existing["created_at"]
                     == to_mysql_datetime(analysis.created_at)
                     and existing["summary"] == analysis.summary
+                    and existing["disclaimer"] == analysis.disclaimer
                     and saved_impacts == incoming_impacts
                 )
 
@@ -1091,7 +1100,7 @@ def create_analysis(
                         :prompt_version,
                         :created_at,
                         :summary,
-                        NULL
+                        :disclaimer
                     )
                 """),
                 {
@@ -1103,7 +1112,8 @@ def create_analysis(
                     "created_at": to_mysql_datetime(
                         analysis.created_at
                     ),
-                    "summary": analysis.summary
+                    "summary": analysis.summary,
+                    "disclaimer": analysis.disclaimer
                 }
             )
 

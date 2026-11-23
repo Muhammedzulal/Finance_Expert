@@ -112,6 +112,7 @@
             "type": "object",
             "additionalProperties": false,
             "required": [
+              "schema_version",
               "symbol",
               "price",
               "currency",
@@ -138,6 +139,9 @@
               },
               "is_delayed": {
                 "type": "boolean"
+              },
+              "schema_version": {
+                "const": "1.0"
               }
             }
           }

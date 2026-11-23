@@ -77,11 +77,10 @@ serileştirme ve portföy hesapları sınanır.
 
 Ayrıntılı yeni uç sözleşmeleri: [Okuma uç noktaları](okuma-uc-noktalari.md).
 
-### Bilinen AI sözleşmesi uyumsuzluğu
+### Sözleşme uyumu (24 Kasım 2026)
 
-Bu dokümantasyon dalındaki Analysis v1.1 şemasına göre AI kodu disclaimer ekler.
-Mevcut backend AnalysisCreate hâlâ v1.0 ve extra=forbid kullanır; AI worker
-sahte backend testi de eski alan listesini kabul eder. Bu yüzden ai/test_worker.py
-çalışmasında 3 senaryo 422 nedeniyle başarısızdır. Yeni backend-tests işi bundan
-bağımsızdır. AI üreticisi, backend modeli/serileştirmesi ve test çiftinin aynı sürüme
-geçirilmesi ayrı entegrasyon işidir; CI'nın tamamı yeşil sayılmamalıdır.
+AnalysisCreate v1.1 kabul eder; sabit disclaimer doğrulanır, MySQL alanına yazılır
+ve v1.1 yanıtlarında döndürülür. Eski kayıtların sürümü değiştirilmez; v1.0
+kayıtlar eski biçimiyle okunur. AI test çiftinin kontrolü aynı şemayla eşleştirildi.
+Fiyat geçmişi öğelerinin schema_version alanı güncel backend ile eşleştirildi.
+CI ayrıca adaptör pytest kontrollerini ve Flutter statik analizini çalıştırır.
