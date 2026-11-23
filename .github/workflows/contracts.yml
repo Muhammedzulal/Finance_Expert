@@ -48,4 +48,16 @@ jobs:
           cache: true
       - run: flutter --version
       - run: flutter pub get
-      - run: flutter analyze --fatal-infos --fatal-warnings
+      - name: Flutter analyze
+        run: |
+          set +e
+          flutter analyze --fatal-infos --fatal-warnings > "$RUNNER_TEMP/flutter-analyze.log" 2>&1
+          result=$?
+          cat "$RUNNER_TEMP/flutter-analyze.log"
+          if [ "$result" -ne 0 ]; then
+            while IFS= read -r line; do
+              line="${line//'%'/'%25'}"
+              echo "::error::$line"
+            done < "$RUNNER_TEMP/flutter-analyze.log"
+          fi
+          exit "$result"
