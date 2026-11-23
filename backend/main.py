@@ -1375,6 +1375,7 @@ def fail_analysis_job(
 class QuoteCreate(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
+    schema_version: Literal["1.0"] | None = "1.0"
     symbol: str = Field(min_length=1, max_length=15)
     price: Decimal = Field(gt=0, max_digits=18, decimal_places=6)
     currency: str = Field(default="TRY", min_length=3, max_length=3)
@@ -1414,6 +1415,7 @@ class QuoteCreate(BaseModel):
 def serialize_quote(row):
     # Price metin doner: ondalik hassasiyeti kaybolmaz.
     return {
+        "schema_version": "1.0",
         "symbol": row["symbol"],
         "price": str(row["price"]),
         "currency": row["currency"],

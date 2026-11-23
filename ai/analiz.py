@@ -12,6 +12,7 @@ Sürüm ve uyarı metni contracts/finance-v1.schema.json'dan okunur.
 
 import difflib
 import json
+import os
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -19,7 +20,8 @@ from pathlib import Path
 import ollama
 from jsonschema import Draft202012Validator, FormatChecker
 
-MODEL = "qwen3.5:4b"
+# Docker Compose AI_MODEL ile değiştirir (docker-compose.yml); varsayılan yerel model
+MODEL = os.environ.get("AI_MODEL", "qwen3.5:4b")
 # v2: Berke'nin news-impact-v2 kuralları (Türkçe cevap formatı)
 # v3: + isteğe bağlı piyasa (fiyat/RSI) bağlamı
 PROMPT_VERSION = "news-impact-v3-tr"
