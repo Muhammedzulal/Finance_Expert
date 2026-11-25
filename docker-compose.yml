@@ -17,6 +17,8 @@ services:
       - finance_expert_week3_mysql_data:/var/lib/mysql
       # Yalnizca bos/yeni veritabani ilk kez acilirken schema yuklenir.
       - ./database/finance_expert_schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      # Hisse listesi; bos stocks tablosu haber/fiyat/trade isteklerini 422 yapar.
+      - ./database/02_seed_stocks.sql:/docker-entrypoint-initdb.d/02-seed-stocks.sql:ro
     healthcheck:
       test:
         - CMD-SHELL
